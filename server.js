@@ -194,64 +194,12 @@ function createQueueItem({ username, giftName, coins, repeatCount }) {
   };
 }
 
-function findActiveUserIndex(username) {
-  const normalizedUsername = normalizeText(username);
-
-  return queue.findIndex(
-    (item) =>
-      isActiveItem(item) &&
-      normalizeText(item.username) === normalizedUsername
-  );
-}
-
-function shouldUpgradeQueueType(currentType, newType) {
-  const currentPriority = QUEUE_PRIORITY[currentType] ?? 99;
-  const newPriority = QUEUE_PRIORITY[newType] ?? 99;
-
-  return newPriority < currentPriority;
-}
-
+// ✅ CORREGIDO:
+// cada regalo entra como item NUEVO, aunque sea del mismo usuario
 function upsertQueueItem({ username, giftName, coins, repeatCount }) {
-  const rule = getGiftRule(giftName);
-  const existingIndex = findActiveUserIndex(username);
-
-  if (existingIndex === -1) {
-    const newItem = createQueueItem({ username, giftName, coins, repeatCount });
-    queue.push(newItem);
-    return { item: newItem, action: "created" };
-  }
-
-  const existingItem = queue[existingIndex];
-  const upgraded = shouldUpgradeQueueType(existingItem.queueType, rule.queueType);
-
-  existingItem.giftName = giftName;
-  existingItem.coins = coins;
-  existingItem.repeatCount = repeatCount;
-  existingItem.serviceKey = rule.serviceKey;
-  existingItem.serviceLabel = rule.serviceLabel;
-  existingItem.icon = rule.icon;
-  existingItem.updatedAt = nowIso();
-
-  if (upgraded) {
-    existingItem.queueType = rule.queueType;
-    existingItem.status = getDefaultStatusForQueueType(rule.queueType);
-
-    // al subir de categoría, lo reordenamos con tiempo nuevo
-    existingItem.createdAt = nowIso();
-  } else {
-    // si ya estaba sin responder o pendiente_contacto y vuelve a regalar,
-    // lo reabrimos según el tipo actual/nuevo
-    if (
-      existingItem.status === "sin_responder" ||
-      existingItem.status === "pendiente_contacto"
-    ) {
-      existingItem.status = getDefaultStatusForQueueType(
-        upgraded ? rule.queueType : existingItem.queueType
-      );
-    }
-  }
-
-  return { item: existingItem, action: upgraded ? "upgraded" : "updated" };
+  const newItem = createQueueItem({ username, giftName, coins, repeatCount });
+  queue.push(newItem);
+  return { item: newItem, action: "created" };
 }
 
 function buildVisibleQueue() {
@@ -278,13 +226,11 @@ function buildVisibleQueue() {
     hasPremium: premiumItems.length > 0,
     hasSpecial: specialItems.length > 0,
 
-    // nuevas listas separadas
     premiumList: premiumItems.slice(0, 5),
     normalList: normalItems.slice(0, 5),
     fastList: fastItems.slice(0, 5),
     specialList: specialItems.slice(0, 3),
 
-    // compatibilidad con widgets viejos
     nextList: [...premiumItems, ...normalItems].slice(0, 5),
 
     counts: {
