@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Control de Cola</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background:
+        radial-gradient(circle at top left, rgba(255, 220, 230, 0.55), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255, 205, 220, 0.45), transparent 30%),
+        linear-gradient(180deg, #fff9fb, #fff4f8);
+      color: #4b3340;
+    }
+
+    .wrap {
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      color: #5a3141;
+    }
+
+    .sub {
+      margin: 0 0 18px;
+      color: #8a6273;
+      font-size: 14px;
+    }
+
+    .topbar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 14px;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #f7c6d8;
+      color: #5a2f40;
+      box-shadow: 0 6px 14px rgba(194, 120, 150, 0.14);
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+
+    .btn:hover {
+      filter: brightness(0.98);
+      transform: translateY(-1px);
+    }
+
+    .btn.secondary {
+      background: #fce4ec;
+      color: #7a4e61;
+    }
+
+    .btn.danger {
+      background: #f3a8ba;
+      color: #5e2137;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .stat {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(243, 190, 210, 0.45);
+      box-shadow: 0 8px 18px rgba(189, 129, 154, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .stat .label {
+      font-size: 12px;
+      color: #8a6273;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .stat .value {
+      font-size: 26px;
+      font-weight: 800;
+      color: #583141;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1.15fr 1fr 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .panel {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(243, 190, 210, 0.45);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: 0 10px 24px rgba(189, 129, 154, 0.10);
+      backdrop-filter: blur(10px);
+      min-height: 180px;
+    }
+
+    .panel h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      color: #6b4153;
+    }
+
+    .panel.premium-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,244,248,0.95));
+      border-color: rgba(236, 182, 205, 0.75);
+      box-shadow: 0 12px 26px rgba(201, 131, 162, 0.16);
+    }
+
+    .panel.normal-panel {
+      background: rgba(255, 255, 255, 0.82);
+    }
+
+    .panel.special-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,246,250,0.96));
+    }
+
+    .list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px;
+      border-radius: 18px;
+      background: #fff;
+      border: 1px solid #f3d7e2;
+      box-shadow: 0 4px 12px rgba(186, 127, 151, 0.07);
+    }
+
+    .item.called {
+      background: linear-gradient(180deg, #fff8fb, #fff0f5);
+      border-color: #f1b7cb;
+      box-shadow: 0 8px 16px rgba(228, 143, 175, 0.16);
+    }
+
+    .item.special {
+      background: linear-gradient(180deg, #fffafd, #fff3f8);
+      border-color: #efcade;
+      box-shadow: 0 8px 16px rgba(215, 150, 181, 0.14);
+    }
+
+    .item.premium {
+      background: linear-gradient(180deg, #fffafd, #fff2f7);
+      border-color: #efbfd3;
+      box-shadow: 0 8px 16px rgba(219, 138, 172, 0.14);
+    }
+
+    .left {
+      display: flex;
+      gap: 12px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .index {
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffd6e3;
+      color: #5a2f40;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .content {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .name {
+      font-size: 15px;
+      font-weight: 800;
+      color: #4d2e39;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 4px;
+    }
+
+    .service {
+      font-size: 13px;
+      font-weight: 700;
+      color: #7c4c60;
+      margin-bottom: 6px;
+    }
+
+    .meta {
+      font-size: 12px;
+      color: #866474;
+      line-height: 1.45;
+      word-break: break-word;
+    }
+
+    .pill-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: #ffe6ee;
+      color: #8b5067;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .pill.type-rapida {
+      background: #ffeaf2;
+      color: #96596f;
+    }
+
+    .pill.type-normal {
+      background: #fff0f5;
+      color: #89586b;
+    }
+
+    .pill.type-premium {
+      background: #ffdfe9;
+      color: #82445c;
+    }
+
+    .pill.type-especial {
+      background: #ffe3ee;
+      color: #7b3d55;
+    }
+
+    .right {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .mini-btn {
+      border: none;
+      border-radius: 12px;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #f7c6d8;
+      color: #5a2f40;
+      white-space: nowrap;
+    }
+
+    .mini-btn.secondary {
+      background: #fce4ec;
+      color: #7a4e61;
+    }
+
+    .mini-btn.success {
+      background: #ffd7e8;
+      color: #7f3d57;
+    }
+
+    .mini-btn.warn {
+      background: #f7dbe4;
+      color: #7e5163;
+    }
+
+    .empty {
+      padding: 14px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px dashed #ebc6d5;
+      color: #8a6273;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 1460px) {
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Control de cola</h1>
+    <p class="sub">Panel privado para manejar prioridades, personas sin responder, atendidos y reservas especiales.</p>
+
+    <div class="topbar">
+      <button class="btn secondary" onclick="testGift('Heart Me')">Test 🍪</button>
+      <button class="btn secondary" onclick="testGift('Friendship Necklace')">Test 💌</button>
+      <button class="btn secondary" onclick="testGift('Rosquilla')">Test 🌈</button>
+      <button class="btn secondary" onclick="testGift('Perfume')">Test 🟢</button>
+      <button class="btn secondary" onclick="testGift('Feather Tiara')">Test 👑</button>
+      <button class="btn secondary" onclick="testGift('Corgi')">Test 🐶</button>
+      <button class="btn secondary" onclick="testGift('Heart Umbrella')">Test ☂️</button>
+
+      <button class="btn" onclick="callNext()">Llamar siguiente</button>
+      <button class="btn secondary" onclick="loadQueue()">Actualizar</button>
+      <button class="btn danger" onclick="clearAttended()">Limpiar atendidos</button>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="label">Total en sistema</div>
+        <div class="value" id="totalCount">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">Premium activas</div>
+        <div class="value" id="premiumCount">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">Normales activas</div>
+        <div class="value" id="normalCount">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">Rápidas activas</div>
+        <div class="value" id="fastCount">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">Sin responder</div>
+        <div class="value" id="noResponseCount">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">Atendidos</div>
+        <div class="value" id="attendedCount">0</div>
+      </div>
+      <div class="stat">
+        <div class="label">Privadas por coordinar</div>
+        <div class="value" id="pendingContactCount">0</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <section class="panel premium-panel">
+        <h2>Premium y llamados</h2>
+        <div id="premiumList" class="list"></div>
+      </section>
+
+      <section class="panel normal-panel">
+        <h2>Normales y rápidas</h2>
+        <div id="normalList" class="list"></div>
+      </section>
+
+      <section class="panel special-panel">
+        <h2>Privadas por coordinar</h2>
+        <div id="specialList" class="list"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Sin responder</h2>
+        <div id="noResponseList" class="list"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Atendidos</h2>
+        <div id="attendedList" class="list"></div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = "http://127.0.0.1:3002";
+
+    const premiumListEl = document.getElementById("premiumList");
+    const normalListEl = document.getElementById("normalList");
+    const specialListEl = document.getElementById("specialList");
+    const noResponseListEl = document.getElementById("noResponseList");
+    const attendedListEl = document.getElementById("attendedList");
+
+    const totalCountEl = document.getElementById("totalCount");
+    const premiumCountEl = document.getElementById("premiumCount");
+    const normalCountEl = document.getElementById("normalCount");
+    const fastCountEl = document.getElementById("fastCount");
+    const noResponseCountEl = document.getElementById("noResponseCount");
+    const attendedCountEl = document.getElementById("attendedCount");
+    const pendingContactCountEl = document.getElementById("pendingContactCount");
+
+    let fullQueue = [];
+
+    function getName(item) {
+      return (
+        item?.nickname ||
+        item?.username ||
+        item?.userName ||
+        item?.customerName ||
+        item?.name ||
+        item?.uniqueId ||
+        item?.user?.nickname ||
+        item?.user?.uniqueId ||
+        "Usuario"
+      );
+    }
+
+    function formatTime(value) {
+      if (!value) return "-";
+      const d = new Date(value);
+      return d.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+      });
+    }
+
+    function getStatusLabel(status) {
+      if (status === "llamado") return "Llamado";
+      if (status === "sin_responder") return "Sin responder";
+      if (status === "atendido") return "Atendido";
+      if (status === "pendiente_contacto") return "Por coordinar";
+      return "Pendiente";
+    }
+
+    function getQueueTypeLabel(queueType) {
+      if (queueType === "rapida") return "Rápida";
+      if (queueType === "normal") return "Normal";
+      if (queueType === "premium") return "Premium";
+      if (queueType === "especial") return "Especial";
+      return "General";
+    }
+
+    function getGlobalIndex(item) {
+      return fullQueue.findIndex((q) => q === item);
+    }
+
+    function getVisualIndex(items, item) {
+      return items.findIndex((q) => q === item) + 1;
+    }
+
+    function renderSection(element, items, type) {
+      if (!items.length) {
+        element.innerHTML = `<div class="empty">No hay personas aquí.</div>`;
+        return;
+      }
+
+      element.innerHTML = items.map((item) => {
+        const globalIndex = getGlobalIndex(item);
+        const localIndex = getVisualIndex(items, item);
+        const name = getName(item);
+        const gift = item?.giftName || "Sin regalo";
+        const serviceLabel = item?.serviceLabel || gift;
+        const icon = item?.icon || "✨";
+        const queueType = item?.queueType || "normal";
+        const coins = item?.coins ?? 0;
+        const repeatCount = item?.repeatCount ?? 1;
+        const createdAt = formatTime(item?.createdAt);
+        const updatedAt = formatTime(item?.updatedAt);
+        const status = item?.status || "pendiente";
+
+        return `
+          <div class="item ${status === "llamado" ? "called" : ""} ${queueType === "especial" ? "special" : ""} ${queueType === "premium" ? "premium" : ""}">
+            <div class="left">
+              <div class="index">${localIndex}</div>
+              <div class="content">
+                <div class="name">${name}</div>
+                <div class="service">${icon} ${serviceLabel}</div>
+                <div class="meta">
+                  Regalo: <strong>${gift}</strong><br>
+                  Monedas: <strong>${coins}</strong><br>
+                  Cantidad: <strong>${repeatCount}</strong><br>
+                  Entró: <strong>${createdAt}</strong><br>
+                  Actualizado: <strong>${updatedAt}</strong>
+                </div>
+                <div class="pill-row">
+                  <div class="pill">${getStatusLabel(status)}</div>
+                  <div class="pill type-${queueType}">${getQueueTypeLabel(queueType)}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="right">
+              ${
+                type === "premium" || type === "normal"
+                  ? `
+                    <button class="mini-btn warn" onclick="markNoResponse(${globalIndex})">Sin responder</button>
+                    <button class="mini-btn success" onclick="markAttended(${globalIndex})">Atendido</button>
+                  `
+                  : ""
+              }
+
+              ${
+                type === "special"
+                  ? `
+                    <button class="mini-btn secondary" onclick="backToPending(${globalIndex})">Mantener activa</button>
+                    <button class="mini-btn success" onclick="markAttended(${globalIndex})">Coordinada</button>
+                  `
+                  : ""
+              }
+
+              ${
+                type === "no_response"
+                  ? `
+                    <button class="mini-btn secondary" onclick="backToPending(${globalIndex})">Regresar a cola</button>
+                    <button class="mini-btn success" onclick="markAttended(${globalIndex})">Atendido</button>
+                  `
+                  : ""
+              }
+
+              ${
+                type === "attended"
+                  ? `
+                    <button class="mini-btn secondary" onclick="backToPending(${globalIndex})">Regresar</button>
+                  `
+                  : ""
+              }
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function sortByPriorityAndTime(items) {
+      const queueOrder = {
+        especial: 0,
+        premium: 1,
+        normal: 2,
+        rapida: 3
+      };
+
+      const statusOrder = {
+        llamado: 1,
+        pendiente: 2,
+        pendiente_contacto: 3,
+        sin_responder: 4,
+        atendido: 5
+      };
+
+      return [...items].sort((a, b) => {
+        const aStatus = statusOrder[a.status] ?? 99;
+        const bStatus = statusOrder[b.status] ?? 99;
+
+        if (aStatus !== bStatus) return aStatus - bStatus;
+
+        const aQueue = queueOrder[a.queueType] ?? 99;
+        const bQueue = queueOrder[b.queueType] ?? 99;
+
+        if (aQueue !== bQueue) return aQueue - bQueue;
+
+        return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+      });
+    }
+
+    function updateStats(queue) {
+      const active = queue.filter((item) => item.status !== "atendido");
+
+      const premium = sortByPriorityAndTime(
+        active.filter(
+          (item) =>
+            item.queueType === "premium" &&
+            (item.status === "pendiente" || item.status === "llamado" || !item.status)
+        )
+      );
+
+      const normal = sortByPriorityAndTime(
+        active.filter(
+          (item) =>
+            (item.queueType === "normal" || item.queueType === "rapida") &&
+            (item.status === "pendiente" || item.status === "llamado" || !item.status)
+        )
+      );
+
+      const special = sortByPriorityAndTime(
+        active.filter(
+          (item) =>
+            item.queueType === "especial" &&
+            (item.status === "pendiente_contacto" || item.status === "pendiente")
+        )
+      );
+
+      const noResponse = sortByPriorityAndTime(
+        queue.filter((item) => item.status === "sin_responder")
+      );
+
+      const attended = sortByPriorityAndTime(
+        queue.filter((item) => item.status === "atendido")
+      );
+
+      const normalOnlyCount = active.filter(
+        (item) =>
+          item.queueType === "normal" &&
+          (item.status === "pendiente" || item.status === "llamado" || !item.status)
+      ).length;
+
+      const fastOnlyCount = active.filter(
+        (item) =>
+          item.queueType === "rapida" &&
+          (item.status === "pendiente" || item.status === "llamado" || !item.status)
+      ).length;
+
+      totalCountEl.textContent = queue.length;
+      premiumCountEl.textContent = premium.length;
+      normalCountEl.textContent = normalOnlyCount;
+      fastCountEl.textContent = fastOnlyCount;
+      noResponseCountEl.textContent = noResponse.length;
+      attendedCountEl.textContent = attended.length;
+      pendingContactCountEl.textContent = special.length;
+
+      renderSection(premiumListEl, premium, "premium");
+      renderSection(normalListEl, normal, "normal");
+      renderSection(specialListEl, special, "special");
+      renderSection(noResponseListEl, noResponse, "no_response");
+      renderSection(attendedListEl, attended, "attended");
+    }
+
+    async function loadQueue() {
+      try {
+        const res = await fetch(`${API_BASE}/queue`);
+        const queue = await res.json();
+        fullQueue = queue;
+        updateStats(queue);
+      } catch (error) {
+        console.error("Error cargando la cola:", error);
+      }
+    }
+
+    async function callNext() {
+      await fetch(`${API_BASE}/next`, {
+        method: "POST"
+      });
+      loadQueue();
+    }
+
+    async function markNoResponse(index) {
+      await fetch(`${API_BASE}/no-response`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ index })
+      });
+      loadQueue();
+    }
+
+    async function backToPending(index) {
+      await fetch(`${API_BASE}/back-to-pending`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ index })
+      });
+      loadQueue();
+    }
+
+    async function markAttended(index) {
+      await fetch(`${API_BASE}/attended`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ index })
+      });
+      loadQueue();
+    }
+
+    async function clearAttended() {
+      const ok = confirm("¿Deseas limpiar los atendidos?");
+      if (!ok) return;
+
+      await fetch(`${API_BASE}/clear-attended`, {
+        method: "POST"
+      });
+      loadQueue();
+    }
+
+    async function testGift(giftName) {
+      const randomUser = "TEST_" + Math.floor(Math.random() * 1000);
+
+      await fetch(`${API_BASE}/test-gift`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: randomUser,
+          giftName
+        })
+      });
+
+  loadQueue();
+}
+
+    loadQueue();
+    setInterval(loadQueue, 1500);
+  </script>
+</body>
+</html>

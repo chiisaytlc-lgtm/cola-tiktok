@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cola Simple TikTok</title>
+  <style>
+  body {
+    margin: 0;
+    background: transparent;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #4a3a3a;
+  }
+
+  .container {
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 6px;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 10px;
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.35);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 182, 193, 0.25);
+    box-shadow: 0 4px 12px rgba(255, 192, 203, 0.15);
+  }
+
+  /* PRIMER TURNO */
+  .item:first-child {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 220, 230, 0.8),
+      rgba(255, 190, 210, 0.7)
+    );
+
+    border: 1px solid rgba(255, 160, 190, 0.4);
+    box-shadow: 0 6px 16px rgba(255, 150, 180, 0.25);
+  }
+
+  .index {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    background: rgba(255, 182, 193, 0.9);
+    color: #5a2e2e;
+  }
+
+  .item:first-child .index {
+    background: #ff8fb1;
+    color: white;
+  }
+
+  .name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    font-size: 14px;
+    font-weight: 700;
+    color: #5a3d3d;
+  }
+
+  .item:first-child .name {
+    color: #5a2e2e;
+  }
+
+  .status {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 182, 193, 0.18);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #7a5a66;
+}
+</style>
+</head>
+<body>
+  <div class="container" id="queue"></div>
+
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+  <script>
+    const queueEl = document.getElementById('queue');
+
+    const params = new URLSearchParams(window.location.search);
+    const socketUrl = params.get('socketUrl') || 'http://localhost:3001';
+
+    let queue = [];
+
+    function getName(item) {
+      return (
+        item?.nickname ||
+        item?.username ||
+        item?.userName ||
+        item?.customerName ||
+        item?.name ||
+        item?.uniqueId ||
+        item?.user?.nickname ||
+        item?.user?.uniqueId ||
+        'Usuario'
+      );
+    }
+
+    function render() {
+  if (!queue.length) {
+    queueEl.innerHTML = '<div class="status">Sin cola</div>';
+    return;
+  }
+
+  const visibles = queue.slice(0, 5);
+  const restantes = queue.length - visibles.length;
+
+  queueEl.innerHTML = visibles.map((item, index) => {
+    const name = item.nickname || item.username || item.userName || 'Usuario';
+
+    return `
+      <div class="item">
+        <div class="index">${index + 1}</div>
+        <div class="name">${name}</div>
+      </div>
+    `;
+  }).join('') + (
+    restantes > 0
+      ? `<div class="status">+${restantes} en espera</div>`
+      : ''
+  );
+}
+    queueEl.innerHTML = `<div class="status">Conectando a ${socketUrl}...</div>`;
+
+    const socket = io(socketUrl, {
+      transports: ['websocket', 'polling']
+    });
+
+    socket.on('connect', () => {
+      console.log('✅ Conectado:', socket.id);
+      queueEl.innerHTML = '<div class="status">Conectado. Esperando cola...</div>';
+    });
+
+    socket.on('connect_error', (err) => {
+      console.error('❌ connect_error:', err);
+      queueEl.innerHTML = `<div class="status">Error de conexión: ${err.message}</div>`;
+    });
+
+    socket.on('disconnect', (reason) => {
+      console.warn('⚠️ disconnect:', reason);
+      queueEl.innerHTML = `<div class="status">Desconectado: ${reason}</div>`;
+    });
+
+    socket.on('queue:update', (data) => {
+      console.log('📦 queue:update', data);
+      queue = Array.isArray(data) ? data : (data?.items || []);
+      render();
+    });
+
+    socket.on('state:update', (data) => {
+      console.log('📦 state:update', data);
+      if (Array.isArray(data?.attentions)) {
+        queue = data.attentions;
+        render();
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>
