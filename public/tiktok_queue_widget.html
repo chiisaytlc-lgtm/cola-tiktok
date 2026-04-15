@@ -274,13 +274,14 @@
         normalList = visibleQueue.nextList;
       }
 
-      const orderedWaiting = [...premiumList, ...normalList, ...fastList];
+      const orderedWaiting = [...premiumList, ...specialList, ...normalList, ...fastList];
       const visibleSlots = current ? MAX_VISIBLE - 1 : MAX_VISIBLE;
       const visibleWaiting = orderedWaiting.slice(0, visibleSlots);
 
       const counts = visibleQueue?.counts || {};
       const totalWaiting =
         (counts.premium || 0) +
+        (counts.especial || 0) +
         (counts.normal || 0) +
         (counts.rapida || 0);
 
@@ -306,8 +307,7 @@
       }
 
       if ((counts.especial || 0) > 0 || specialList.length > 0) {
-        html += `<div class="special-note">Hay ${counts.especial || specialList.length} especial(es) por coordinar</div>`;
-      }
+        html += `<div class="special-note">🔒 ${counts.especial} lectura(s) privada(s) reservada(s)</div>`;      }
 
       queueEl.innerHTML = html;
     }

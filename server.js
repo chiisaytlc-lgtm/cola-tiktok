@@ -205,7 +205,7 @@ function getSpecialOverrideRule(giftName) {
     return {
       serviceKey: "analisis_karmico_pareja",
       serviceLabel: "Análisis kármico de pareja",
-      queueType: "especial",
+      queueType: "premium",
       icon: "❤️"
     };
   }

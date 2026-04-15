@@ -1,84 +1,24 @@
-[
-  {
-    "matches": ["heart me", "heartme", "quiéreme", "quiereme"],
-    "serviceKey": "galleta_fortuna",
-    "serviceLabel": "Galleta de la fortuna",
-    "queueType": "rapida",
-    "icon": "🥠"
-  },
-  {
-    "matches": [
-      "friendship necklace",
-      "friendship collar",
-      "collar de amistad"
-    ],
-    "serviceKey": "mensaje_oraculo",
-    "serviceLabel": "Mensaje Oráculo",
-    "queueType": "rapida",
-    "icon": "🔮"
-  },
-  {
-    "matches": ["doughnut", "donut", "rosquilla"],
-    "serviceKey": "oraculo_salud_dinero_amor",
-    "serviceLabel": "Oráculo Salud, Dinero y Amor",
-    "queueType": "normal",
-    "icon": "🌈"
-  },
-  {
-    "matches": ["capybara", "capibara"],
-    "serviceKey": "pregunta_si_o_no",
-    "serviceLabel": "Pregunta Sí o No",
-    "queueType": "normal",
-    "icon": "🐹"
-  },
-  {
-    "matches": [
-      "feather tiara",
-      "feather crown",
-      "tiara de plumas",
-      "plume tiara"
-    ],
-    "serviceKey": "pregunta_extensa",
-    "serviceLabel": "Pregunta extensa",
-    "queueType": "premium",
-    "icon": "👑"
-  },
-  {
-    "matches": [
-      "rosa de la eternidad",
-      "eternal rose",
-      "rose of eternity",
-      "forever rose",
-      "rose forever",
-      "rosa para siempre"
-    ],
-    "serviceKey": "tres_preguntas_extensas",
-    "serviceLabel": "3 preguntas extensas",
-    "queueType": "premium",
-    "icon": "🌹"
-  },
-  {
-    "matches": [
-      "heart in hands",
-      "heart on hands",
-      "corazón en las manos",
-      "corazon en las manos"
-    ],
-    "serviceKey": "analisis_karmico_pareja",
-    "serviceLabel": "Análisis kármico de pareja",
-    "queueType": "especial",
-    "icon": "❤️"
-  },
-  {
-    "matches": [
-      "heart umbrella",
-      "umbrella of love",
-      "paraguas de corazón",
-      "paraguas de corazon"
-    ],
-    "serviceKey": "sesion_privada",
-    "serviceLabel": "Sesión Privada",
-    "queueType": "especial",
-    "icon": "☂️"
-  }
-]
+{
+  "matches": [
+    "heart in hands",
+    "heart on hands",
+    "corazón en las manos",
+    "corazon en las manos"
+  ],
+  "serviceKey": "analisis_karmico_pareja",
+  "serviceLabel": "Análisis kármico de pareja",
+  "queueType": "premium",
+  "icon": "❤️"
+},
+{
+  "matches": [
+    "heart umbrella",
+    "umbrella of love",
+    "paraguas de corazón",
+    "paraguas de corazon"
+  ],
+  "serviceKey": "sesion_privada",
+  "serviceLabel": "Sesión Privada",
+  "queueType": "especial",
+  "icon": "☂️"
+}
