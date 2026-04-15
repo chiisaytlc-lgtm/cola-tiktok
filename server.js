@@ -3,6 +3,7 @@ import cors from "cors";
 import http from "http";
 import { Server } from "socket.io";
 import { WebcastPushConnection } from "tiktok-live-connector";
+import giftRules from "./gift-rules.json" with { type: "json" };
 
 const app = express();
 const PORT = process.env.PORT || 3002;
@@ -24,8 +25,51 @@ let tiktok = null;
 let currentUsername = "";
 let isConnected = false;
 
-// Barrera anti-duplicados de corta duración
+// anti-duplicados de corta duración
 const recentGiftKeys = new Map();
+
+const MAJOR_ARCANA = [
+  "0 - El Loco",
+  "1 - El Mago",
+  "2 - La Sacerdotisa",
+  "3 - La Emperatriz",
+  "4 - El Emperador",
+  "5 - El Hierofante",
+  "6 - Los Enamorados",
+  "7 - El Carro",
+  "8 - La Justicia",
+  "9 - El Ermitaño",
+  "10 - La Rueda de la Fortuna",
+  "11 - La Fuerza",
+  "12 - El Colgado",
+  "13 - La Muerte",
+  "14 - La Templanza",
+  "15 - El Diablo",
+  "16 - La Torre",
+  "17 - La Estrella",
+  "18 - La Luna",
+  "19 - El Sol",
+  "20 - El Juicio",
+  "21 - El Mundo"
+];
+
+// SUBASTA DE ROSAS
+let roseAuction = {
+  active: false,
+  startedAt: null,
+  endsAt: null,
+  totals: {}, // { username: { username, roses } }
+  selectedWinners: [],
+  finished: false
+};
+
+// SORTEO DE ARCANOS
+let arcanoGame = {
+  active: false,
+  picks: {}, // { username: { username, number, arcano } }
+  takenNumbers: {}, // { number: username }
+  winner: null
+};
 
 function normalizeText(value) {
   return String(value || "").trim().toLowerCase();
@@ -50,89 +94,7 @@ const STATUS_PRIORITY = {
   atendido: 5
 };
 
-/**
- * DINÁMICA ACTUAL
- *
- * rápida:
- * - Quiéreme → Galleta de la fortuna
- * - Collar de amistad → Mensaje Oráculo
- *
- * normal:
- * - Rosquilla → Oráculo Salud, Dinero y Amor
- * - Perfume → Pregunta Sí o No
- *
- * premium:
- * - Tiara de plumas → Pregunta extensa
- * - Corgi → 3 Preguntas profundas
- *
- * especial:
- * - Heart umbrella / similares → Sesión Privada
- */
-const GIFT_RULES = [
-  {
-    matches: ["heart me", "heartme", "quiéreme", "quiereme"],
-    serviceKey: "galleta_fortuna",
-    serviceLabel: "Galleta de la fortuna",
-    queueType: "rapida",
-    icon: "🍪"
-  },
-  {
-    matches: [
-      "friendship necklace",
-      "friendship collar",
-      "collar de amistad"
-    ],
-    serviceKey: "mensaje_oraculo",
-    serviceLabel: "Mensaje Oráculo",
-    queueType: "rapida",
-    icon: "💌"
-  },
-  {
-    matches: ["doughnut", "donut", "rosquilla"],
-    serviceKey: "oraculo_sda",
-    serviceLabel: "Oráculo Salud, Dinero y Amor",
-    queueType: "normal",
-    icon: "🌈"
-  },
-  {
-    matches: ["perfume", "perfume bottle"],
-    serviceKey: "si_no",
-    serviceLabel: "Pregunta Sí o No",
-    queueType: "normal",
-    icon: "🟢"
-  },
-  {
-    matches: [
-      "feather tiara",
-      "feather crown",
-      "tiara de plumas",
-      "plume tiara"
-    ],
-    serviceKey: "pregunta_extensa",
-    serviceLabel: "Pregunta extensa",
-    queueType: "premium",
-    icon: "👑"
-  },
-  {
-    matches: ["corgi"],
-    serviceKey: "tres_profundas",
-    serviceLabel: "3 Preguntas profundas",
-    queueType: "premium",
-    icon: "🐶"
-  },
-  {
-    matches: [
-      "heart umbrella",
-      "umbrella of love",
-      "paraguas de corazón",
-      "paraguas de corazon"
-    ],
-    serviceKey: "sesion_privada",
-    serviceLabel: "Sesión Privada",
-    queueType: "especial",
-    icon: "☂️"
-  }
-];
+const GIFT_RULES = giftRules;
 
 function getGiftRule(giftName) {
   const normalizedGiftName = normalizeText(giftName);
@@ -149,6 +111,115 @@ function getGiftRule(giftName) {
     queueType: "normal",
     icon: "✨"
   };
+}
+
+function normalizeGiftType(giftName) {
+  const g = normalizeText(giftName);
+
+  if (g === "rose" || g === "roses" || g === "rosa" || g === "rosas") {
+    return "rose";
+  }
+
+  if (g === "capybara" || g === "capibara") {
+    return "capibara";
+  }
+
+  if (
+    g === "feather tiara" ||
+    g === "feather crown" ||
+    g === "tiara de plumas" ||
+    g === "plume tiara"
+  ) {
+    return "tiara_de_plumas";
+  }
+
+  if (
+    g === "eternal rose" ||
+    g === "rose of eternity" ||
+    g === "forever rose" ||
+    g === "rose forever" ||
+    g === "rosa para siempre" ||
+    g === "rosa de la eternidad"
+  ) {
+    return "rosa_de_la_eternidad";
+  }
+
+  if (
+    g === "heart in hands" ||
+    g === "heart on hands" ||
+    g === "corazon en las manos" ||
+    g === "corazón en las manos"
+  ) {
+    return "corazon_en_las_manos";
+  }
+
+  if (
+    g === "heart umbrella" ||
+    g === "umbrella of love" ||
+    g === "paraguas de corazon" ||
+    g === "paraguas de corazón"
+  ) {
+    return "sesion_privada";
+  }
+
+  if (
+    g === "heart me" ||
+    g === "heartme" ||
+    g === "quiéreme" ||
+    g === "quiereme"
+  ) {
+    return "quiereme";
+  }
+
+  if (
+    g === "friendship necklace" ||
+    g === "friendship collar" ||
+    g === "collar de amistad"
+  ) {
+    return "collar_de_amistad";
+  }
+
+  if (g === "doughnut" || g === "donut" || g === "rosquilla") {
+    return "rosquilla";
+  }
+
+  return g;
+}
+
+function getPremiumAlertType(giftName) {
+  const type = normalizeGiftType(giftName);
+
+  if (type === "capibara") return "capibara";
+  if (type === "tiara_de_plumas") return "tiara_de_plumas";
+  if (type === "rosa_de_la_eternidad") return "rosa_de_la_eternidad";
+  if (type === "corazon_en_las_manos") return "analisis_karmico_pareja";
+  if (type === "sesion_privada") return "sesion_privada";
+
+  return null;
+}
+
+function getSpecialOverrideRule(giftName) {
+  const type = normalizeGiftType(giftName);
+
+  if (type === "corazon_en_las_manos") {
+    return {
+      serviceKey: "analisis_karmico_pareja",
+      serviceLabel: "Análisis kármico de pareja",
+      queueType: "especial",
+      icon: "❤️"
+    };
+  }
+
+  if (type === "sesion_privada") {
+    return {
+      serviceKey: "sesion_privada",
+      serviceLabel: "Sesión Privada",
+      queueType: "especial",
+      icon: "☂️"
+    };
+  }
+
+  return null;
 }
 
 function sortQueueItems(items) {
@@ -176,7 +247,8 @@ function getDefaultStatusForQueueType(queueType) {
 }
 
 function createQueueItem({ username, giftName, coins, repeatCount }) {
-  const rule = getGiftRule(giftName);
+  const overrideRule = getSpecialOverrideRule(giftName);
+  const rule = overrideRule || getGiftRule(giftName);
 
   return {
     id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
@@ -194,8 +266,6 @@ function createQueueItem({ username, giftName, coins, repeatCount }) {
   };
 }
 
-// ✅ CORREGIDO:
-// cada regalo entra como item NUEVO, aunque sea del mismo usuario
 function upsertQueueItem({ username, giftName, coins, repeatCount }) {
   const newItem = createQueueItem({ username, giftName, coins, repeatCount });
   queue.push(newItem);
@@ -243,6 +313,24 @@ function buildVisibleQueue() {
   };
 }
 
+function buildRoseAuctionState() {
+  const ranking = Object.values(roseAuction.totals).sort((a, b) => b.roses - a.roses);
+
+  return {
+    ...roseAuction,
+    ranking
+  };
+}
+
+function buildArcanoGameState() {
+  const picksList = Object.values(arcanoGame.picks).sort((a, b) => a.number - b.number);
+
+  return {
+    ...arcanoGame,
+    picksList
+  };
+}
+
 function emitQueue() {
   io.emit("queue:update", queue);
   io.emit("queue:visible", buildVisibleQueue());
@@ -250,6 +338,14 @@ function emitQueue() {
 
 function emitLiveStatus() {
   io.emit("live_status", { isConnected, currentUsername });
+}
+
+function emitRoseAuction() {
+  io.emit("roseAuction:update", buildRoseAuctionState());
+}
+
+function emitArcanoGame() {
+  io.emit("arcanoGame:update", buildArcanoGameState());
 }
 
 function cleanupRecentGiftKeys() {
@@ -284,6 +380,226 @@ function getNextPendingItem() {
   return sortedPending[0] || null;
 }
 
+// ---------- SUBASTA DE ROSAS ----------
+
+function startRoseAuction(durationMs = 3 * 60 * 1000) {
+  roseAuction.active = true;
+  roseAuction.startedAt = nowIso();
+  roseAuction.endsAt = new Date(Date.now() + durationMs).toISOString();
+  roseAuction.totals = {};
+  roseAuction.selectedWinners = [];
+  roseAuction.finished = false;
+
+  emitRoseAuction();
+}
+
+function finishRoseAuction() {
+  roseAuction.active = false;
+  roseAuction.finished = true;
+  emitRoseAuction();
+}
+
+function clearRoseAuction() {
+  roseAuction = {
+    active: false,
+    startedAt: null,
+    endsAt: null,
+    totals: {},
+    selectedWinners: [],
+    finished: false
+  };
+
+  emitRoseAuction();
+}
+
+function registerRoseGift({ username, repeatCount = 1 }) {
+  if (!roseAuction.active) return;
+
+  if (!roseAuction.totals[username]) {
+    roseAuction.totals[username] = {
+      username,
+      roses: 0
+    };
+  }
+
+  roseAuction.totals[username].roses += Number(repeatCount || 1);
+  emitRoseAuction();
+}
+
+function setRoseSelectedWinners(usernames = []) {
+  const rankingUsernames = new Set(
+    Object.values(roseAuction.totals).map((u) => u.username)
+  );
+
+  roseAuction.selectedWinners = usernames.filter((u) => rankingUsernames.has(u));
+  emitRoseAuction();
+}
+
+function awardRoseSelectedWinners({ prizeLabel = "1 pregunta extensa" } = {}) {
+  const selected = roseAuction.selectedWinners
+    .map((username) => roseAuction.totals[username])
+    .filter(Boolean);
+
+  const createdItems = selected.map((user) => {
+    const item = {
+      id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      username: user.username,
+      giftName: "Ganó subasta de rosas",
+      coins: user.roses,
+      repeatCount: user.roses,
+      createdAt: nowIso(),
+      updatedAt: nowIso(),
+      status: "pendiente",
+      serviceKey: "subasta_rosas",
+      serviceLabel: prizeLabel,
+      queueType: "premium",
+      icon: "🌹"
+    };
+
+    queue.push(item);
+    return item;
+  });
+
+  emitQueue();
+
+  return createdItems;
+}
+
+// ---------- SORTEO ARCANOS ----------
+
+function resetArcanoGame() {
+  arcanoGame = {
+    active: false,
+    picks: {},
+    takenNumbers: {},
+    winner: null
+  };
+
+  emitArcanoGame();
+}
+
+function startArcanoGame() {
+  arcanoGame.active = true;
+  arcanoGame.picks = {};
+  arcanoGame.takenNumbers = {};
+  arcanoGame.winner = null;
+  emitArcanoGame();
+}
+
+function finishArcanoGame() {
+  arcanoGame.active = false;
+  emitArcanoGame();
+}
+
+function extractArcanoNumber(text = "") {
+  const cleaned = String(text || "").trim();
+  const match = cleaned.match(/^([0-9]|1[0-9]|2[0-1])$/);
+  if (!match) return null;
+  return Number(match[1]);
+}
+
+function registerArcanoPick({ username, comment }) {
+  if (!arcanoGame.active) return { ok: false, reason: "inactive" };
+
+  const number = extractArcanoNumber(comment);
+  if (number === null) return { ok: false, reason: "invalid" };
+
+  if (arcanoGame.picks[username]) {
+    return { ok: false, reason: "user_already_picked" };
+  }
+
+  if (arcanoGame.takenNumbers[number]) {
+    return { ok: false, reason: "number_taken" };
+  }
+
+  arcanoGame.picks[username] = {
+    username,
+    number,
+    arcano: MAJOR_ARCANA[number]
+  };
+
+  arcanoGame.takenNumbers[number] = username;
+
+  emitArcanoGame();
+  io.emit("arcanoGame:pickAccepted", arcanoGame.picks[username]);
+
+  return { ok: true, pick: arcanoGame.picks[username] };
+}
+
+function drawArcanoWinner() {
+  const entries = Object.values(arcanoGame.picks);
+
+  if (!entries.length) {
+    return null;
+  }
+
+  const winner = entries[Math.floor(Math.random() * entries.length)];
+  arcanoGame.winner = winner;
+
+  io.emit("arcanoGame:winner", winner);
+  emitArcanoGame();
+
+  return winner;
+}
+
+// ---------- EVENTOS REUTILIZABLES ----------
+
+function handleGiftEvent({
+  username,
+  giftName = "Regalo",
+  coins = 0,
+  repeatCount = 1
+}) {
+  const normalizedType = normalizeGiftType(giftName);
+  const premiumType = getPremiumAlertType(giftName);
+
+  if (premiumType) {
+    io.emit("gift:premium", {
+      type: premiumType,
+      username,
+      giftName,
+      coins,
+      repeatCount,
+      createdAt: nowIso()
+    });
+  }
+
+  // subasta activa: las rosas NO entran a la cola
+  if (roseAuction.active && normalizedType === "rose") {
+    registerRoseGift({ username, repeatCount });
+    return {
+      skippedQueue: true,
+      mode: "rose_auction",
+      username,
+      giftName,
+      repeatCount
+    };
+  }
+
+  const result = upsertQueueItem({
+    username,
+    giftName,
+    coins,
+    repeatCount
+  });
+
+  emitQueue();
+
+  return result;
+}
+
+function handleChatEvent({ username, comment }) {
+  io.emit("chat", { username, comment, createdAt: nowIso() });
+
+  if (arcanoGame.active) {
+    return registerArcanoPick({ username, comment });
+  }
+
+  return { ok: false, reason: "arcano_inactive" };
+}
+
+// ---------- RUTAS ----------
+
 app.get("/", (req, res) => {
   res.send("Backend activo");
 });
@@ -294,6 +610,14 @@ app.get("/queue", (req, res) => {
 
 app.get("/queue-visible", (req, res) => {
   res.json(buildVisibleQueue());
+});
+
+app.get("/rose-auction", (req, res) => {
+  res.json(buildRoseAuctionState());
+});
+
+app.get("/arcano-game", (req, res) => {
+  res.json(buildArcanoGameState());
 });
 
 app.get("/status", (req, res) => {
@@ -328,34 +652,161 @@ app.get("/status", (req, res) => {
       (item) =>
         item.queueType === "rapida" &&
         (item.status === "pendiente" || item.status === "llamado" || !item.status)
-    ).length
+    ).length,
+    roseAuction: buildRoseAuctionState(),
+    arcanoGame: buildArcanoGameState()
   });
 });
 
+// ---------- TESTS ----------
+
 app.post("/test-gift", (req, res) => {
-  const { username, giftName = "PRUEBA", coins = 0, repeatCount = 1 } = req.body;
+  const {
+    username,
+    giftName = "PRUEBA",
+    coins = 0,
+    repeatCount = 1
+  } = req.body;
 
   if (!username) {
     return res.status(400).json({ error: "Falta username" });
   }
 
-  const result = upsertQueueItem({
+  const result = handleGiftEvent({
     username,
     giftName,
     coins,
     repeatCount
   });
 
-  emitQueue();
+  res.json({
+    ok: true,
+    result,
+    queue,
+    visibleQueue: buildVisibleQueue(),
+    roseAuction: buildRoseAuctionState()
+  });
+});
+
+app.post("/test-chat", (req, res) => {
+  const { username, comment = "0" } = req.body;
+
+  if (!username) {
+    return res.status(400).json({ error: "Falta username" });
+  }
+
+  const result = handleChatEvent({ username, comment });
 
   res.json({
     ok: true,
-    action: result.action,
-    item: result.item,
-    queue,
-    visibleQueue: buildVisibleQueue()
+    result,
+    arcanoGame: buildArcanoGameState()
   });
 });
+
+// ---------- SUBASTA ----------
+
+app.post("/rose-auction/start", (req, res) => {
+  const durationMs = Number(req.body?.durationMs || 3 * 60 * 1000);
+  startRoseAuction(durationMs);
+
+  res.json({
+    ok: true,
+    roseAuction: buildRoseAuctionState()
+  });
+});
+
+app.post("/rose-auction/finish", (req, res) => {
+  finishRoseAuction();
+
+  res.json({
+    ok: true,
+    roseAuction: buildRoseAuctionState()
+  });
+});
+
+app.post("/rose-auction/select-winners", (req, res) => {
+  const { usernames = [] } = req.body;
+
+  if (!Array.isArray(usernames)) {
+    return res.status(400).json({ error: "usernames debe ser un array" });
+  }
+
+  setRoseSelectedWinners(usernames);
+
+  res.json({
+    ok: true,
+    roseAuction: buildRoseAuctionState()
+  });
+});
+
+app.post("/rose-auction/award-selected", (req, res) => {
+  const { prizeLabel = "1 pregunta extensa" } = req.body || {};
+
+  const createdItems = awardRoseSelectedWinners({ prizeLabel });
+
+  res.json({
+    ok: true,
+    createdItems,
+    queue,
+    visibleQueue: buildVisibleQueue(),
+    roseAuction: buildRoseAuctionState()
+  });
+});
+
+app.post("/rose-auction/clear", (req, res) => {
+  clearRoseAuction();
+
+  res.json({
+    ok: true,
+    roseAuction: buildRoseAuctionState()
+  });
+});
+
+// ---------- ARCANOS ----------
+
+app.post("/arcano/start", (req, res) => {
+  startArcanoGame();
+
+  res.json({
+    ok: true,
+    arcanoGame: buildArcanoGameState()
+  });
+});
+
+app.post("/arcano/finish", (req, res) => {
+  finishArcanoGame();
+
+  res.json({
+    ok: true,
+    arcanoGame: buildArcanoGameState()
+  });
+});
+
+app.post("/arcano/draw", (req, res) => {
+  const winner = drawArcanoWinner();
+
+  if (!winner) {
+    return res.status(400).json({ error: "No hay participantes" });
+  }
+
+  res.json({
+    ok: true,
+    winner,
+    arcanoGame: buildArcanoGameState()
+  });
+});
+
+app.post("/arcano/clear", (req, res) => {
+  resetArcanoGame();
+
+  res.json({
+    ok: true,
+    arcanoGame: buildArcanoGameState()
+  });
+});
+
+// ---------- COLA ----------
 
 app.post("/next", (req, res) => {
   const currentCalled = queue.find((item) => item.status === "llamado");
@@ -435,6 +886,23 @@ app.post("/clear", (req, res) => {
   res.json({ ok: true, queue, visibleQueue: buildVisibleQueue() });
 });
 
+app.post("/reset-all", (req, res) => {
+  queue = [];
+  clearRoseAuction();
+  resetArcanoGame();
+  emitQueue();
+
+  res.json({
+    ok: true,
+    queue,
+    visibleQueue: buildVisibleQueue(),
+    roseAuction: buildRoseAuctionState(),
+    arcanoGame: buildArcanoGameState()
+  });
+});
+
+// ---------- TIKTOK ----------
+
 app.post("/connect", async (req, res) => {
   const { username } = req.body;
 
@@ -457,7 +925,7 @@ app.post("/connect", async (req, res) => {
     tiktok.on("gift", (data) => {
       cleanupRecentGiftKeys();
 
-      const nickname =
+      const username =
         data.nickname ||
         data.user?.nickname ||
         data.uniqueId ||
@@ -470,7 +938,7 @@ app.post("/connect", async (req, res) => {
       const normalizedGiftName = normalizeText(giftName);
 
       console.log("🎁 Gift recibido:", {
-        nickname,
+        username,
         giftName,
         normalizedGiftName,
         giftId: data.giftId,
@@ -484,7 +952,7 @@ app.post("/connect", async (req, res) => {
         giftKey = `msg:${data.msgId}`;
       } else {
         giftKey = [
-          nickname,
+          username,
           normalizedGiftName,
           coins,
           repeatCount,
@@ -514,7 +982,19 @@ app.post("/connect", async (req, res) => {
         normalizedGiftName === "heart umbrella" ||
         normalizedGiftName === "umbrella of love" ||
         normalizedGiftName === "paraguas de corazón" ||
-        normalizedGiftName === "paraguas de corazon"
+        normalizedGiftName === "paraguas de corazon" ||
+        normalizedGiftName === "capybara" ||
+        normalizedGiftName === "capibara" ||
+        normalizedGiftName === "heart in hands" ||
+        normalizedGiftName === "heart on hands" ||
+        normalizedGiftName === "corazon en las manos" ||
+        normalizedGiftName === "corazón en las manos" ||
+        normalizedGiftName === "eternal rose" ||
+        normalizedGiftName === "rose of eternity" ||
+        normalizedGiftName === "forever rose" ||
+        normalizedGiftName === "rose forever" ||
+        normalizedGiftName === "rosa para siempre" ||
+        normalizedGiftName === "rosa de la eternidad"
       ) {
         ttlMs = 3000;
       }
@@ -526,19 +1006,33 @@ app.post("/connect", async (req, res) => {
 
       registerGiftKey(giftKey, ttlMs);
 
-      const result = upsertQueueItem({
-        username: nickname,
+      const result = handleGiftEvent({
+        username,
         giftName,
         coins,
         repeatCount
       });
 
-      console.log(`🎁 Cola ${result.action}:`, result.item);
-      emitQueue();
+      console.log("🎁 Resultado handleGiftEvent:", result);
     });
 
     tiktok.on("chat", (data) => {
-      console.log("💬 Chat:", data.nickname, data.comment);
+      const username =
+        data.nickname ||
+        data.user?.nickname ||
+        data.uniqueId ||
+        data.user?.uniqueId ||
+        "Usuario";
+
+      const comment = data.comment || "";
+
+      console.log("💬 Chat:", username, comment);
+
+      const result = handleChatEvent({ username, comment });
+
+      if (result?.ok) {
+        console.log("🃏 Arcano registrado:", result.pick);
+      }
     });
 
     tiktok.on("streamEnd", () => {
@@ -593,12 +1087,16 @@ app.post("/disconnect", async (req, res) => {
   }
 });
 
+// ---------- SOCKET ----------
+
 io.on("connection", (socket) => {
   console.log("Cliente conectado:", socket.id);
 
   socket.emit("queue:update", queue);
   socket.emit("queue:visible", buildVisibleQueue());
   socket.emit("live_status", { isConnected, currentUsername });
+  socket.emit("roseAuction:update", buildRoseAuctionState());
+  socket.emit("arcanoGame:update", buildArcanoGameState());
 });
 
 server.listen(PORT, () => {

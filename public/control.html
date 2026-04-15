@@ -21,7 +21,7 @@
     }
 
     .wrap {
-      max-width: 1600px;
+      max-width: 1700px;
       margin: 0 auto;
     }
 
@@ -72,6 +72,21 @@
       color: #5e2137;
     }
 
+    .btn.success {
+      background: #ffd7e8;
+      color: #7f3d57;
+    }
+
+    .btn.gold {
+      background: linear-gradient(180deg, #ffe7b8, #ffd494);
+      color: #6c4420;
+    }
+
+    .btn.rose {
+      background: linear-gradient(180deg, #ffdbe8, #ffc5d9);
+      color: #7f3a58;
+    }
+
     .stats {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -102,9 +117,25 @@
       color: #583141;
     }
 
-    .grid {
+    .grid-main {
       display: grid;
       grid-template-columns: 1.15fr 1.15fr 1fr 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .grid-tools {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 16px;
+      align-items: start;
+      margin-bottom: 18px;
+    }
+
+    .grid-lab {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 16px;
       align-items: start;
     }
@@ -125,6 +156,12 @@
       color: #6b4153;
     }
 
+    .panel p.panel-sub {
+      margin: -6px 0 12px;
+      color: #8a6273;
+      font-size: 13px;
+    }
+
     .panel.premium-panel {
       background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,244,248,0.95));
       border-color: rgba(236, 182, 205, 0.75);
@@ -137,6 +174,22 @@
 
     .panel.special-panel {
       background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,246,250,0.96));
+    }
+
+    .panel.rose-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,241,246,0.98));
+      border-color: rgba(241, 171, 198, 0.7);
+      box-shadow: 0 12px 26px rgba(216, 131, 166, 0.18);
+    }
+
+    .panel.arcano-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(250,244,255,0.98));
+      border-color: rgba(214, 187, 240, 0.7);
+      box-shadow: 0 12px 26px rgba(173, 143, 218, 0.16);
+    }
+
+    .panel.alert-panel {
+      min-height: auto;
     }
 
     .list {
@@ -311,14 +364,159 @@
       font-size: 14px;
     }
 
-    @media (max-width: 1460px) {
-      .grid {
+    .tool-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .tool-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 10px;
+    }
+
+    .winner-row {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+      background: #fff;
+      border: 1px solid #f3d7e2;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(186, 127, 151, 0.07);
+    }
+
+    .winner-row input[type="checkbox"] {
+      transform: scale(1.15);
+      accent-color: #d66e98;
+      cursor: pointer;
+    }
+
+    .winner-name {
+      font-weight: 800;
+      color: #4d2e39;
+    }
+
+    .winner-roses {
+      font-size: 13px;
+      font-weight: 700;
+      color: #7c4c60;
+    }
+
+    .arcano-row {
+      display: grid;
+      grid-template-columns: 42px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 12px;
+      background: #fff;
+      border: 1px solid #eadff7;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(166, 140, 205, 0.08);
+    }
+
+    .arcano-number {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      background: #efe5ff;
+      color: #684a90;
+    }
+
+    .arcano-name {
+      font-size: 14px;
+      font-weight: 700;
+      color: #5a436f;
+    }
+
+    .arcano-user {
+      font-size: 13px;
+      font-weight: 800;
+      color: #4d2e39;
+    }
+
+    .banner {
+      display: none;
+      margin-bottom: 16px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fff6cf, #ffe6aa);
+      color: #6b4520;
+      font-weight: 800;
+      box-shadow: 0 10px 20px rgba(203, 160, 72, 0.18);
+    }
+
+    .banner.show {
+      display: block;
+    }
+
+    .premium-alert-box {
+      min-height: 54px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fff9fb, #fff0f5);
+      border: 1px solid #efbfd3;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-weight: 800;
+      color: #6b4153;
+    }
+
+    .premium-alert-title {
+      font-size: 16px;
+    }
+
+    .premium-alert-meta {
+      font-size: 13px;
+      color: #845d6f;
+      font-weight: 700;
+    }
+
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #ffe8f0;
+      color: #8a5067;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .muted {
+      color: #8a6273;
+      font-size: 13px;
+    }
+
+    @media (max-width: 1500px) {
+      .grid-main {
         grid-template-columns: 1fr 1fr;
+      }
+
+      .grid-tools,
+      .grid-lab {
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 760px) {
-      .grid {
+      .grid-main {
         grid-template-columns: 1fr;
       }
     }
@@ -327,20 +525,15 @@
 <body>
   <div class="wrap">
     <h1>Control de cola</h1>
-    <p class="sub">Panel privado para manejar prioridades, personas sin responder, atendidos y reservas especiales.</p>
+    <p class="sub">Panel privado para manejar la cola, probar regalos, controlar la subasta de rosas y jugar el sorteo de arcanos.</p>
+
+    <div id="mainBanner" class="banner"></div>
 
     <div class="topbar">
-      <button class="btn secondary" onclick="testGift('Heart Me')">Test 🍪</button>
-      <button class="btn secondary" onclick="testGift('Friendship Necklace')">Test 💌</button>
-      <button class="btn secondary" onclick="testGift('Rosquilla')">Test 🌈</button>
-      <button class="btn secondary" onclick="testGift('Perfume')">Test 🟢</button>
-      <button class="btn secondary" onclick="testGift('Feather Tiara')">Test 👑</button>
-      <button class="btn secondary" onclick="testGift('Corgi')">Test 🐶</button>
-      <button class="btn secondary" onclick="testGift('Heart Umbrella')">Test ☂️</button>
-
       <button class="btn" onclick="callNext()">Llamar siguiente</button>
-      <button class="btn secondary" onclick="loadQueue()">Actualizar</button>
+      <button class="btn secondary" onclick="loadAll()">Actualizar</button>
       <button class="btn danger" onclick="clearAttended()">Limpiar atendidos</button>
+      <button class="btn danger" onclick="resetAll()">Reset total</button>
     </div>
 
     <div class="stats">
@@ -372,9 +565,13 @@
         <div class="label">Privadas por coordinar</div>
         <div class="value" id="pendingContactCount">0</div>
       </div>
+      <div class="stat">
+        <div class="label">Rosas en subasta</div>
+        <div class="value" id="roseParticipantsCount">0</div>
+      </div>
     </div>
 
-    <div class="grid">
+    <div class="grid-main">
       <section class="panel premium-panel">
         <h2>Premium y llamados</h2>
         <div id="premiumList" class="list"></div>
@@ -386,7 +583,7 @@
       </section>
 
       <section class="panel special-panel">
-        <h2>Privadas por coordinar</h2>
+        <h2>Privadas y especiales</h2>
         <div id="specialList" class="list"></div>
       </section>
 
@@ -400,8 +597,99 @@
         <div id="attendedList" class="list"></div>
       </section>
     </div>
+
+    <div class="grid-tools">
+      <section class="panel rose-panel">
+        <h2>🌹 Subasta de rosas</h2>
+        <p class="panel-sub">Las rosas se acumulan aquí y no entran a la cola mientras la subasta está activa.</p>
+
+        <div class="tool-row">
+          <button class="btn rose" onclick="startRoseAuction()">Iniciar subasta</button>
+          <button class="btn secondary" onclick="finishRoseAuction()">Finalizar subasta</button>
+          <button class="btn success" onclick="awardSelectedWinners()">Premiar seleccionadas</button>
+          <button class="btn danger" onclick="clearRoseAuction()">Limpiar subasta</button>
+        </div>
+
+        <div class="tool-row">
+          <span class="status-chip" id="roseAuctionStatus">Inactiva</span>
+          <span class="muted" id="roseAuctionInfo">Sin subasta activa</span>
+        </div>
+
+        <div class="tool-row">
+          <button class="btn secondary" onclick="selectTopWinners(1)">Top 1</button>
+          <button class="btn secondary" onclick="selectTopWinners(2)">Top 2</button>
+          <button class="btn secondary" onclick="selectTopWinners(3)">Top 3</button>
+          <button class="btn secondary" onclick="clearWinnerSelection()">Quitar selección</button>
+        </div>
+
+        <div id="roseRankingList" class="list"></div>
+      </section>
+
+      <section class="panel arcano-panel">
+        <h2>🃏 Sorteo de arcanos</h2>
+        <p class="panel-sub">Captura números del 0 al 21 desde el chat mientras el modo está activo.</p>
+
+        <div class="tool-row">
+          <button class="btn gold" onclick="startArcanoGame()">Abrir sorteo</button>
+          <button class="btn secondary" onclick="finishArcanoGame()">Cerrar sorteo</button>
+          <button class="btn success" onclick="drawArcanoWinner()">Sortear ganadora</button>
+          <button class="btn danger" onclick="clearArcanoGame()">Limpiar</button>
+        </div>
+
+        <div class="tool-row">
+          <span class="status-chip" id="arcanoStatus">Inactivo</span>
+          <span class="muted" id="arcanoInfo">Esperando apertura del sorteo</span>
+        </div>
+
+        <div id="arcanoWinnerBox" class="empty">Aún no hay ganadora sorteada.</div>
+        <div id="arcanoPicksList" class="list" style="margin-top: 12px;"></div>
+      </section>
+    </div>
+
+    <div class="grid-lab">
+      <section class="panel">
+        <h2>🧪 Laboratorio de regalos</h2>
+        <p class="panel-sub">Botones rápidos para ensayar antes del live real.</p>
+        <div class="lab-grid">
+          <button class="btn secondary" onclick="testGift('Heart Me', 1, 'Test_Galleta')">Test 🥠</button>
+          <button class="btn secondary" onclick="testGift('Friendship Necklace', 10, 'Test_Oraculo')">Test 🔮</button>
+          <button class="btn secondary" onclick="testGift('Rosquilla', 30, 'Test_Rosquilla')">Test 🌈</button>
+          <button class="btn secondary" onclick="testGift('Capibara', 30, 'Test_Capibara')">Test 🐹</button>
+          <button class="btn secondary" onclick="testGift('Heart in Hands', 100, 'Test_Karmico')">Test ❤️</button>
+          <button class="btn secondary" onclick="testGift('Feather Tiara', 150, 'Test_Tiara')">Test 👑</button>
+          <button class="btn secondary" onclick="testGift('Rosa de la eternidad', 399, 'Test_RosaEterna')">Test 🌹</button>
+          <button class="btn secondary" onclick="testGift('Heart Umbrella', 999, 'Test_Privada')">Test ☂️</button>
+          <button class="btn secondary" onclick="testRoseGift('Susana', 100)">🌹 Susana +100</button>
+          <button class="btn secondary" onclick="testRoseGift('Carla', 90)">🌹 Carla +90</button>
+          <button class="btn secondary" onclick="testRoseGift('Andrea', 25)">🌹 Andrea +25</button>
+        </div>
+      </section>
+
+      <section class="panel alert-panel">
+        <h2>🔔 Alertas premium</h2>
+        <p class="panel-sub">Aquí verás el último regalo premium detectado y sonará su audio.</p>
+        <div id="premiumAlertBox" class="premium-alert-box">
+          <div>
+            <div class="premium-alert-title">Esperando regalo premium...</div>
+            <div class="premium-alert-meta">Cuando llegue uno, aparecerá aquí.</div>
+          </div>
+        </div>
+
+        <div style="height: 14px;"></div>
+
+        <h2 style="margin-top: 0;">🎲 Laboratorio de chat</h2>
+        <p class="panel-sub">Prueba números como si vinieran del chat.</p>
+        <div class="lab-grid">
+          <button class="btn secondary" onclick="testChat('Ana','5')">Ana → 5</button>
+          <button class="btn secondary" onclick="testChat('Luis','10')">Luis → 10</button>
+          <button class="btn secondary" onclick="testChat('Majo','21')">Majo → 21</button>
+          <button class="btn secondary" onclick="testChat('Pilar','0')">Pilar → 0</button>
+        </div>
+      </section>
+    </div>
   </div>
 
+  <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
   <script>
     const API_BASE = "http://127.0.0.1:3002";
 
@@ -418,8 +706,68 @@
     const noResponseCountEl = document.getElementById("noResponseCount");
     const attendedCountEl = document.getElementById("attendedCount");
     const pendingContactCountEl = document.getElementById("pendingContactCount");
+    const roseParticipantsCountEl = document.getElementById("roseParticipantsCount");
+
+    const roseAuctionStatusEl = document.getElementById("roseAuctionStatus");
+    const roseAuctionInfoEl = document.getElementById("roseAuctionInfo");
+    const roseRankingListEl = document.getElementById("roseRankingList");
+
+    const arcanoStatusEl = document.getElementById("arcanoStatus");
+    const arcanoInfoEl = document.getElementById("arcanoInfo");
+    const arcanoPicksListEl = document.getElementById("arcanoPicksList");
+    const arcanoWinnerBoxEl = document.getElementById("arcanoWinnerBox");
+
+    const premiumAlertBoxEl = document.getElementById("premiumAlertBox");
+    const mainBannerEl = document.getElementById("mainBanner");
 
     let fullQueue = [];
+    let roseAuction = null;
+    let arcanoGame = null;
+    let selectedWinnerUsernames = [];
+
+    const socket = io(API_BASE);
+
+    const premiumSounds = {
+      capibara: new Audio("sounds/capibara.wav"),
+      tiara_de_plumas: new Audio("sounds/tiara.wav"),
+      rosa_de_la_eternidad: new Audio("sounds/rosa-eternidad.wav"),
+      analisis_karmico_pareja: new Audio("sounds/karmico.wav"),
+      sesion_privada: new Audio("sounds/privada.wav")
+    };
+
+    function playPremiumSound(type) {
+      const sound = premiumSounds[type];
+      if (!sound) return;
+      sound.currentTime = 0;
+      sound.play().catch(() => {});
+    }
+
+    function showBanner(message) {
+      mainBannerEl.textContent = message;
+      mainBannerEl.classList.add("show");
+      clearTimeout(showBanner._timer);
+      showBanner._timer = setTimeout(() => {
+        mainBannerEl.classList.remove("show");
+      }, 4500);
+    }
+
+    function getPremiumTypeLabel(type) {
+      if (type === "capibara") return "🐹 Capibara";
+      if (type === "tiara_de_plumas") return "👑 Tiara de plumas";
+      if (type === "rosa_de_la_eternidad") return "🌹 Rosa de la eternidad";
+      if (type === "analisis_karmico_pareja") return "❤️ Análisis kármico";
+      if (type === "sesion_privada") return "☂️ Sesión privada";
+      return "✨ Premium";
+    }
+
+    function updatePremiumAlert(payload) {
+      premiumAlertBoxEl.innerHTML = `
+        <div>
+          <div class="premium-alert-title">${getPremiumTypeLabel(payload.type)}</div>
+          <div class="premium-alert-meta">${payload.username} · ${payload.giftName} · x${payload.repeatCount ?? 1}</div>
+        </div>
+      `;
+    }
 
     function getName(item) {
       return (
@@ -635,12 +983,93 @@
       noResponseCountEl.textContent = noResponse.length;
       attendedCountEl.textContent = attended.length;
       pendingContactCountEl.textContent = special.length;
+      roseParticipantsCountEl.textContent = roseAuction?.ranking?.length || 0;
 
       renderSection(premiumListEl, premium, "premium");
       renderSection(normalListEl, normal, "normal");
       renderSection(specialListEl, special, "special");
       renderSection(noResponseListEl, noResponse, "no_response");
       renderSection(attendedListEl, attended, "attended");
+    }
+
+    function renderRoseAuction() {
+      if (!roseAuction) {
+        roseAuctionStatusEl.textContent = "Cargando";
+        roseAuctionInfoEl.textContent = "Buscando datos...";
+        roseRankingListEl.innerHTML = `<div class="empty">Cargando subasta...</div>`;
+        return;
+      }
+
+      roseAuctionStatusEl.textContent = roseAuction.active
+        ? "Subasta activa"
+        : roseAuction.finished
+          ? "Subasta finalizada"
+          : "Inactiva";
+
+      const participants = roseAuction.ranking?.length || 0;
+      roseAuctionInfoEl.textContent = roseAuction.active
+        ? `Participantes: ${participants}`
+        : roseAuction.finished
+          ? `Subasta cerrada · Participantes: ${participants}`
+          : "Sin subasta activa";
+
+      if (!roseAuction.ranking?.length) {
+        roseRankingListEl.innerHTML = `<div class="empty">Todavía no hay rosas acumuladas.</div>`;
+        return;
+      }
+
+      roseRankingListEl.innerHTML = roseAuction.ranking.map((entry, idx) => {
+        const checked = selectedWinnerUsernames.includes(entry.username) ? "checked" : "";
+        return `
+          <label class="winner-row">
+            <input type="checkbox" ${checked} onchange="toggleRoseWinner('${entry.username.replace(/'/g, "\\'")}')">
+            <div>
+              <div class="winner-name">${idx + 1}. ${entry.username}</div>
+              <div class="muted">Participando en la subasta</div>
+            </div>
+            <div class="winner-roses">${entry.roses} rosas</div>
+          </label>
+        `;
+      }).join("");
+    }
+
+    function renderArcanoGame() {
+      if (!arcanoGame) {
+        arcanoStatusEl.textContent = "Cargando";
+        arcanoInfoEl.textContent = "Buscando datos...";
+        arcanoPicksListEl.innerHTML = `<div class="empty">Cargando arcanos...</div>`;
+        return;
+      }
+
+      arcanoStatusEl.textContent = arcanoGame.active ? "Sorteo activo" : "Inactivo";
+      arcanoInfoEl.textContent = arcanoGame.active
+        ? `Participantes: ${arcanoGame.picksList?.length || 0}`
+        : `Registradas: ${arcanoGame.picksList?.length || 0}`;
+
+      if (arcanoGame.winner) {
+        arcanoWinnerBoxEl.innerHTML = `
+          <strong>Ganadora sorteada:</strong><br>
+          ${arcanoGame.winner.username} · ${arcanoGame.winner.arcano}
+        `;
+      } else {
+        arcanoWinnerBoxEl.innerHTML = `Aún no hay ganadora sorteada.`;
+      }
+
+      if (!arcanoGame.picksList?.length) {
+        arcanoPicksListEl.innerHTML = `<div class="empty">Nadie ha elegido número todavía.</div>`;
+        return;
+      }
+
+      arcanoPicksListEl.innerHTML = arcanoGame.picksList.map((pick) => `
+        <div class="arcano-row">
+          <div class="arcano-number">${pick.number}</div>
+          <div>
+            <div class="arcano-name">${pick.arcano}</div>
+            <div class="muted">Número reservado</div>
+          </div>
+          <div class="arcano-user">${pick.username}</div>
+        </div>
+      `).join("");
     }
 
     async function loadQueue() {
@@ -654,19 +1083,44 @@
       }
     }
 
+    async function loadRoseAuction() {
+      try {
+        const res = await fetch(`${API_BASE}/rose-auction`);
+        roseAuction = await res.json();
+
+        const validNames = new Set((roseAuction.ranking || []).map(x => x.username));
+        selectedWinnerUsernames = selectedWinnerUsernames.filter(name => validNames.has(name));
+
+        renderRoseAuction();
+        updateStats(fullQueue);
+      } catch (error) {
+        console.error("Error cargando subasta:", error);
+      }
+    }
+
+    async function loadArcanoGame() {
+      try {
+        const res = await fetch(`${API_BASE}/arcano-game`);
+        arcanoGame = await res.json();
+        renderArcanoGame();
+      } catch (error) {
+        console.error("Error cargando arcanos:", error);
+      }
+    }
+
+    async function loadAll() {
+      await Promise.all([loadQueue(), loadRoseAuction(), loadArcanoGame()]);
+    }
+
     async function callNext() {
-      await fetch(`${API_BASE}/next`, {
-        method: "POST"
-      });
+      await fetch(`${API_BASE}/next`, { method: "POST" });
       loadQueue();
     }
 
     async function markNoResponse(index) {
       await fetch(`${API_BASE}/no-response`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ index })
       });
       loadQueue();
@@ -675,9 +1129,7 @@
     async function backToPending(index) {
       await fetch(`${API_BASE}/back-to-pending`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ index })
       });
       loadQueue();
@@ -686,9 +1138,7 @@
     async function markAttended(index) {
       await fetch(`${API_BASE}/attended`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ index })
       });
       loadQueue();
@@ -704,8 +1154,21 @@
       loadQueue();
     }
 
-    async function testGift(giftName) {
-      const randomUser = "TEST_" + Math.floor(Math.random() * 1000);
+    async function resetAll() {
+      const ok = confirm("¿Deseas resetear cola, subasta y arcanos?");
+      if (!ok) return;
+
+      await fetch(`${API_BASE}/reset-all`, {
+        method: "POST"
+      });
+
+      selectedWinnerUsernames = [];
+      loadAll();
+      showBanner("Se reinició todo el laboratorio.");
+    }
+
+    async function testGift(giftName, coins = 0, username = null, repeatCount = 1) {
+      const randomUser = username || ("TEST_" + Math.floor(Math.random() * 1000));
 
       await fetch(`${API_BASE}/test-gift`, {
         method: "POST",
@@ -714,15 +1177,228 @@
         },
         body: JSON.stringify({
           username: randomUser,
-          giftName
+          giftName,
+          coins,
+          repeatCount
         })
       });
 
-  loadQueue();
-}
+      loadAll();
+    }
 
-    loadQueue();
-    setInterval(loadQueue, 1500);
+    async function testRoseGift(username, repeatCount) {
+      if (!roseAuction?.active) {
+        showBanner("Primero inicia la subasta de rosas.");
+        return;
+      }
+
+      await fetch(`${API_BASE}/test-gift`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username,
+          giftName: "rose",
+          coins: 1,
+          repeatCount
+        })
+      });
+
+      loadAll();
+    }
+
+    async function testChat(username, comment) {
+      await fetch(`${API_BASE}/test-chat`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username,
+          comment
+        })
+      });
+
+      loadArcanoGame();
+    }
+
+    async function startRoseAuction() {
+      await fetch(`${API_BASE}/rose-auction/start`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({})
+      });
+
+      selectedWinnerUsernames = [];
+      loadRoseAuction();
+      showBanner("🌹 Subasta de rosas iniciada.");
+    }
+
+    async function finishRoseAuction() {
+      await fetch(`${API_BASE}/rose-auction/finish`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({})
+      });
+
+      loadRoseAuction();
+      showBanner("🌹 Subasta finalizada. Ya puedes marcar ganadoras.");
+    }
+
+    function toggleRoseWinner(username) {
+      if (selectedWinnerUsernames.includes(username)) {
+        selectedWinnerUsernames = selectedWinnerUsernames.filter((u) => u !== username);
+      } else {
+        selectedWinnerUsernames.push(username);
+      }
+      renderRoseAuction();
+    }
+
+    function clearWinnerSelection() {
+      selectedWinnerUsernames = [];
+      renderRoseAuction();
+    }
+
+    function selectTopWinners(count) {
+      if (!roseAuction?.ranking?.length) return;
+      selectedWinnerUsernames = roseAuction.ranking.slice(0, count).map((u) => u.username);
+      renderRoseAuction();
+    }
+
+    async function awardSelectedWinners() {
+      if (!selectedWinnerUsernames.length) {
+        showBanner("Marca al menos una ganadora antes de premiar.");
+        return;
+      }
+
+      await fetch(`${API_BASE}/rose-auction/select-winners`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          usernames: selectedWinnerUsernames
+        })
+      });
+
+      await fetch(`${API_BASE}/rose-auction/award-selected`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          prizeLabel: "1 pregunta extensa"
+        })
+      });
+
+      showBanner(`🌹 Premiadas: ${selectedWinnerUsernames.join(", ")}`);
+      loadAll();
+    }
+
+    async function clearRoseAuction() {
+      const ok = confirm("¿Deseas limpiar toda la subasta de rosas?");
+      if (!ok) return;
+
+      await fetch(`${API_BASE}/rose-auction/clear`, {
+        method: "POST"
+      });
+
+      selectedWinnerUsernames = [];
+      loadRoseAuction();
+      showBanner("Subasta de rosas limpiada.");
+    }
+
+    async function startArcanoGame() {
+      await fetch(`${API_BASE}/arcano/start`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({})
+      });
+
+      loadArcanoGame();
+      showBanner("🃏 Sorteo de arcanos abierto.");
+    }
+
+    async function finishArcanoGame() {
+      await fetch(`${API_BASE}/arcano/finish`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({})
+      });
+
+      loadArcanoGame();
+      showBanner("🃏 Sorteo de arcanos cerrado.");
+    }
+
+    async function drawArcanoWinner() {
+      const res = await fetch(`${API_BASE}/arcano/draw`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({})
+      });
+
+      if (!res.ok) {
+        showBanner("No hay participantes para sortear.");
+        return;
+      }
+
+      const data = await res.json();
+      loadArcanoGame();
+      showBanner(`🎉 Ganadora del sorteo: ${data.winner.username} · ${data.winner.arcano}`);
+    }
+
+    async function clearArcanoGame() {
+      const ok = confirm("¿Deseas limpiar el sorteo de arcanos?");
+      if (!ok) return;
+
+      await fetch(`${API_BASE}/arcano/clear`, {
+        method: "POST"
+      });
+
+      loadArcanoGame();
+      showBanner("Sorteo de arcanos limpiado.");
+    }
+
+    socket.on("queue:update", (queue) => {
+      fullQueue = queue;
+      updateStats(queue);
+    });
+
+    socket.on("roseAuction:update", (data) => {
+      roseAuction = data;
+      const validNames = new Set((roseAuction.ranking || []).map(x => x.username));
+      selectedWinnerUsernames = selectedWinnerUsernames.filter(name => validNames.has(name));
+      renderRoseAuction();
+      updateStats(fullQueue);
+    });
+
+    socket.on("arcanoGame:update", (data) => {
+      arcanoGame = data;
+      renderArcanoGame();
+    });
+
+    socket.on("arcanoGame:winner", (winner) => {
+      showBanner(`🎉 Ganadora del sorteo: ${winner.username} · ${winner.arcano}`);
+    });
+
+    socket.on("gift:premium", (payload) => {
+      updatePremiumAlert(payload);
+      playPremiumSound(payload.type);
+
+      const map = {
+        capibara: "🐹 Llegó un Capibara",
+        tiara_de_plumas: "👑 Llegó una Tiara de plumas",
+        rosa_de_la_eternidad: "🌹 Llegó una Rosa de la eternidad",
+        analisis_karmico_pareja: "❤️ Llegó un Análisis kármico de pareja",
+        sesion_privada: "☂️ Se desbloqueó una Sesión Privada"
+      };
+
+      showBanner(map[payload.type] || "✨ Llegó un regalo premium");
+    });
+
+    socket.on("arcanoGame:pickAccepted", (pick) => {
+      showBanner(`🃏 ${pick.username} eligió ${pick.number} · ${pick.arcano}`);
+    });
+
+    loadAll();
+    setInterval(loadAll, 2500);
   </script>
 </body>
 </html>

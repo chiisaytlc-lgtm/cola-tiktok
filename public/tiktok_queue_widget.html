@@ -13,7 +13,7 @@
     }
 
     .container {
-      width: 270px;
+      width: 280px;
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -36,11 +36,24 @@
     .item.current {
       background: linear-gradient(
         90deg,
-        rgba(255, 220, 230, 0.82),
-        rgba(255, 190, 210, 0.72)
+        rgba(255, 220, 230, 0.88),
+        rgba(255, 190, 210, 0.78)
       );
-      border: 1px solid rgba(255, 160, 190, 0.4);
+      border: 1px solid rgba(255, 160, 190, 0.45);
       box-shadow: 0 6px 16px rgba(255, 150, 180, 0.24);
+    }
+
+    .item.premium {
+      background: linear-gradient(
+        90deg,
+        rgba(255, 244, 248, 0.84),
+        rgba(255, 226, 236, 0.74)
+      );
+      border: 1px solid rgba(238, 177, 203, 0.34);
+    }
+
+    .item.fast {
+      background: rgba(255, 255, 255, 0.30);
     }
 
     .index {
@@ -79,6 +92,23 @@
       color: #5a3d3d;
     }
 
+    .badge {
+      flex-shrink: 0;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.55);
+      color: #7f5365;
+    }
+
+    .item.current .badge {
+      background: rgba(255, 255, 255, 0.72);
+      color: #8b4760;
+    }
+
     .status {
       padding: 8px 12px;
       border-radius: 999px;
@@ -102,6 +132,17 @@
       color: #7e5d69;
       text-align: center;
     }
+
+    .special-note {
+      padding: 7px 10px;
+      border-radius: 16px;
+      background: rgba(255, 245, 249, 0.36);
+      border: 1px solid rgba(233, 180, 203, 0.20);
+      font-size: 11px;
+      font-weight: 700;
+      color: #8c6173;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -114,7 +155,7 @@
     const params = new URLSearchParams(window.location.search);
     const socketUrl = params.get("socketUrl") || "http://127.0.0.1:3002";
 
-    const MAX_VISIBLE = 6; // cambia a 7 si luego quieres ver 7 posiciones
+    const MAX_VISIBLE = 6;
 
     let visibleQueue = {
       current: null,
@@ -146,16 +187,34 @@
       );
     }
 
+    function getQueueTypeLabel(item) {
+      const q = item?.queueType || "normal";
+      if (q === "premium") return "VIP";
+      if (q === "rapida") return "Rápida";
+      if (q === "normal") return "Normal";
+      if (q === "especial") return "Especial";
+      return "";
+    }
+
+    function getItemClass(item, current = false) {
+      if (current) return "current";
+      if (item?.queueType === "premium") return "premium";
+      if (item?.queueType === "rapida") return "fast";
+      return "";
+    }
+
     function renderQueueItem(item, index, options = {}) {
       const { current = false } = options;
       const name = getName(item);
       const icon = item?.icon || "✨";
+      const badge = getQueueTypeLabel(item);
 
       return `
-        <div class="item ${current ? "current" : ""}">
+        <div class="item ${getItemClass(item, current)}">
           <div class="index">${index}</div>
           <div class="icon">${icon}</div>
           <div class="name">${name}</div>
+          ${badge ? `<div class="badge">${badge}</div>` : ""}
         </div>
       `;
     }
@@ -166,6 +225,7 @@
       let premiumList = Array.isArray(visibleQueue?.premiumList) ? visibleQueue.premiumList : [];
       let normalList = Array.isArray(visibleQueue?.normalList) ? visibleQueue.normalList : [];
       let fastList = Array.isArray(visibleQueue?.fastList) ? visibleQueue.fastList : [];
+      let specialList = Array.isArray(visibleQueue?.specialList) ? visibleQueue.specialList : [];
 
       if (!premiumList.length && !normalList.length && Array.isArray(visibleQueue?.nextList)) {
         normalList = visibleQueue.nextList;
@@ -200,6 +260,10 @@
 
       if (hiddenWaiting > 0) {
         html += `<div class="small-status">+${hiddenWaiting} en espera</div>`;
+      }
+
+      if ((counts.especial || 0) > 0 || specialList.length > 0) {
+        html += `<div class="special-note">Hay ${counts.especial || specialList.length} especial(es) por coordinar</div>`;
       }
 
       queueEl.innerHTML = html;
