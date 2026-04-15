@@ -529,7 +529,8 @@
 
     <div id="mainBanner" class="banner"></div>
 
-    <div class="topbar">
+   <div class="topbar">
+      <button class="btn success" onclick="unlockAudio()">Activar sonidos</button>
       <button class="btn" onclick="callNext()">Llamar siguiente</button>
       <button class="btn secondary" onclick="loadAll()">Actualizar</button>
       <button class="btn danger" onclick="clearAttended()">Limpiar atendidos</button>
@@ -727,20 +728,68 @@
 
     const socket = io(API_BASE);
 
-   const premiumSounds = {
-        capibara: new Audio("../sounds/capibara.wav"),
-        tiara_de_plumas: new Audio("../sounds/tiara.wav"),
-        rosa_de_la_eternidad: new Audio("../sounds/rosa-eternidad.wav"),
-        analisis_karmico_pareja: new Audio("../sounds/karmico.wav"),
-        sesion_privada: new Audio("../sounds/privada.wav")
+  const premiumSounds = {
+  capibara: new Audio("sounds/capibara.wav"),
+  tiara_de_plumas: new Audio("sounds/tiara.wav"),
+  rosa_de_la_eternidad: new Audio("sounds/rosa-eternidad.wav"),
+  analisis_karmico_pareja: new Audio("sounds/karmico.wav"),
+  sesion_privada: new Audio("sounds/privada.wav")
 };
+
+let audioUnlocked = false;
+
+Object.values(premiumSounds).forEach((audio) => {
+  audio.preload = "auto";
+  audio.volume = 1;
+  audio.load();
+});
+
+async function unlockAudio() {
+  try {
+    for (const audio of Object.values(premiumSounds)) {
+      audio.muted = true;
+      audio.currentTime = 0;
+      await audio.play();
+      audio.pause();
+      audio.currentTime = 0;
+      audio.muted = false;
+    }
+
+    audioUnlocked = true;
+    showBanner("🔊 Sonidos activados");
+    console.log("Audio desbloqueado correctamente");
+  } catch (err) {
+    console.error("No se pudo desbloquear el audio:", err);
+    alert("No se pudieron activar los sonidos. Prueba otra vez.");
+  }
+}
 
     function playPremiumSound(type) {
       const sound = premiumSounds[type];
-      if (!sound) return;
+
+      console.log("Intentando reproducir sonido:", type, sound?.src);
+
+      if (!sound) {
+        console.warn("No existe sonido para:", type);
+        return;
+      }
+
+      if (!audioUnlocked) {
+        console.warn("Audio aún no desbloqueado");
+        return;
+      }
+
+      sound.pause();
       sound.currentTime = 0;
-      sound.play().catch(() => {});
-    }
+
+      sound.play()
+        .then(() => {
+          console.log("Sonido reproducido:", type);
+        })
+        .catch((err) => {
+          console.error("Error reproduciendo sonido:", type, err);
+        });
+}
 
     function showBanner(message) {
       mainBannerEl.textContent = message;

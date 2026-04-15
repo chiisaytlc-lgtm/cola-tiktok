@@ -13,7 +13,7 @@
     }
 
     .container {
-      width: 280px;
+      width: 340px;
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -24,13 +24,14 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 10px;
+      padding: 10px 12px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.34);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 182, 193, 0.22);
       box-shadow: 0 4px 12px rgba(255, 192, 203, 0.14);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
 
     .item.current {
@@ -54,6 +55,35 @@
 
     .item.fast {
       background: rgba(255, 255, 255, 0.30);
+    }
+
+    @keyframes highlightPulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(255, 192, 203, 0.14);
+      }
+      30% {
+        transform: scale(1.08);
+        box-shadow: 0 0 22px rgba(255, 120, 180, 0.95);
+      }
+      60% {
+        transform: scale(1.04);
+        box-shadow: 0 0 16px rgba(255, 120, 180, 0.75);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(255, 192, 203, 0.14);
+      }
+    }
+
+    .highlight-user {
+      animation: highlightPulse 0.85s ease;
+      border: 2px solid rgba(255, 120, 180, 0.88) !important;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 236, 244, 0.96),
+        rgba(255, 214, 229, 0.92)
+      ) !important;
     }
 
     .index {
@@ -87,7 +117,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
       color: #5a3d3d;
     }
@@ -173,6 +203,13 @@
       }
     };
 
+    let highlightedUser = null;
+    let highlightTimer = null;
+
+    function normalizeName(value) {
+      return String(value || "").trim().toLowerCase();
+    }
+
     function getName(item) {
       return (
         item?.nickname ||
@@ -203,14 +240,20 @@
       return "";
     }
 
+    function isHighlightedItem(item) {
+      if (!highlightedUser) return false;
+      return normalizeName(getName(item)) === normalizeName(highlightedUser);
+    }
+
     function renderQueueItem(item, index, options = {}) {
       const { current = false } = options;
       const name = getName(item);
       const icon = item?.icon || "✨";
       const badge = getQueueTypeLabel(item);
+      const highlightedClass = isHighlightedItem(item) ? "highlight-user" : "";
 
       return `
-        <div class="item ${getItemClass(item, current)}">
+        <div class="item ${getItemClass(item, current)} ${highlightedClass}">
           <div class="index">${index}</div>
           <div class="icon">${icon}</div>
           <div class="name">${name}</div>
@@ -269,6 +312,19 @@
       queueEl.innerHTML = html;
     }
 
+    function triggerUserHighlight(username) {
+      if (!username) return;
+
+      highlightedUser = username;
+      render();
+
+      clearTimeout(highlightTimer);
+      highlightTimer = setTimeout(() => {
+        highlightedUser = null;
+        render();
+      }, 2000);
+    }
+
     const socket = io(socketUrl, {
       transports: ["polling", "websocket"],
       reconnection: true
@@ -277,6 +333,11 @@
     socket.on("queue:visible", (data) => {
       visibleQueue = data || {};
       render();
+    });
+
+    socket.on("gift:premium", (payload) => {
+      if (!payload?.username) return;
+      triggerUserHighlight(payload.username);
     });
 
     socket.on("connect", async () => {
