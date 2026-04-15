@@ -729,11 +729,11 @@
     const socket = io(API_BASE);
 
   const premiumSounds = {
-  capibara: new Audio("sounds/capibara.wav"),
-  tiara_de_plumas: new Audio("sounds/tiara.wav"),
-  rosa_de_la_eternidad: new Audio("sounds/rosa-eternidad.wav"),
-  analisis_karmico_pareja: new Audio("sounds/karmico.wav"),
-  sesion_privada: new Audio("sounds/privada.wav")
+  capibara: new Audio(`${API_BASE}/sounds/capibara.wav`),
+  tiara_de_plumas: new Audio(`${API_BASE}/sounds/tiara.wav`),
+  rosa_de_la_eternidad: new Audio(`${API_BASE}/sounds/rosa-eternidad.wav`),
+  analisis_karmico_pareja: new Audio(`${API_BASE}/sounds/karmico.wav`),
+  sesion_privada: new Audio(`${API_BASE}/sounds/privada.wav`)
 };
 
 let audioUnlocked = false;

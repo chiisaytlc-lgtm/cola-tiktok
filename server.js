@@ -5,11 +5,18 @@ import { Server } from "socket.io";
 import { WebcastPushConnection } from "tiktok-live-connector";
 import giftRules from "./gift-rules.json" with { type: "json" };
 
+import path from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const PORT = process.env.PORT || 3002;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
 
 const server = http.createServer(app);
 

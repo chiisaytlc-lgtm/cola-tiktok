@@ -1,24 +1,79 @@
-{
-  "matches": [
-    "heart in hands",
-    "heart on hands",
-    "corazón en las manos",
-    "corazon en las manos"
-  ],
-  "serviceKey": "analisis_karmico_pareja",
-  "serviceLabel": "Análisis kármico de pareja",
-  "queueType": "premium",
-  "icon": "❤️"
-},
-{
-  "matches": [
-    "heart umbrella",
-    "umbrella of love",
-    "paraguas de corazón",
-    "paraguas de corazon"
-  ],
-  "serviceKey": "sesion_privada",
-  "serviceLabel": "Sesión Privada",
-  "queueType": "especial",
-  "icon": "☂️"
-}
+[
+  {
+    "matches": ["heart me", "quiereme"],
+    "serviceKey": "galleta_fortuna",
+    "serviceLabel": "Galleta de la Fortuna",
+    "queueType": "rapida",
+    "icon": "🥠"
+  },
+  {
+    "matches": ["friendship necklace", "collar de amistad"],
+    "serviceKey": "mensaje_oraculo",
+    "serviceLabel": "Mensaje del Oráculo",
+    "queueType": "rapida",
+    "icon": "🔮"
+  },
+  {
+    "matches": ["rosquilla", "doughnut", "donut"],
+    "serviceKey": "oraculo_sda",
+    "serviceLabel": "Oráculo Salud, Dinero y Amor",
+    "queueType": "normal",
+    "icon": "🌈"
+  },
+  {
+    "matches": ["capibara", "capybara"],
+    "serviceKey": "capibara",
+    "serviceLabel": "Pregunta Sí / No",
+    "queueType": "normal",
+    "icon": "🐹"
+  },
+  {
+    "matches": ["feather tiara", "tiara de plumas"],
+    "serviceKey": "tiara_de_plumas",
+    "serviceLabel": "Pregunta extensa",
+    "queueType": "premium",
+    "icon": "👑"
+  },
+  {
+    "matches": [
+      "heart in hands",
+      "heart on hands",
+      "corazón en las manos",
+      "corazon en las manos"
+    ],
+    "serviceKey": "analisis_karmico_pareja",
+    "serviceLabel": "Análisis kármico de pareja",
+    "queueType": "premium",
+    "icon": "❤️"
+  },
+  {
+    "matches": [
+      "rosa de la eternidad",
+      "eternal rose",
+      "rose of eternity"
+    ],
+    "serviceKey": "rosa_de_la_eternidad",
+    "serviceLabel": "Rosa de la eternidad",
+    "queueType": "premium",
+    "icon": "🌹"
+  },
+  {
+    "matches": [
+      "heart umbrella",
+      "umbrella of love",
+      "paraguas de corazón",
+      "paraguas de corazon"
+    ],
+    "serviceKey": "sesion_privada",
+    "serviceLabel": "Sesión Privada",
+    "queueType": "especial",
+    "icon": "☂️"
+  },
+  {
+    "matches": ["rose", "rosa"],
+    "serviceKey": "rose_auction",
+    "serviceLabel": "Subasta de rosas",
+    "queueType": "informativo",
+    "icon": "🌹"
+  }
+]
