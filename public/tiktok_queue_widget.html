@@ -12,12 +12,42 @@
       color: #4a3a3a;
     }
 
+    .wrap {
+      width: 340px;
+      padding: 6px;
+      transform: scale(1.03);
+      transform-origin: top left;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .title-bar {
+      width: 100%;
+      margin: 0 0 6px 0;
+    }
+
+    .title {
+      display: inline-block;
+      font-size: 22px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #ffffff;
+      background: rgba(163, 77, 108, 0.92);
+      border: 2px solid rgba(255, 214, 227, 0.85);
+      border-radius: 14px;
+      padding: 8px 14px;
+      line-height: 1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    }
+
     .container {
       width: 340px;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      padding: 6px;
     }
 
     .item {
@@ -26,64 +56,30 @@
       gap: 8px;
       padding: 10px 12px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.34);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 182, 193, 0.22);
-      box-shadow: 0 4px 12px rgba(255, 192, 203, 0.14);
+      background: rgba(248, 230, 235, 0.72);
+      border: 1.2px solid rgba(227, 179, 191, 0.85);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
       transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
     }
 
     .item.current {
-      background: linear-gradient(
-        90deg,
-        rgba(255, 220, 230, 0.88),
-        rgba(255, 190, 210, 0.78)
-      );
-      border: 1px solid rgba(255, 160, 190, 0.45);
-      box-shadow: 0 6px 16px rgba(255, 150, 180, 0.24);
+      background: rgba(255, 220, 231, 0.82);
+      border: 1.4px solid rgba(217, 125, 156, 0.88);
+      box-shadow: 0 4px 10px rgba(217, 125, 156, 0.16);
     }
 
-    .item.premium {
-      background: linear-gradient(
-        90deg,
-        rgba(255, 244, 248, 0.84),
-        rgba(255, 226, 236, 0.74)
-      );
-      border: 1px solid rgba(238, 177, 203, 0.34);
-    }
-
-    .item.fast {
-      background: rgba(255, 255, 255, 0.30);
-    }
-
-    @keyframes highlightPulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 4px 12px rgba(255, 192, 203, 0.14);
-      }
-      30% {
-        transform: scale(1.08);
-        box-shadow: 0 0 22px rgba(255, 120, 180, 0.95);
-      }
-      60% {
-        transform: scale(1.04);
-        box-shadow: 0 0 16px rgba(255, 120, 180, 0.75);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 4px 12px rgba(255, 192, 203, 0.14);
-      }
+    .item.premium,
+    .item.normal,
+    .item.fast,
+    .item.special {
+      background: rgba(248, 230, 235, 0.72);
+      border: 1.2px solid rgba(227, 179, 191, 0.85);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
     }
 
     .highlight-user {
-      animation: highlightPulse 0.85s ease;
-      border: 2px solid rgba(255, 120, 180, 0.88) !important;
-      background: linear-gradient(
-        90deg,
-        rgba(255, 236, 244, 0.96),
-        rgba(255, 214, 229, 0.92)
-      ) !important;
+      border-color: rgba(217, 125, 156, 0.95) !important;
+      box-shadow: 0 0 0 2px rgba(255, 190, 210, 0.45), 0 3px 8px rgba(217, 125, 156, 0.16) !important;
     }
 
     .index {
@@ -95,14 +91,15 @@
       align-items: center;
       justify-content: center;
       font-size: 12px;
-      font-weight: 700;
-      background: rgba(255, 182, 193, 0.9);
+      font-weight: 800;
+      background: rgba(243, 182, 196, 0.92);
       color: #5a2e2e;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     }
 
     .item.current .index {
-      background: #ff8fb1;
-      color: white;
+      background: rgba(255, 143, 177, 0.96);
+      color: #fff;
     }
 
     .icon {
@@ -113,70 +110,73 @@
     }
 
     .name {
-      flex: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      font-size: 15px;
+      color: #4a2c35;
       font-weight: 700;
-      color: #5a3d3d;
+      font-size: 13px;
     }
 
     .badge {
-      flex-shrink: 0;
-      font-size: 10px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      margin-left: auto;
       padding: 4px 8px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.55);
-      color: #7f5365;
+      background: rgba(239, 179, 192, 0.92);
+      color: #fff;
+      font-weight: 700;
+      font-size: 9px;
+      letter-spacing: 0.2px;
+      min-width: 42px;
+      text-align: center;
     }
 
     .item.current .badge {
-      background: rgba(255, 255, 255, 0.72);
+      background: rgba(255, 255, 255, 0.92);
       color: #8b4760;
     }
 
     .status {
       padding: 8px 12px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 182, 193, 0.2);
+      background: rgba(248, 230, 235, 0.68);
+      border: 1.2px solid rgba(227, 179, 191, 0.82);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
       text-align: center;
       font-size: 13px;
-      font-weight: 600;
-      color: #6b4a4a;
+      font-weight: 700;
+      color: #5f3140;
     }
 
     .small-status {
       padding: 7px 10px;
       border-radius: 16px;
-      background: rgba(255, 255, 255, 0.28);
-      border: 1px solid rgba(255, 182, 193, 0.18);
+      background: rgba(248, 230, 235, 0.64);
+      border: 1px solid rgba(227, 179, 191, 0.80);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
       font-size: 12px;
-      font-weight: 600;
-      color: #7e5d69;
+      font-weight: 700;
+      color: #68394a;
       text-align: center;
     }
 
     .special-note {
       padding: 7px 10px;
       border-radius: 16px;
-      background: rgba(255, 245, 249, 0.36);
-      border: 1px solid rgba(233, 180, 203, 0.20);
+      background: rgba(248, 230, 235, 0.60);
+      border: 1px solid rgba(227, 179, 191, 0.78);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
       font-size: 11px;
       font-weight: 700;
-      color: #8c6173;
+      color: #5f3141;
       text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="container" id="queue"></div>
+  <div class="wrap">
+    <div class="title-bar">
+      <div class="title">PRÓXIMOS TURNOS</div>
+    </div>
+    <div class="container" id="queue"></div>
+  </div>
 
   <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
   <script>
@@ -237,6 +237,8 @@
       if (current) return "current";
       if (item?.queueType === "premium") return "premium";
       if (item?.queueType === "rapida") return "fast";
+      if (item?.queueType === "especial") return "special";
+      if (item?.queueType === "normal") return "normal";
       return "";
     }
 
@@ -307,7 +309,8 @@
       }
 
       if ((counts.especial || 0) > 0 || specialList.length > 0) {
-        html += `<div class="special-note">🔒 ${counts.especial} lectura(s) privada(s) reservada(s)</div>`;      }
+        html += `<div class="special-note">🔒 ${counts.especial} lectura(s) privada(s) reservada(s)</div>`;
+      }
 
       queueEl.innerHTML = html;
     }
