@@ -32,6 +32,11 @@ let tiktok = null;
 let currentUsername = "";
 let isConnected = false;
 
+/* NUEVO: estado de salud ampliado para el Guardian */
+let liveActive = false;
+let lastEventAt = null;
+let lastGiftAt = null;
+
 // anti-duplicados de corta duración
 const recentGiftKeys = new Map();
 
@@ -146,6 +151,7 @@ function normalizeGiftType(giftName) {
     g === "forever rose" ||
     g === "rose forever" ||
     g === "rosa para siempre" ||
+    g === "eternity rose" ||
     g === "rosa de la eternidad"
   ) {
     return "rosa_de_la_eternidad";
@@ -164,6 +170,7 @@ function normalizeGiftType(giftName) {
     g === "heart umbrella" ||
     g === "umbrella of love" ||
     g === "paraguas de corazon" ||
+    g === "refugio de amor" ||
     g === "paraguas de corazón"
   ) {
     return "sesion_privada";
@@ -179,11 +186,10 @@ function normalizeGiftType(giftName) {
   }
 
   if (
-    g === "friendship necklace" ||
-    g === "friendship collar" ||
-    g === "collar de amistad"
+    g === "perfume" ||
+    g === "perfume gift"
   ) {
-    return "collar_de_amistad";
+    return "perfume";
   }
 
   if (g === "doughnut" || g === "donut" || g === "rosquilla") {
@@ -607,6 +613,19 @@ function handleChatEvent({ username, comment }) {
 
 // ---------- RUTAS ----------
 
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    ok: true,
+    service: "cola-tiktok-backend",
+    time: new Date().toISOString(),
+    tiktokConnected: isConnected,
+    liveActive,
+    queueLength: queue.length,
+    lastEventAt,
+    lastGiftAt
+  });
+});
+
 app.get("/", (req, res) => {
   res.send("Backend activo");
 });
@@ -930,6 +949,10 @@ app.post("/connect", async (req, res) => {
     currentUsername = username;
 
     tiktok.on("gift", (data) => {
+      lastEventAt = nowIso();
+      lastGiftAt = nowIso();
+      liveActive = true;
+
       cleanupRecentGiftKeys();
 
       const username =
@@ -1024,6 +1047,9 @@ app.post("/connect", async (req, res) => {
     });
 
     tiktok.on("chat", (data) => {
+      lastEventAt = nowIso();
+      liveActive = true;
+
       const username =
         data.nickname ||
         data.user?.nickname ||
@@ -1045,12 +1071,15 @@ app.post("/connect", async (req, res) => {
     tiktok.on("streamEnd", () => {
       console.log("📴 Live finalizado");
       isConnected = false;
+      liveActive = false;
       emitLiveStatus();
     });
 
     const state = await tiktok.connect();
 
     isConnected = true;
+    liveActive = true;
+    lastEventAt = nowIso();
 
     console.log(`✅ Conectado al live de @${username}`);
     console.log("RoomId:", state.roomId);
@@ -1065,6 +1094,7 @@ app.post("/connect", async (req, res) => {
   } catch (error) {
     console.error("❌ Error conectando a TikTok:", error);
     isConnected = false;
+    liveActive = false;
 
     res.status(500).json({
       error: "No se pudo conectar al live",
@@ -1081,6 +1111,7 @@ app.post("/disconnect", async (req, res) => {
     }
 
     isConnected = false;
+    liveActive = false;
     currentUsername = "";
 
     emitLiveStatus();

@@ -7,13 +7,16 @@
     "icon": "🥠"
   },
   {
-    "matches": ["friendship necklace", "collar de amistad"],
-    "serviceKey": "mensaje_oraculo",
-    "serviceLabel": "Mensaje del Oráculo",
-    "queueType": "rapida",
-    "icon": "🔮"
-  },
-  {
+      "matches": [
+        "perfume",
+        "perfume gift"
+      ],
+      "serviceKey": "mensaje_oraculo",
+      "serviceLabel": "Mensaje del Oráculo",
+      "queueType": "rapida",
+      "icon": "✨"
+    },
+      {
     "matches": ["rosquilla", "doughnut", "donut"],
     "serviceKey": "oraculo_sda",
     "serviceLabel": "Oráculo Salud, Dinero y Amor",
@@ -49,11 +52,13 @@
   {
     "matches": [
       "rosa de la eternidad",
+      "eternity rose",
       "eternal rose",
-      "rose of eternity"
+      "rose of eternity",
+      "eternityrose"
     ],
     "serviceKey": "rosa_de_la_eternidad",
-    "serviceLabel": "Rosa de la eternidad",
+    "serviceLabel": "Rosa de la Eternidad",
     "queueType": "premium",
     "icon": "🌹"
   },
