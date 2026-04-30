@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Intro Sorteo de Arcanos</title>
+
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: transparent;
+    font-family: "Segoe UI", Arial, sans-serif;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .arcano-overlay {
+    width: 760px;
+    height: 430px;
+    position: relative;
+    border-radius: 34px;
+    background: rgba(255, 245, 252, 0.78);
+    border: 3px solid rgba(255, 160, 215, 0.9);
+    box-shadow:
+      0 0 35px rgba(255, 77, 180, 0.55),
+      inset 0 0 35px rgba(255, 255, 255, 0.75);
+    overflow: hidden;
+    animation: aparecer 0.8s ease-out forwards;
+  }
+
+  .glow {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 73, 188, 0.5), transparent 65%);
+    filter: blur(8px);
+    animation: flotar 5s infinite alternate ease-in-out;
+  }
+
+  .glow.one {
+    top: -80px;
+    left: -70px;
+  }
+
+  .glow.two {
+    right: -80px;
+    bottom: -80px;
+    animation-delay: 1s;
+  }
+
+  .stars {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(255,255,255,0.95) 1px, transparent 2px),
+      radial-gradient(circle, rgba(255,150,215,0.9) 1px, transparent 2px);
+    background-size: 52px 52px, 85px 85px;
+    animation: estrellas 7s linear infinite;
+    opacity: 0.9;
+  }
+
+  .content {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    padding: 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .tag {
+    padding: 9px 22px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.75);
+    border: 2px solid rgba(255, 130, 205, 0.8);
+    color: #8d245f;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: pulse 1.5s infinite;
+  }
+
+  .title {
+    text-align: center;
+    color: #6f174d;
+    font-size: 54px;
+    font-weight: 1000;
+    line-height: 1;
+    text-shadow:
+      0 3px 0 rgba(255,255,255,0.9),
+      0 0 18px rgba(255, 90, 190, 0.6);
+  }
+
+  .subtitle {
+    margin-top: 10px;
+    text-align: center;
+    color: #9c2c70;
+    font-size: 28px;
+    font-weight: 800;
+  }
+
+  .cards {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 18px;
+  height: 150px;
+}
+
+.tarot-card {
+  width: 100px;
+  height: 145px;
+  border-radius: 14px;
+  background:
+    radial-gradient(circle at center, rgba(255, 210, 86, 0.18), transparent 55%),
+    linear-gradient(160deg, #120b05, #2a1a08 55%, #070403);
+  border: 2px solid #f6c85c;
+  box-shadow:
+    0 0 16px rgba(255, 199, 80, 0.7),
+    inset 0 0 18px rgba(255, 213, 92, 0.18);
+  color: #ffd86b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: cartaViva 2.6s infinite ease-in-out;
+}
+
+  .card {
+    width: 82px;
+    height: 122px;
+    border-radius: 15px;
+    background:
+      linear-gradient(145deg, #fff, #ffd7ef),
+      radial-gradient(circle at center, #ff5ebd, transparent);
+    border: 3px solid rgba(255, 120, 205, 0.95);
+    box-shadow: 0 10px 22px rgba(128, 0, 75, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #7d1b55;
+    font-size: 36px;
+    font-weight: 1000;
+    animation: cardSpin 2.4s infinite ease-in-out;
+  }
+
+  .card:nth-child(2) { animation-delay: 0.25s; }
+  .card:nth-child(3) { animation-delay: 0.5s; }
+  .card:nth-child(4) { animation-delay: 0.75s; }
+  .card:nth-child(5) { animation-delay: 1s; }
+
+  .instructions {
+    text-align: center;
+    color: #70104b;
+    font-size: 31px;
+    font-weight: 900;
+    background: rgba(255,255,255,0.66);
+    padding: 12px 24px;
+    border-radius: 22px;
+    border: 2px solid rgba(255, 155, 218, 0.75);
+  }
+
+  .number-range {
+    color: #e91e96;
+    font-size: 38px;
+  }
+
+  .footer {
+    color: #8b2361;
+    font-size: 23px;
+    font-weight: 800;
+  }
+
+  .arcano-numero {
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.arcano-icono {
+  font-size: 34px;
+  margin: 7px 0;
+  filter: drop-shadow(0 0 8px rgba(255, 211, 89, 0.8));
+}
+
+.arcano-nombre {
+  font-size: 12px;
+  font-weight: 900;
+  text-align: center;
+  padding: 0 5px;
+}
+
+@keyframes cartaViva {
+  0% {
+    transform: translateY(0) rotate(-1deg) scale(1);
+    opacity: 0.9;
+  }
+  45% {
+    transform: translateY(-10px) rotate(1deg) scale(1.04);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotate(-1deg) scale(1);
+    opacity: 0.9;
+  }
+}
+
+  @keyframes aparecer {
+    0% {
+      transform: scale(0.86);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes flotar {
+    from {
+      transform: translate(0, 0) scale(1);
+    }
+    to {
+      transform: translate(35px, 25px) scale(1.18);
+    }
+  }
+
+  @keyframes estrellas {
+    from {
+      background-position: 0 0, 0 0;
+    }
+    to {
+      background-position: 120px 80px, -100px 100px;
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 0 12px rgba(255, 74, 180, 0.45);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 24px rgba(255, 74, 180, 0.9);
+    }
+  }
+
+  @keyframes cardSpin {
+    0%, 100% {
+      transform: rotateY(0deg) translateY(0);
+    }
+    50% {
+      transform: rotateY(180deg) translateY(-12px);
+    }
+  }
+
+  @media (max-width: 800px) {
+    .arcano-overlay {
+      width: 94vw;
+      height: 54vw;
+      max-height: 430px;
+    }
+
+    .title {
+      font-size: 42px;
+    }
+
+    .subtitle {
+      font-size: 22px;
+    }
+
+    .instructions {
+      font-size: 24px;
+    }
+
+    .card {
+      width: 64px;
+      height: 95px;
+      font-size: 28px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="arcano-overlay">
+  <div class="stars"></div>
+  <div class="glow one"></div>
+  <div class="glow two"></div>
+
+  <div class="content">
+    <div class="tag">Sorteo en vivo</div>
+
+    <div>
+      <div class="title">SORTEO DE ARCANOS</div>
+      <div class="subtitle">Elige el número que tu intuición te susurre</div>
+    </div>
+
+    <div class="cards" id="cards"></div>
+
+    <div class="instructions">
+      Escribe un número del 
+      <span class="number-range">0 al 21</span>
+      en el chat
+    </div>
+
+    <div class="footer">
+      ✨ Tu arcano puede traer un mensaje para ti ✨
+    </div>
+  </div>
+</div>
+<script>
+const arcanos = [
+  { n: 0, nombre: "EL LOCO", icono: "🌕" },
+  { n: 1, nombre: "EL MAGO", icono: "🪄" },
+  { n: 2, nombre: "LA SACERDOTISA", icono: "🌙" },
+  { n: 3, nombre: "LA EMPERATRIZ", icono: "👑" },
+  { n: 4, nombre: "EL EMPERADOR", icono: "🛡️" },
+  { n: 5, nombre: "EL HIEROFANTE", icono: "🔑" },
+  { n: 6, nombre: "LOS ENAMORADOS", icono: "💞" },
+  { n: 7, nombre: "EL CARRO", icono: "🐎" },
+  { n: 8, nombre: "LA FUERZA", icono: "🦁" },
+  { n: 9, nombre: "EL ERMITAÑO", icono: "🕯️" },
+  { n: 10, nombre: "LA RUEDA", icono: "☸️" },
+  { n: 11, nombre: "LA JUSTICIA", icono: "⚖️" },
+  { n: 12, nombre: "EL COLGADO", icono: "🌀" },
+  { n: 13, nombre: "LA MUERTE", icono: "🦋" },
+  { n: 14, nombre: "LA TEMPLANZA", icono: "🏺" },
+  { n: 15, nombre: "EL DIABLO", icono: "🔥" },
+  { n: 16, nombre: "LA TORRE", icono: "⚡" },
+  { n: 17, nombre: "LA ESTRELLA", icono: "⭐" },
+  { n: 18, nombre: "LA LUNA", icono: "🌙" },
+  { n: 19, nombre: "EL SOL", icono: "☀️" },
+  { n: 20, nombre: "EL JUICIO", icono: "📯" },
+  { n: 21, nombre: "EL MUNDO", icono: "🌍" }
+];
+
+const cardsEl = document.getElementById("cards");
+
+function mezclar(lista) {
+  return [...lista].sort(() => Math.random() - 0.5);
+}
+
+function pintarArcanos() {
+  const seleccion = mezclar(arcanos).slice(0, 5);
+
+  cardsEl.innerHTML = seleccion.map((a, index) => `
+    <div class="tarot-card" style="animation-delay:${index * 0.16}s">
+      <div class="arcano-numero">${a.n}</div>
+      <div class="arcano-icono">${a.icono}</div>
+      <div class="arcano-nombre">${a.nombre}</div>
+    </div>
+  `).join("");
+}
+
+pintarArcanos();
+setInterval(pintarArcanos, 2600);
+</script>
+</body>
+</html>

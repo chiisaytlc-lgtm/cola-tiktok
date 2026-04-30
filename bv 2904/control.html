@@ -504,158 +504,13 @@
       font-size: 13px;
     }
 
-
-    /* ---------- PESTAÑAS ---------- */
-    .tabs {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin: 0 0 18px;
-      padding: 10px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.62);
-      border: 1px solid rgba(243, 190, 210, 0.45);
-      box-shadow: 0 8px 18px rgba(189, 129, 154, 0.08);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 10px;
-      z-index: 50;
-    }
-
-    .tab {
-      border: none;
-      border-radius: 14px;
-      padding: 11px 18px;
-      font-size: 13px;
-      font-weight: 900;
-      cursor: pointer;
-      background: #fce4ec;
-      color: #7a4e61;
-      box-shadow: 0 4px 10px rgba(194, 120, 150, 0.10);
-      letter-spacing: 0.4px;
-      transition: transform 0.15s ease, filter 0.15s ease, background 0.15s ease;
-    }
-
-    .tab:hover {
-      filter: brightness(0.98);
-      transform: translateY(-1px);
-    }
-
-    .tab.active {
-      background: linear-gradient(180deg, #df7da4, #cc5f8e);
-      color: #fff;
-      box-shadow: 0 8px 18px rgba(190, 84, 128, 0.24);
-    }
-
-    .tab-content {
-      display: none;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
-
-
-    /* ---------- VIP / CASERITOS ---------- */
-    .grid-vip {
-      display: grid;
-      grid-template-columns: 1.35fr 0.85fr;
-      gap: 16px;
-      align-items: start;
-      margin-bottom: 18px;
-    }
-
-    .vip-card {
-      padding: 12px;
-      border-radius: 18px;
-      background: #fff;
-      border: 1px solid #f3d7e2;
-      box-shadow: 0 4px 12px rgba(186, 127, 151, 0.07);
-    }
-
-    .vip-head {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      align-items: flex-start;
-      margin-bottom: 8px;
-    }
-
-    .vip-name {
-      font-size: 15px;
-      font-weight: 900;
-      color: #4d2e39;
-      word-break: break-word;
-    }
-
-    .vip-badge {
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: #ffe6ee;
-      color: #8b5067;
-      font-size: 11px;
-      font-weight: 900;
-      white-space: nowrap;
-    }
-
-    .vip-progress {
-      margin-top: 10px;
-    }
-
-    .vip-progress-top {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      color: #7c4c60;
-      font-size: 12px;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
-
-    .vip-progress-track {
-      height: 13px;
-      border-radius: 999px;
-      background: #fff0f5;
-      overflow: hidden;
-      border: 1px solid #f4d0df;
-    }
-
-    .vip-progress-fill {
-      height: 100%;
-      width: 0%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #f7a7c4, #ffd1e2);
-      transition: width 0.25s ease;
-    }
-
-    .vip-actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-
-    .vip-gifts {
-      margin-top: 8px;
-      color: #866474;
-      font-size: 12px;
-      line-height: 1.45;
-    }
-
-    .tap-hot {
-      background: linear-gradient(180deg, #fffafd, #fff2f7);
-      border-color: #efbfd3;
-    }
-
     @media (max-width: 1500px) {
       .grid-main {
         grid-template-columns: 1fr 1fr;
       }
 
       .grid-tools,
-      .grid-lab,
-      .grid-vip {
+      .grid-lab {
         grid-template-columns: 1fr;
       }
     }
@@ -680,13 +535,6 @@
       <button class="btn secondary" onclick="loadAll()">Actualizar</button>
       <button class="btn danger" onclick="clearAttended()">Limpiar atendidos</button>
       <button class="btn danger" onclick="resetAll()">Reset total</button>
-    </div>
-
-    <div class="tabs">
-      <button class="tab active" onclick="showTab('cola', this)">📋 COLA</button>
-      <button class="tab" onclick="showTab('vip', this)">👑 VIP / TAP TAPS</button>
-      <button class="tab" onclick="showTab('dinamicas', this)">🌹 DINÁMICAS</button>
-      <button class="tab" onclick="showTab('lab', this)">🧪 LABORATORIO</button>
     </div>
 
     <div class="stats">
@@ -724,7 +572,6 @@
       </div>
     </div>
 
-    <div id="tab-cola" class="tab-content active">
     <div class="grid-main">
       <section class="panel premium-panel">
         <h2>Premium y llamados</h2>
@@ -751,9 +598,7 @@
         <div id="attendedList" class="list"></div>
       </section>
     </div>
-    </div>
 
-    <div id="tab-dinamicas" class="tab-content">
     <div class="grid-tools">
       <section class="panel rose-panel">
         <h2>🌹 Subasta de rosas</h2>
@@ -801,27 +646,7 @@
         <div id="arcanoPicksList" class="list" style="margin-top: 12px;"></div>
       </section>
     </div>
-    </div>
 
-
-
-    <div id="tab-vip" class="tab-content">
-    <div class="grid-vip">
-      <section class="panel premium-panel">
-        <h2>👑 Caseritos & VIP</h2>
-        <p class="panel-sub">Control interno: monedas acumuladas, regalos frecuentes, recompensas y caseritos de la casa.</p>
-        <div id="vipList" class="list"></div>
-      </section>
-
-      <section class="panel">
-        <h2>👆 Tap taps en vivo</h2>
-        <p class="panel-sub">Top personas que están empujando el live con tap taps.</p>
-        <div id="tapList" class="list"></div>
-      </section>
-    </div>
-    </div>
-
-    <div id="tab-lab" class="tab-content">
     <div class="grid-lab">
       <section class="panel">
         <h2>🧪 Laboratorio de regalos</h2>
@@ -838,10 +663,6 @@
           <button class="btn secondary" onclick="testRoseGift('Susana', 100)">🌹 Susana +100</button>
           <button class="btn secondary" onclick="testRoseGift('Carla', 90)">🌹 Carla +90</button>
           <button class="btn secondary" onclick="testRoseGift('Andrea', 25)">🌹 Andrea +25</button>
-
-          <button class="btn secondary" onclick="testTap('Ana', 50)">Test 👆 Tap</button>
-          <button class="btn secondary" onclick="testTap('Luis', 120)">Test 👆 Tap fuerte</button>
-
         </div>
       </section>
 
@@ -866,7 +687,6 @@
           <button class="btn secondary" onclick="testChat('Pilar','0')">Pilar → 0</button>
         </div>
       </section>
-    </div>
     </div>
   </div>
 
@@ -900,15 +720,11 @@
 
     const premiumAlertBoxEl = document.getElementById("premiumAlertBox");
     const mainBannerEl = document.getElementById("mainBanner");
-    const vipListEl = document.getElementById("vipList");
-    const tapListEl = document.getElementById("tapList");
 
     let fullQueue = [];
     let roseAuction = null;
     let arcanoGame = null;
     let selectedWinnerUsernames = [];
-    let clientesVip = [];
-    let tapMemory = {};
 
     const socket = io(API_BASE);
 
@@ -1305,164 +1121,6 @@ async function unlockAudio() {
       `).join("");
     }
 
-
-
-    function getClienteId(cliente) {
-      return encodeURIComponent(cliente.id || cliente.uniqueId || cliente.username);
-    }
-
-    function getClienteBadge(cliente) {
-      const disponibles = (cliente.extensasGratisGanadas || 0) - (cliente.extensasGratisUsadas || 0);
-
-      if (disponibles > 0) return "🎁 Premio";
-      if (cliente.esVip && cliente.esCaserito) return "👑 Caserito VIP";
-      if (cliente.esVip) return "👑 VIP";
-      if (cliente.esCaserito) return "💖 Caserito";
-      return "🌱 Nuevo";
-    }
-
-    function renderVipClientes() {
-      if (!vipListEl) return;
-
-      if (!clientesVip.length) {
-        vipListEl.innerHTML = `<div class="empty">Aún no hay clientes registrados.</div>`;
-        return;
-      }
-
-      const top = [...clientesVip]
-        .sort((a, b) => {
-          const disponiblesA = (a.extensasGratisGanadas || 0) - (a.extensasGratisUsadas || 0);
-          const disponiblesB = (b.extensasGratisGanadas || 0) - (b.extensasGratisUsadas || 0);
-          const scoreA = disponiblesA * 10000 + (a.monedasAcumuladas || 0) + ((a.totalTaps || 0) / 100) + ((a.totalComentarios || 0) * 2);
-          const scoreB = disponiblesB * 10000 + (b.monedasAcumuladas || 0) + ((b.totalTaps || 0) / 100) + ((b.totalComentarios || 0) * 2);
-          return scoreB - scoreA;
-        })
-        .slice(0, 20);
-
-      vipListEl.innerHTML = top.map((c) => {
-        const monedas = Number(c.monedasAcumuladas || 0);
-        const progreso = monedas % 1500;
-        const faltan = progreso === 0 && monedas > 0 ? 0 : 1500 - progreso;
-        const porcentaje = Math.min(100, Math.floor((progreso / 1500) * 100));
-        const disponibles = (c.extensasGratisGanadas || 0) - (c.extensasGratisUsadas || 0);
-        const topGifts = Object.entries(c.regalos || {})
-          .sort((a, b) => (b[1]?.monedas || 0) - (a[1]?.monedas || 0))
-          .slice(0, 3)
-          .map(([name, data]) => `${name}: ${data.cantidad || 0}`)
-          .join(" · ");
-
-        return `
-          <div class="vip-card">
-            <div class="vip-head">
-              <div class="vip-name">${c.username || "Usuario"}</div>
-              <div class="vip-badge">${getClienteBadge(c)}</div>
-            </div>
-
-            <div class="meta">
-              💎 Monedas: <strong>${monedas}</strong><br>
-              🎁 Regalos: <strong>${c.totalRegalos || 0}</strong><br>
-              👆 Tap taps: <strong>${c.totalTaps || 0}</strong><br>
-              💬 Comentarios: <strong>${c.totalComentarios || 0}</strong><br>
-              🎀 Extensas gratis disponibles: <strong>${disponibles}</strong>
-            </div>
-
-            <div class="vip-progress">
-              <div class="vip-progress-top">
-                <span>${progreso}/1500 monedas</span>
-                <span>${faltan === 0 ? "Premio desbloqueado" : `Faltan ${faltan}`}</span>
-              </div>
-              <div class="vip-progress-track">
-                <div class="vip-progress-fill" style="width:${porcentaje}%"></div>
-              </div>
-            </div>
-
-            ${topGifts ? `<div class="vip-gifts">Regalos frecuentes: ${topGifts}</div>` : ""}
-
-            <div class="vip-actions">
-              <button class="mini-btn secondary" onclick="toggleCaserito('${getClienteId(c)}', ${!c.esCaserito})">
-                ${c.esCaserito ? "Quitar caserito" : "Marcar caserito"}
-              </button>
-              <button class="mini-btn success" onclick="usarExtensaGratis('${getClienteId(c)}')">
-                Usar gratis
-              </button>
-            </div>
-          </div>
-        `;
-      }).join("");
-    }
-
-    function renderTapList() {
-      if (!tapListEl) return;
-
-      const list = Object.values(tapMemory)
-        .sort((a, b) => (b.totalTaps || 0) - (a.totalTaps || 0))
-        .slice(0, 10);
-
-      if (!list.length) {
-        tapListEl.innerHTML = `<div class="empty">Sin tap taps detectados todavía.</div>`;
-        return;
-      }
-
-      tapListEl.innerHTML = list.map(u => `
-        <div class="item">
-          <div class="content">
-            <div class="name">👆 ${u.username}</div>
-
-            <div class="meta">
-              Tap taps: <strong>${u.totalTaps}</strong>
-            </div>
-
-            ${
-              u.cliente?.tituloTap
-                ? `<div class="meta" style="font-weight:800; color:#a23a64;">
-                    ${u.cliente.tituloTap}
-                  </div>`
-                : ""
-            }
-
-          </div>
-        </div>
-      `).join("");
-    }
-
-    async function loadClientesVip() {
-      try {
-        const res = await fetch(`${API_BASE}/clientes-vip`);
-        clientesVip = await res.json();
-        renderVipClientes();
-      } catch (error) {
-        console.error("Error cargando clientes VIP:", error);
-      }
-    }
-
-    async function toggleCaserito(id, esCaserito) {
-      await fetch(`${API_BASE}/clientes-vip/${id}/caserito`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ esCaserito })
-      });
-
-      showBanner(esCaserito ? "💖 Marcado como caserito." : "Se quitó la marca de caserito.");
-      loadClientesVip();
-    }
-
-    async function usarExtensaGratis(id) {
-      const ok = confirm("¿Marcar una pregunta extensa gratis como usada?");
-      if (!ok) return;
-
-      const res = await fetch(`${API_BASE}/clientes-vip/${id}/usar-extensa-gratis`, {
-        method: "POST"
-      });
-
-      if (!res.ok) {
-        showBanner("Esta persona no tiene extensas gratis disponibles.");
-        return;
-      }
-
-      showBanner("🎁 Pregunta extensa gratis marcada como usada.");
-      loadClientesVip();
-    }
-
     async function loadQueue() {
       try {
         const res = await fetch(`${API_BASE}/queue`);
@@ -1500,7 +1158,7 @@ async function unlockAudio() {
     }
 
     async function loadAll() {
-      await Promise.all([loadQueue(), loadRoseAuction(), loadArcanoGame(), loadClientesVip()]);
+      await Promise.all([loadQueue(), loadRoseAuction(), loadArcanoGame()]);
     }
 
     async function callNext() {
@@ -1613,21 +1271,6 @@ async function unlockAudio() {
 
       loadArcanoGame();
     }
-
-   async function testTap(username, taps = 10) {
-  await fetch(`${API_BASE}/test-tap`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      username,
-      taps
-    })
-  });
-
-  showBanner(`👆 ${username} hizo ${taps} tap taps`);
-}
 
     async function startRoseAuction() {
       await fetch(`${API_BASE}/rose-auction/start`, {
@@ -1762,22 +1405,6 @@ async function unlockAudio() {
       showBanner("Sorteo de arcanos limpiado.");
     }
 
-    function showTab(tab, button) {
-      document.querySelectorAll(".tab-content").forEach((el) => {
-        el.classList.remove("active");
-      });
-
-      document.querySelectorAll(".tab").forEach((btn) => {
-        btn.classList.remove("active");
-      });
-
-      const target = document.getElementById("tab-" + tab);
-      if (target) target.classList.add("active");
-
-      if (button) button.classList.add("active");
-    }
-
-
     socket.on("queue:update", (queue) => {
       fullQueue = queue;
       updateStats(queue);
@@ -1821,23 +1448,6 @@ async function unlockAudio() {
 
     socket.on("arcanoGame:pickAccepted", (pick) => {
       showBanner(`🃏 ${pick.username} eligió ${pick.number} · ${pick.arcano}`);
-    });
-
-
-    socket.on("clientesVip:update", (clientes) => {
-      clientesVip = clientes || [];
-      renderVipClientes();
-    });
-
-    socket.on("tap:update", (data) => {
-      const key = data.uniqueId || data.username;
-      tapMemory[key] = data;
-      renderTapList();
-    });
-
-    socket.on("vip:reward", (payload) => {
-      showBanner(payload?.mensaje || "🎁 Se desbloqueó una recompensa VIP.");
-      loadClientesVip();
     });
 
     loadAll();

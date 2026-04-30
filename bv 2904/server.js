@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import http from "http";
-import fs from "fs";
 import { Server } from "socket.io";
 import { WebcastPushConnection } from "tiktok-live-connector";
 import giftRules from "./gift-rules.json" with { type: "json" };
@@ -32,103 +31,6 @@ let queue = [];
 let tiktok = null;
 let currentUsername = "";
 let isConnected = false;
-
-// ---------- CLIENTES VIP / CASERITOS ----------
-
-const DATA_DIR = path.join(__dirname, "data");
-const CLIENTES_FILE = path.join(DATA_DIR, "clientes-vip.json");
-const META_MONEDAS_EXTENSA_GRATIS = 1500;
-
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
-}
-
-let clientesVip = {};
-
-if (fs.existsSync(CLIENTES_FILE)) {
-  try {
-    clientesVip = JSON.parse(fs.readFileSync(CLIENTES_FILE, "utf8"));
-  } catch (error) {
-    console.log("⚠️ No se pudo leer clientes-vip.json:", error.message);
-    clientesVip = {};
-  }
-}
-
-function saveClientesVip() {
-  fs.writeFileSync(CLIENTES_FILE, JSON.stringify(clientesVip, null, 2));
-}
-
-function getClienteVip({ username, uniqueId }) {
-  const safeUsername = username || "Usuario";
-  const key = uniqueId || safeUsername;
-
-  if (!clientesVip[key]) {
-    clientesVip[key] = {
-      id: key,
-      username: safeUsername,
-      uniqueId: uniqueId || "",
-      totalTaps: 0,
-      totalComentarios: 0,
-      totalRegalos: 0,
-      monedasAcumuladas: 0,
-      regalos: {},
-      extensasGratisGanadas: 0,
-      extensasGratisUsadas: 0,
-      esVip: false,
-      esCaserito: false,
-      notas: "",
-      createdAt: nowIso(),
-      updatedAt: nowIso(),
-      lastSeenAt: nowIso()
-    };
-  }
-
-  clientesVip[key].username = safeUsername || clientesVip[key].username;
-  clientesVip[key].uniqueId = uniqueId || clientesVip[key].uniqueId;
-  clientesVip[key].updatedAt = nowIso();
-  clientesVip[key].lastSeenAt = nowIso();
-
-  return clientesVip[key];
-}
-
-function actualizarRecompensasCliente(cliente) {
-  const recompensas = Math.floor(
-    Number(cliente.monedasAcumuladas || 0) / META_MONEDAS_EXTENSA_GRATIS
-  );
-
-  if (recompensas > Number(cliente.extensasGratisGanadas || 0)) {
-    const nuevas = recompensas - Number(cliente.extensasGratisGanadas || 0);
-    cliente.extensasGratisGanadas = recompensas;
-    cliente.esVip = true;
-
-    io.emit("vip:reward", {
-      username: cliente.username,
-      nuevas,
-      disponibles: cliente.extensasGratisGanadas - cliente.extensasGratisUsadas,
-      mensaje: `${cliente.username} ganó ${nuevas} pregunta extensa gratis 💖`
-    });
-  }
-}
-
-function buildClientesVipState() {
-  return Object.values(clientesVip).sort((a, b) => {
-    const scoreA =
-      Number(a.monedasAcumuladas || 0) +
-      Number(a.totalTaps || 0) / 100 +
-      Number(a.totalComentarios || 0) * 2;
-
-    const scoreB =
-      Number(b.monedasAcumuladas || 0) +
-      Number(b.totalTaps || 0) / 100 +
-      Number(b.totalComentarios || 0) * 2;
-
-    return scoreB - scoreA;
-  });
-}
-
-function emitClientesVip() {
-  io.emit("clientesVip:update", buildClientesVipState());
-}
 
 /* NUEVO: estado de salud ampliado para el Guardian */
 let liveActive = false;
@@ -678,27 +580,13 @@ function drawArcanoWinner() {
   return winner;
 }
 
-function getTituloTap(totalTaps = 0) {
-  const taps = Number(totalTaps || 0);
-
-  if (taps >= 10000) return "🏆 Leyenda del Live";
-  if (taps >= 5000) return "👑 A Punto de Ser Leyenda";
-  if (taps >= 3000) return "💎 Incondicional";
-  if (taps >= 1000) return "💖 Ya Es Parte";
-  if (taps >= 500) return "🔥 Siempre Presente";
-  if (taps >= 100) return "💫 Recién Llegad@";
-
-  return "";
-}
-
 // ---------- EVENTOS REUTILIZABLES ----------
 
 function handleGiftEvent({
   username,
   giftName = "Regalo",
   coins = 0,
-  repeatCount = 1,
-  uniqueId = ""
+  repeatCount = 1
 }) {
   const normalizedType = normalizeGiftType(giftName);
   const premiumType = getPremiumAlertType(giftName);
@@ -714,50 +602,17 @@ function handleGiftEvent({
     });
   }
 
-  // 🌹 SUBASTA DE ROSAS
-  // Si la subasta está activa, las rosas SOLO se cuentan en la subasta.
-  // NO suman monedas VIP, NO suman totalRegalos, NO entran a cola normal.
+  // subasta activa: las rosas NO entran a la cola
   if (roseAuction.active && normalizedType === "rose") {
-    registerRoseGift({
-      username,
-      giftId: normalizedType,
-      repeatCount
-    });
-
+    registerRoseGift({ username, giftId: normalizedType, repeatCount });
     return {
       skippedQueue: true,
-      skippedVip: true,
       mode: "rose_auction",
       username,
       giftName,
       repeatCount
     };
   }
-
-  // 👑 VIP / CASERITOS
-  // Solo regalos normales, fuera de subasta.
-  const cliente = getClienteVip({ username, uniqueId });
-
-  const safeCoins = Number(coins || 0);
-  const safeRepeat = Number(repeatCount || 1);
-  const totalCoins = safeCoins * safeRepeat;
-
-  cliente.totalRegalos += safeRepeat;
-  cliente.monedasAcumuladas += totalCoins;
-
-  if (!cliente.regalos[giftName]) {
-    cliente.regalos[giftName] = {
-      cantidad: 0,
-      monedas: 0
-    };
-  }
-
-  cliente.regalos[giftName].cantidad += safeRepeat;
-  cliente.regalos[giftName].monedas += totalCoins;
-
-  actualizarRecompensasCliente(cliente);
-  saveClientesVip();
-  emitClientesVip();
 
   const result = upsertQueueItem({
     username,
@@ -854,59 +709,6 @@ app.get("/status", (req, res) => {
   });
 });
 
-app.get("/clientes-vip", (req, res) => {
-  res.json(buildClientesVipState());
-});
-
-app.post("/clientes-vip/:id/caserito", (req, res) => {
-  const { id } = req.params;
-  const { esCaserito = true } = req.body || {};
-
-  if (!clientesVip[id]) {
-    return res.status(404).json({ error: "Cliente no encontrado" });
-  }
-
-  clientesVip[id].esCaserito = Boolean(esCaserito);
-  clientesVip[id].updatedAt = nowIso();
-
-  saveClientesVip();
-  emitClientesVip();
-
-  res.json({
-    ok: true,
-    cliente: clientesVip[id],
-    clientes: buildClientesVipState()
-  });
-});
-
-app.post("/clientes-vip/:id/usar-extensa-gratis", (req, res) => {
-  const { id } = req.params;
-
-  if (!clientesVip[id]) {
-    return res.status(404).json({ error: "Cliente no encontrado" });
-  }
-
-  const disponibles =
-    Number(clientesVip[id].extensasGratisGanadas || 0) -
-    Number(clientesVip[id].extensasGratisUsadas || 0);
-
-  if (disponibles <= 0) {
-    return res.status(400).json({ error: "No tiene extensas gratis disponibles" });
-  }
-
-  clientesVip[id].extensasGratisUsadas += 1;
-  clientesVip[id].updatedAt = nowIso();
-
-  saveClientesVip();
-  emitClientesVip();
-
-  res.json({
-    ok: true,
-    cliente: clientesVip[id],
-    clientes: buildClientesVipState()
-  });
-});
-
 // ---------- TESTS ----------
 
 app.post("/test-gift", (req, res) => {
@@ -950,52 +752,6 @@ app.post("/test-chat", (req, res) => {
     ok: true,
     result,
     arcanoGame: buildArcanoGameState()
-  });
-});
-
-app.post("/test-tap", (req, res) => {
-  const { username = "Test_Tap", taps = 10 } = req.body || {};
-
-  const cliente = getClienteVip({
-    username,
-    uniqueId: username
-  });
-
-  const safeTaps = Number(taps || 1);
-
-  // 👉 acumula taps
-  cliente.totalTaps += safeTaps;
-
-  // 🔥 NUEVO: lógica de títulos
-  const tituloAnterior = cliente.tituloTap || "";
-  const tituloNuevo = getTituloTap(cliente.totalTaps);
-
-  cliente.tituloTap = tituloNuevo;
-
-  if (tituloNuevo && tituloNuevo !== tituloAnterior) {
-    io.emit("tap:title-unlocked", {
-      username: cliente.username,
-      totalTaps: cliente.totalTaps,
-      tituloTap: tituloNuevo,
-      mensaje: `${cliente.username} ahora es ${tituloNuevo}`
-    });
-  }
-
-  // 👉 guarda y emite
-  saveClientesVip();
-  emitClientesVip();
-
-  io.emit("tap:update", {
-    username,
-    uniqueId: username,
-    taps: safeTaps,
-    totalTaps: cliente.totalTaps,
-    cliente
-  });
-
-  res.json({
-    ok: true,
-    cliente
   });
 });
 
@@ -1309,8 +1065,7 @@ app.post("/connect", async (req, res) => {
         username,
         giftName,
         coins,
-        repeatCount,
-        uniqueId: data.uniqueId || data.user?.uniqueId || data.userId || username
+        repeatCount
       });
 
       console.log("🎁 Resultado handleGiftEvent:", result);
@@ -1331,79 +1086,12 @@ app.post("/connect", async (req, res) => {
 
       console.log("💬 Chat:", username, comment);
 
-      const cliente = getClienteVip({
-        username,
-        uniqueId: data.uniqueId || data.user?.uniqueId || username
-      });
-
-      cliente.totalComentarios += 1;
-      saveClientesVip();
-      emitClientesVip();
-
       const result = handleChatEvent({ username, comment });
 
       if (result?.ok) {
         console.log("🃏 Arcano registrado:", result.pick);
       }
     });
-
-    tiktok.on("like", (data) => {
-  lastEventAt = nowIso();
-  liveActive = true;
-
-  const username =
-    data.nickname ||
-    data.user?.nickname ||
-    data.uniqueId ||
-    data.user?.uniqueId ||
-    "Usuario";
-
-  const uniqueId =
-    data.uniqueId ||
-    data.user?.uniqueId ||
-    username;
-
-  const taps = Number(
-    data.likeCount ||
-    data.count ||
-    data.repeatCount ||
-    1
-  );
-
-  const cliente = getClienteVip({ username, uniqueId });
-
-  // 👇 ESTA LÍNEA YA LA TIENES
-  cliente.totalTaps += taps;
-
-  // 🔥 AQUÍ VA LO NUEVO (JUSTO DESPUÉS)
-  const tituloAnterior = cliente.tituloTap || "";
-  const tituloNuevo = getTituloTap(cliente.totalTaps);
-
-  cliente.tituloTap = tituloNuevo;
-
-  if (tituloNuevo && tituloNuevo !== tituloAnterior) {
-    io.emit("tap:title-unlocked", {
-      username: cliente.username,
-      totalTaps: cliente.totalTaps,
-      tituloTap: tituloNuevo,
-      mensaje: `${cliente.username} ahora es ${tituloNuevo}`
-    });
-  }
-
-  // 👇 ESTO YA EXISTÍA
-  saveClientesVip();
-  emitClientesVip();
-
-  io.emit("tap:update", {
-    username,
-    uniqueId,
-    taps,
-    totalTaps: cliente.totalTaps,
-    cliente
-  });
-
-  console.log("👆 Tap tap:", username, taps, "Total:", cliente.totalTaps);
-});
 
     tiktok.on("streamEnd", () => {
       console.log("📴 Live finalizado");
@@ -1472,7 +1160,6 @@ io.on("connection", (socket) => {
   socket.emit("live_status", { isConnected, currentUsername });
   socket.emit("roseAuction:update", buildRoseAuctionState());
   socket.emit("arcanoGame:update", buildArcanoGameState());
-  socket.emit("clientesVip:update", buildClientesVipState());
 });
 
 server.listen(PORT, () => {

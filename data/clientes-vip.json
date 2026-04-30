@@ -1,0 +1,4719 @@
+{
+  "Test_Tiara": {
+    "id": "Test_Tiara",
+    "username": "Test_Tiara",
+    "uniqueId": "",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 71,
+    "monedasAcumuladas": 10650,
+    "regalos": {
+      "Feather Tiara": {
+        "cantidad": 71,
+        "monedas": 10650
+      }
+    },
+    "extensasGratisGanadas": 7,
+    "extensasGratisUsadas": 0,
+    "esVip": true,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-29T17:12:09.125Z",
+    "updatedAt": "2026-04-30T12:56:43.467Z",
+    "lastSeenAt": "2026-04-30T12:56:43.467Z"
+  },
+  "Ana": {
+    "id": "Ana",
+    "username": "Ana",
+    "uniqueId": "Ana",
+    "totalTaps": 1150,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-29T18:05:57.257Z",
+    "updatedAt": "2026-04-30T12:56:57.154Z",
+    "lastSeenAt": "2026-04-30T12:56:57.154Z",
+    "tituloTap": "💖 Ya Es Parte"
+  },
+  "Luis": {
+    "id": "Luis",
+    "username": "Luis",
+    "uniqueId": "Luis",
+    "totalTaps": 3600,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-29T18:06:07.015Z",
+    "updatedAt": "2026-04-30T12:56:58.507Z",
+    "lastSeenAt": "2026-04-30T12:56:58.508Z",
+    "tituloTap": "💎 Incondicional"
+  },
+  "Test_Capibara": {
+    "id": "Test_Capibara",
+    "username": "Test_Capibara",
+    "uniqueId": "",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 51,
+    "monedasAcumuladas": 1530,
+    "regalos": {
+      "Capibara": {
+        "cantidad": 51,
+        "monedas": 1530
+      }
+    },
+    "extensasGratisGanadas": 1,
+    "extensasGratisUsadas": 0,
+    "esVip": true,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-29T19:18:08.482Z",
+    "updatedAt": "2026-04-30T12:56:42.476Z",
+    "lastSeenAt": "2026-04-30T12:56:42.476Z"
+  },
+  "3.00.300": {
+    "id": "3.00.300",
+    "username": "Brendaa",
+    "uniqueId": "3.00.300",
+    "totalTaps": 9259,
+    "totalComentarios": 58,
+    "totalRegalos": 7,
+    "monedasAcumuladas": 15,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Team Cheers": {
+        "cantidad": 2,
+        "monedas": 2
+      },
+      "Rose": {
+        "cantidad": 2,
+        "monedas": 2
+      },
+      "Finger Heart": {
+        "cantidad": 2,
+        "monedas": 10
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-29T23:59:57.118Z",
+    "updatedAt": "2026-04-30T04:10:28.714Z",
+    "lastSeenAt": "2026-04-30T04:10:28.714Z"
+  },
+  "almaoliv_": {
+    "id": "almaoliv_",
+    "username": "A L M A",
+    "uniqueId": "almaoliv_",
+    "totalTaps": 85,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:00:36.843Z",
+    "updatedAt": "2026-04-30T00:02:37.325Z",
+    "lastSeenAt": "2026-04-30T00:02:37.325Z"
+  },
+  "trueno2.044": {
+    "id": "trueno2.044",
+    "username": "🫡꧁MANDO TRUENO꧂🫡",
+    "uniqueId": "trueno2.044",
+    "totalTaps": 0,
+    "totalComentarios": 3,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:00:38.504Z",
+    "updatedAt": "2026-04-30T00:02:15.654Z",
+    "lastSeenAt": "2026-04-30T00:02:15.654Z"
+  },
+  "c4rd_go": {
+    "id": "c4rd_go",
+    "username": "hazel 🌷",
+    "uniqueId": "c4rd_go",
+    "totalTaps": 22165,
+    "totalComentarios": 364,
+    "totalRegalos": 7,
+    "monedasAcumuladas": 53,
+    "regalos": {
+      "Popular Vote": {
+        "cantidad": 2,
+        "monedas": 2
+      },
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Perfume": {
+        "cantidad": 2,
+        "monedas": 40
+      },
+      "Finger Heart": {
+        "cantidad": 2,
+        "monedas": 10
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:01:03.869Z",
+    "updatedAt": "2026-04-30T05:01:49.737Z",
+    "lastSeenAt": "2026-04-30T05:01:49.737Z"
+  },
+  "karla_macarena_ortiz_": {
+    "id": "karla_macarena_ortiz_",
+    "username": "karla ☀️",
+    "uniqueId": "karla_macarena_ortiz_",
+    "totalTaps": 1,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:01:06.242Z",
+    "updatedAt": "2026-04-30T00:01:06.242Z",
+    "lastSeenAt": "2026-04-30T00:01:06.242Z"
+  },
+  "elmee502": {
+    "id": "elmee502",
+    "username": "Elmerreyes",
+    "uniqueId": "elmee502",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:02:24.047Z",
+    "updatedAt": "2026-04-30T00:02:57.348Z",
+    "lastSeenAt": "2026-04-30T00:02:57.348Z"
+  },
+  "la.dianis.1.1": {
+    "id": "la.dianis.1.1",
+    "username": "La Dianis 1.1",
+    "uniqueId": "la.dianis.1.1",
+    "totalTaps": 2,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:05:53.614Z",
+    "updatedAt": "2026-04-30T00:08:05.662Z",
+    "lastSeenAt": "2026-04-30T00:08:05.662Z"
+  },
+  "deluxgg9": {
+    "id": "deluxgg9",
+    "username": "Delux",
+    "uniqueId": "deluxgg9",
+    "totalTaps": 276,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:07:29.997Z",
+    "updatedAt": "2026-04-30T00:09:01.948Z",
+    "lastSeenAt": "2026-04-30T00:09:01.948Z"
+  },
+  "xtcxl7": {
+    "id": "xtcxl7",
+    "username": "7",
+    "uniqueId": "xtcxl7",
+    "totalTaps": 99,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:07:41.642Z",
+    "updatedAt": "2026-04-30T00:08:54.485Z",
+    "lastSeenAt": "2026-04-30T00:08:54.485Z"
+  },
+  "mar.guevara94": {
+    "id": "mar.guevara94",
+    "username": "Ladymar Moreno❤️",
+    "uniqueId": "mar.guevara94",
+    "totalTaps": 0,
+    "totalComentarios": 12,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 101,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Hand Heart": {
+        "cantidad": 1,
+        "monedas": 100
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:07:43.315Z",
+    "updatedAt": "2026-04-30T00:18:40.219Z",
+    "lastSeenAt": "2026-04-30T00:18:40.219Z"
+  },
+  "mayratzep7": {
+    "id": "mayratzep7",
+    "username": "♥️☆Mary☆💙",
+    "uniqueId": "mayratzep7",
+    "totalTaps": 416,
+    "totalComentarios": 4,
+    "totalRegalos": 3,
+    "monedasAcumuladas": 61,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:07:47.544Z",
+    "updatedAt": "2026-04-30T00:16:52.378Z",
+    "lastSeenAt": "2026-04-30T00:16:52.378Z"
+  },
+  "lauramartinez2168": {
+    "id": "lauramartinez2168",
+    "username": "Laura Martinez",
+    "uniqueId": "lauramartinez2168",
+    "totalTaps": 733,
+    "totalComentarios": 6,
+    "totalRegalos": 5,
+    "monedasAcumuladas": 219,
+    "regalos": {
+      "Feather Tiara": {
+        "cantidad": 1,
+        "monedas": 149
+      },
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      },
+      "Finger Heart": {
+        "cantidad": 2,
+        "monedas": 10
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:09:34.887Z",
+    "updatedAt": "2026-04-30T04:22:20.867Z",
+    "lastSeenAt": "2026-04-30T04:22:20.867Z"
+  },
+  "nirvana_dej": {
+    "id": "nirvana_dej",
+    "username": "Nirvanita  💖",
+    "uniqueId": "nirvana_dej",
+    "totalTaps": 144,
+    "totalComentarios": 10,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:10:30.021Z",
+    "updatedAt": "2026-04-30T04:54:15.926Z",
+    "lastSeenAt": "2026-04-30T04:54:15.926Z"
+  },
+  "yarissaalcequiez": {
+    "id": "yarissaalcequiez",
+    "username": "Yari",
+    "uniqueId": "yarissaalcequiez",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:11:01.898Z",
+    "updatedAt": "2026-04-30T00:11:01.898Z",
+    "lastSeenAt": "2026-04-30T00:11:01.898Z"
+  },
+  "josecarde12": {
+    "id": "josecarde12",
+    "username": "Pedro pedro pe",
+    "uniqueId": "josecarde12",
+    "totalTaps": 1,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:11:26.701Z",
+    "updatedAt": "2026-04-30T00:11:26.701Z",
+    "lastSeenAt": "2026-04-30T00:11:26.701Z"
+  },
+  "santy.20270": {
+    "id": "santy.20270",
+    "username": "santy 🫦",
+    "uniqueId": "santy.20270",
+    "totalTaps": 438,
+    "totalComentarios": 3,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:12:06.739Z",
+    "updatedAt": "2026-04-30T00:26:03.129Z",
+    "lastSeenAt": "2026-04-30T00:26:03.129Z"
+  },
+  "hurtado_2807": {
+    "id": "hurtado_2807",
+    "username": "Nei⚡🥷🏾",
+    "uniqueId": "hurtado_2807",
+    "totalTaps": 8,
+    "totalComentarios": 1,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:14:03.362Z",
+    "updatedAt": "2026-04-30T00:14:36.377Z",
+    "lastSeenAt": "2026-04-30T00:14:36.377Z"
+  },
+  "gerardocolque83": {
+    "id": "gerardocolque83",
+    "username": "yoyo",
+    "uniqueId": "gerardocolque83",
+    "totalTaps": 49,
+    "totalComentarios": 2,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:15:27.724Z",
+    "updatedAt": "2026-04-30T00:15:43.591Z",
+    "lastSeenAt": "2026-04-30T00:15:43.591Z"
+  },
+  "annabelsita": {
+    "id": "annabelsita",
+    "username": "ANNABELSITA🫶💖😍",
+    "uniqueId": "annabelsita",
+    "totalTaps": 140,
+    "totalComentarios": 3,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 60,
+    "regalos": {
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:18:26.124Z",
+    "updatedAt": "2026-04-30T00:25:33.284Z",
+    "lastSeenAt": "2026-04-30T00:25:33.284Z"
+  },
+  "jennifer.dominguez2": {
+    "id": "jennifer.dominguez2",
+    "username": "Jennifer Domínguez 💕",
+    "uniqueId": "jennifer.dominguez2",
+    "totalTaps": 67,
+    "totalComentarios": 8,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:21:06.268Z",
+    "updatedAt": "2026-04-30T00:22:54.242Z",
+    "lastSeenAt": "2026-04-30T00:22:54.242Z"
+  },
+  "im.linny": {
+    "id": "im.linny",
+    "username": "Linda™🕯",
+    "uniqueId": "im.linny",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:21:43.392Z",
+    "updatedAt": "2026-04-30T00:22:34.565Z",
+    "lastSeenAt": "2026-04-30T00:22:34.565Z"
+  },
+  "julietmons1": {
+    "id": "julietmons1",
+    "username": "♡꧁MOON꧂♡",
+    "uniqueId": "julietmons1",
+    "totalTaps": 0,
+    "totalComentarios": 3,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:21:53.210Z",
+    "updatedAt": "2026-04-30T00:25:51.382Z",
+    "lastSeenAt": "2026-04-30T00:25:51.382Z"
+  },
+  "morenojaky504": {
+    "id": "morenojaky504",
+    "username": "👑🐺💙🇭🇳CATRACHA🇭🇳😈💜",
+    "uniqueId": "morenojaky504",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 5,
+    "monedasAcumuladas": 63,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      },
+      "Rose": {
+        "cantidad": 2,
+        "monedas": 2
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:23:29.706Z",
+    "updatedAt": "2026-04-30T00:28:09.490Z",
+    "lastSeenAt": "2026-04-30T00:28:09.490Z"
+  },
+  "kiuvojdea": {
+    "id": "kiuvojdea",
+    "username": "kainnzzz",
+    "uniqueId": "kiuvojdea",
+    "totalTaps": 0,
+    "totalComentarios": 6,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:24:32.064Z",
+    "updatedAt": "2026-04-30T00:31:36.248Z",
+    "lastSeenAt": "2026-04-30T00:31:36.248Z"
+  },
+  "user6xd0z70l5c": {
+    "id": "user6xd0z70l5c",
+    "username": "Phạm Văn Thắng",
+    "uniqueId": "user6xd0z70l5c",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:24:48.476Z",
+    "updatedAt": "2026-04-30T00:24:48.476Z",
+    "lastSeenAt": "2026-04-30T00:24:48.476Z"
+  },
+  "ejercito89": {
+    "id": "ejercito89",
+    "username": "comando",
+    "uniqueId": "ejercito89",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:24:57.749Z",
+    "updatedAt": "2026-04-30T00:25:52.290Z",
+    "lastSeenAt": "2026-04-30T00:25:52.290Z"
+  },
+  "y00849": {
+    "id": "y00849",
+    "username": "-I🍒Anita🍒🎱💥",
+    "uniqueId": "y00849",
+    "totalTaps": 456,
+    "totalComentarios": 4,
+    "totalRegalos": 3,
+    "monedasAcumuladas": 189,
+    "regalos": {
+      "Perfume": {
+        "cantidad": 2,
+        "monedas": 40
+      },
+      "Feather Tiara": {
+        "cantidad": 1,
+        "monedas": 149
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:29:49.987Z",
+    "updatedAt": "2026-04-30T02:14:19.738Z",
+    "lastSeenAt": "2026-04-30T02:14:19.738Z"
+  },
+  "leiners18": {
+    "id": "leiners18",
+    "username": ".L",
+    "uniqueId": "leiners18",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:29:55.781Z",
+    "updatedAt": "2026-04-30T00:31:33.773Z",
+    "lastSeenAt": "2026-04-30T00:31:33.773Z"
+  },
+  "fer_mr18": {
+    "id": "fer_mr18",
+    "username": "Fernanda Mejía",
+    "uniqueId": "fer_mr18",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:30:47.867Z",
+    "updatedAt": "2026-04-30T00:31:29.613Z",
+    "lastSeenAt": "2026-04-30T00:31:29.614Z"
+  },
+  "biazinha3625": {
+    "id": "biazinha3625",
+    "username": ".♡Lili♡.",
+    "uniqueId": "biazinha3625",
+    "totalTaps": 0,
+    "totalComentarios": 4,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 60,
+    "regalos": {
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:31:47.836Z",
+    "updatedAt": "2026-04-30T00:40:42.764Z",
+    "lastSeenAt": "2026-04-30T00:40:42.764Z"
+  },
+  "alelycardenas": {
+    "id": "alelycardenas",
+    "username": "Alely Cardenas 🎀🫶",
+    "uniqueId": "alelycardenas",
+    "totalTaps": 288,
+    "totalComentarios": 1,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:32:43.410Z",
+    "updatedAt": "2026-04-30T00:34:19.761Z",
+    "lastSeenAt": "2026-04-30T00:34:19.761Z"
+  },
+  "arianachaduvi4": {
+    "id": "arianachaduvi4",
+    "username": "May🫶🏽🎀",
+    "uniqueId": "arianachaduvi4",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:35:03.045Z",
+    "updatedAt": "2026-04-30T00:35:03.045Z",
+    "lastSeenAt": "2026-04-30T00:35:03.045Z"
+  },
+  "aldamamarilia": {
+    "id": "aldamamarilia",
+    "username": "Aldama Marilia",
+    "uniqueId": "aldamamarilia",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:35:06.459Z",
+    "updatedAt": "2026-04-30T00:39:53.470Z",
+    "lastSeenAt": "2026-04-30T00:39:53.470Z"
+  },
+  "fernanda_ortigz": {
+    "id": "fernanda_ortigz",
+    "username": "Fer🤍",
+    "uniqueId": "fernanda_ortigz",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:36:27.953Z",
+    "updatedAt": "2026-04-30T00:36:27.953Z",
+    "lastSeenAt": "2026-04-30T00:36:27.953Z"
+  },
+  "mzmaritza": {
+    "id": "mzmaritza",
+    "username": "Maritza",
+    "uniqueId": "mzmaritza",
+    "totalTaps": 276,
+    "totalComentarios": 2,
+    "totalRegalos": 3,
+    "monedasAcumuladas": 3,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Rose": {
+        "cantidad": 2,
+        "monedas": 2
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:36:52.544Z",
+    "updatedAt": "2026-04-30T00:40:53.641Z",
+    "lastSeenAt": "2026-04-30T00:40:53.641Z"
+  },
+  "nathalia..sr": {
+    "id": "nathalia..sr",
+    "username": "Nathalia",
+    "uniqueId": "nathalia..sr",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:37:06.547Z",
+    "updatedAt": "2026-04-30T00:40:50.319Z",
+    "lastSeenAt": "2026-04-30T00:40:50.319Z"
+  },
+  "rrywadx": {
+    "id": "rrywadx",
+    "username": "ara",
+    "uniqueId": "rrywadx",
+    "totalTaps": 253,
+    "totalComentarios": 19,
+    "totalRegalos": 3,
+    "monedasAcumuladas": 61,
+    "regalos": {
+      "Capybara": {
+        "cantidad": 2,
+        "monedas": 60
+      },
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:37:58.570Z",
+    "updatedAt": "2026-04-30T04:12:49.702Z",
+    "lastSeenAt": "2026-04-30T04:12:49.702Z"
+  },
+  "rrrrominik": {
+    "id": "rrrrominik",
+    "username": "𝓡 𝓸 𝓶 𝓲 𝓷 𝓲 𝓴 🐉",
+    "uniqueId": "rrrrominik",
+    "totalTaps": 2930,
+    "totalComentarios": 114,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:39:44.442Z",
+    "updatedAt": "2026-04-30T02:55:13.886Z",
+    "lastSeenAt": "2026-04-30T02:55:13.886Z"
+  },
+  "crespa918": {
+    "id": "crespa918",
+    "username": "ℭ𝔯𝔢𝔰𝔭𝔞777𝔬𝔣𝔦𝔠𝔦𝔞𝔩🖤",
+    "uniqueId": "crespa918",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:41:41.557Z",
+    "updatedAt": "2026-04-30T00:41:45.611Z",
+    "lastSeenAt": "2026-04-30T00:41:45.611Z"
+  },
+  "marumarinahedo": {
+    "id": "marumarinahedo",
+    "username": "Maru",
+    "uniqueId": "marumarinahedo",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:43:13.637Z",
+    "updatedAt": "2026-04-30T00:43:13.637Z",
+    "lastSeenAt": "2026-04-30T00:43:13.637Z"
+  },
+  "zeusbarrios17": {
+    "id": "zeusbarrios17",
+    "username": "zeus barrios",
+    "uniqueId": "zeusbarrios17",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 60,
+    "regalos": {
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:43:21.100Z",
+    "updatedAt": "2026-04-30T00:46:52.518Z",
+    "lastSeenAt": "2026-04-30T00:46:52.518Z"
+  },
+  "natygp_a": {
+    "id": "natygp_a",
+    "username": "nataly",
+    "uniqueId": "natygp_a",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:44:29.038Z",
+    "updatedAt": "2026-04-30T00:47:23.363Z",
+    "lastSeenAt": "2026-04-30T00:47:23.363Z"
+  },
+  "916antony00": {
+    "id": "916antony00",
+    "username": "Tony nava",
+    "uniqueId": "916antony00",
+    "totalTaps": 160,
+    "totalComentarios": 2,
+    "totalRegalos": 23,
+    "monedasAcumuladas": 92,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Popular Vote": {
+        "cantidad": 16,
+        "monedas": 16
+      },
+      "Rose": {
+        "cantidad": 75,
+        "monedas": 75
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:45:09.532Z",
+    "updatedAt": "2026-04-30T00:48:30.886Z",
+    "lastSeenAt": "2026-04-30T00:48:30.886Z"
+  },
+  "00._32_12": {
+    "id": "00._32_12",
+    "username": "@00._32_12",
+    "uniqueId": "00._32_12",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:45:53.274Z",
+    "updatedAt": "2026-04-30T00:47:26.671Z",
+    "lastSeenAt": "2026-04-30T00:47:26.671Z"
+  },
+  "linda1hermosa": {
+    "id": "linda1hermosa",
+    "username": "linda❤️",
+    "uniqueId": "linda1hermosa",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:48:30.873Z",
+    "updatedAt": "2026-04-30T00:50:39.679Z",
+    "lastSeenAt": "2026-04-30T00:50:39.679Z"
+  },
+  "osorio19965": {
+    "id": "osorio19965",
+    "username": "osorio19965",
+    "uniqueId": "osorio19965",
+    "totalTaps": 74,
+    "totalComentarios": 0,
+    "totalRegalos": 13,
+    "monedasAcumuladas": 82,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Rose": {
+        "cantidad": 81,
+        "monedas": 81
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:49:55.040Z",
+    "updatedAt": "2026-04-30T00:53:40.382Z",
+    "lastSeenAt": "2026-04-30T00:53:40.382Z"
+  },
+  "kazzstc": {
+    "id": "kazzstc",
+    "username": "Kazz.",
+    "uniqueId": "kazzstc",
+    "totalTaps": 0,
+    "totalComentarios": 6,
+    "totalRegalos": 21,
+    "monedasAcumuladas": 60,
+    "regalos": {
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      },
+      "Rose": {
+        "cantidad": 0,
+        "monedas": 0
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:50:53.805Z",
+    "updatedAt": "2026-04-30T01:06:17.746Z",
+    "lastSeenAt": "2026-04-30T01:06:17.746Z"
+  },
+  "jazmin_lgmt": {
+    "id": "jazmin_lgmt",
+    "username": "Jazmín_🪾🇵🇾🫵🏿",
+    "uniqueId": "jazmin_lgmt",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:52:00.923Z",
+    "updatedAt": "2026-04-30T00:57:00.152Z",
+    "lastSeenAt": "2026-04-30T00:57:00.152Z"
+  },
+  "claudialopez1908": {
+    "id": "claudialopez1908",
+    "username": "Claudia Lopez@",
+    "uniqueId": "claudialopez1908",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 20,
+    "monedasAcumuladas": 72,
+    "regalos": {
+      "Rose": {
+        "cantidad": 72,
+        "monedas": 72
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:53:10.500Z",
+    "updatedAt": "2026-04-30T00:53:56.619Z",
+    "lastSeenAt": "2026-04-30T00:53:56.619Z"
+  },
+  "bya24jmlp": {
+    "id": "bya24jmlp",
+    "username": "😍Nayeli🐥 d🥰 AK 24😍🐥",
+    "uniqueId": "bya24jmlp",
+    "totalTaps": 419,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:54:25.594Z",
+    "updatedAt": "2026-04-30T00:57:09.148Z",
+    "lastSeenAt": "2026-04-30T00:57:09.148Z"
+  },
+  "al091125gp": {
+    "id": "al091125gp",
+    "username": "?",
+    "uniqueId": "al091125gp",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:55:28.671Z",
+    "updatedAt": "2026-04-30T00:56:59.286Z",
+    "lastSeenAt": "2026-04-30T00:56:59.286Z"
+  },
+  "edu._.21js": {
+    "id": "edu._.21js",
+    "username": "Edu👻👻",
+    "uniqueId": "edu._.21js",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:55:42.080Z",
+    "updatedAt": "2026-04-30T00:55:42.080Z",
+    "lastSeenAt": "2026-04-30T00:55:42.080Z"
+  },
+  "victorrhlm1760": {
+    "id": "victorrhlm1760",
+    "username": "J ' CH DANY ....11",
+    "uniqueId": "victorrhlm1760",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:57:29.910Z",
+    "updatedAt": "2026-04-30T01:06:21.052Z",
+    "lastSeenAt": "2026-04-30T01:06:21.052Z"
+  },
+  "anitavasquez2002.0": {
+    "id": "anitavasquez2002.0",
+    "username": "Anita🕷️",
+    "uniqueId": "anitavasquez2002.0",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:57:30.758Z",
+    "updatedAt": "2026-04-30T00:57:30.758Z",
+    "lastSeenAt": "2026-04-30T00:57:30.758Z"
+  },
+  "rebe0407": {
+    "id": "rebe0407",
+    "username": "rebeca_407",
+    "uniqueId": "rebe0407",
+    "totalTaps": 1,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 100,
+    "regalos": {
+      "Hand Heart": {
+        "cantidad": 1,
+        "monedas": 100
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T00:59:18.961Z",
+    "updatedAt": "2026-04-30T01:04:26.063Z",
+    "lastSeenAt": "2026-04-30T01:04:26.063Z"
+  },
+  "leonardo97deleon": {
+    "id": "leonardo97deleon",
+    "username": "Leonardo97deLeon",
+    "uniqueId": "leonardo97deleon",
+    "totalTaps": 127,
+    "totalComentarios": 9,
+    "totalRegalos": 5,
+    "monedasAcumuladas": 63,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "White Rose": {
+        "cantidad": 2,
+        "monedas": 2
+      },
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:01:06.674Z",
+    "updatedAt": "2026-04-30T01:21:35.449Z",
+    "lastSeenAt": "2026-04-30T01:21:35.449Z"
+  },
+  "_137825": {
+    "id": "_137825",
+    "username": "ᗩᖇEᒪY 🐝🧔🏻‍♂️🍯",
+    "uniqueId": "_137825",
+    "totalTaps": 0,
+    "totalComentarios": 11,
+    "totalRegalos": 3,
+    "monedasAcumuladas": 41,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Perfume": {
+        "cantidad": 2,
+        "monedas": 40
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:01:24.910Z",
+    "updatedAt": "2026-04-30T01:21:35.441Z",
+    "lastSeenAt": "2026-04-30T01:21:35.441Z"
+  },
+  "daniperez500": {
+    "id": "daniperez500",
+    "username": "𝕔𝕙𝕠𝕔𝕠𝕝𝕒𝕥_🍫💗",
+    "uniqueId": "daniperez500",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:05:54.637Z",
+    "updatedAt": "2026-04-30T01:06:23.507Z",
+    "lastSeenAt": "2026-04-30T01:06:23.507Z"
+  },
+  "monicaduran10064": {
+    "id": "monicaduran10064",
+    "username": "MonicaGD",
+    "uniqueId": "monicaduran10064",
+    "totalTaps": 1083,
+    "totalComentarios": 3,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:06:16.935Z",
+    "updatedAt": "2026-04-30T01:41:44.899Z",
+    "lastSeenAt": "2026-04-30T01:41:44.899Z"
+  },
+  "emiradrielduran29": {
+    "id": "emiradrielduran29",
+    "username": "Alexandra🍓",
+    "uniqueId": "emiradrielduran29",
+    "totalTaps": 0,
+    "totalComentarios": 9,
+    "totalRegalos": 5,
+    "monedasAcumuladas": 101,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      },
+      "Perfume": {
+        "cantidad": 2,
+        "monedas": 40
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:07:55.631Z",
+    "updatedAt": "2026-04-30T01:21:35.455Z",
+    "lastSeenAt": "2026-04-30T01:21:35.455Z"
+  },
+  "lhfrankwilbert": {
+    "id": "lhfrankwilbert",
+    "username": "LH Frank Wilbert",
+    "uniqueId": "lhfrankwilbert",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 40,
+    "regalos": {
+      "Perfume": {
+        "cantidad": 2,
+        "monedas": 40
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:10:12.266Z",
+    "updatedAt": "2026-04-30T01:11:10.817Z",
+    "lastSeenAt": "2026-04-30T01:11:10.817Z"
+  },
+  "chemarobles2": {
+    "id": "chemarobles2",
+    "username": "CHEMA_HDERZ",
+    "uniqueId": "chemarobles2",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:10:19.727Z",
+    "updatedAt": "2026-04-30T01:10:48.453Z",
+    "lastSeenAt": "2026-04-30T01:10:48.453Z"
+  },
+  "areli_are24": {
+    "id": "areli_are24",
+    "username": "Himawari Uzumaki",
+    "uniqueId": "areli_are24",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 2,
+    "regalos": {
+      "Rose": {
+        "cantidad": 2,
+        "monedas": 2
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:11:25.757Z",
+    "updatedAt": "2026-04-30T01:11:29.092Z",
+    "lastSeenAt": "2026-04-30T01:11:29.092Z"
+  },
+  "gustavogarcia952": {
+    "id": "gustavogarcia952",
+    "username": "Guss📚✨️",
+    "uniqueId": "gustavogarcia952",
+    "totalTaps": 60,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:15:39.974Z",
+    "updatedAt": "2026-04-30T01:16:03.856Z",
+    "lastSeenAt": "2026-04-30T01:16:03.856Z"
+  },
+  "yorkh15": {
+    "id": "yorkh15",
+    "username": "YORCHK",
+    "uniqueId": "yorkh15",
+    "totalTaps": 0,
+    "totalComentarios": 12,
+    "totalRegalos": 3,
+    "monedasAcumuladas": 3,
+    "regalos": {
+      "You're awesome": {
+        "cantidad": 2,
+        "monedas": 2
+      },
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:21:51.029Z",
+    "updatedAt": "2026-04-30T01:25:59.713Z",
+    "lastSeenAt": "2026-04-30T01:25:59.713Z"
+  },
+  "cely.oficial.22": {
+    "id": "cely.oficial.22",
+    "username": "🖤🕊️Alizon🇲🇽💫💥🖤",
+    "uniqueId": "cely.oficial.22",
+    "totalTaps": 0,
+    "totalComentarios": 3,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:23:14.285Z",
+    "updatedAt": "2026-04-30T01:25:59.716Z",
+    "lastSeenAt": "2026-04-30T01:25:59.716Z"
+  },
+  "kevin_c880": {
+    "id": "kevin_c880",
+    "username": "Kevin.C",
+    "uniqueId": "kevin_c880",
+    "totalTaps": 0,
+    "totalComentarios": 13,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 298,
+    "regalos": {
+      "Feather Tiara": {
+        "cantidad": 2,
+        "monedas": 298
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:26:14.445Z",
+    "updatedAt": "2026-04-30T01:58:40.312Z",
+    "lastSeenAt": "2026-04-30T01:58:40.312Z"
+  },
+  "cr7siuuu248": {
+    "id": "cr7siuuu248",
+    "username": "🌪⚡️oscar 504🌪⚡️",
+    "uniqueId": "cr7siuuu248",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:26:37.389Z",
+    "updatedAt": "2026-04-30T01:26:37.389Z",
+    "lastSeenAt": "2026-04-30T01:26:37.389Z"
+  },
+  "notificacion28874": {
+    "id": "notificacion28874",
+    "username": "SDK CARLITOS FAN NEK7",
+    "uniqueId": "notificacion28874",
+    "totalTaps": 0,
+    "totalComentarios": 3,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:29:20.749Z",
+    "updatedAt": "2026-04-30T01:37:36.144Z",
+    "lastSeenAt": "2026-04-30T01:37:36.144Z"
+  },
+  "mau_perez1": {
+    "id": "mau_perez1",
+    "username": "⚡️Mau⚡️",
+    "uniqueId": "mau_perez1",
+    "totalTaps": 21,
+    "totalComentarios": 9,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 60,
+    "regalos": {
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:29:25.764Z",
+    "updatedAt": "2026-04-30T01:37:36.164Z",
+    "lastSeenAt": "2026-04-30T01:37:36.164Z"
+  },
+  "elbocho_56": {
+    "id": "elbocho_56",
+    "username": "🌽★𝙱𝙾𝙲𝙷𝙾★🚛👑🌽",
+    "uniqueId": "elbocho_56",
+    "totalTaps": 2,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:32:05.755Z",
+    "updatedAt": "2026-04-30T01:32:05.755Z",
+    "lastSeenAt": "2026-04-30T01:32:05.755Z"
+  },
+  "zeus_fnxt": {
+    "id": "zeus_fnxt",
+    "username": "zeus_fnxt",
+    "uniqueId": "zeus_fnxt",
+    "totalTaps": 0,
+    "totalComentarios": 3,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:32:48.003Z",
+    "updatedAt": "2026-04-30T01:37:36.156Z",
+    "lastSeenAt": "2026-04-30T01:37:36.156Z"
+  },
+  "gersamaestry": {
+    "id": "gersamaestry",
+    "username": "Parry",
+    "uniqueId": "gersamaestry",
+    "totalTaps": 13,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:35:15.102Z",
+    "updatedAt": "2026-04-30T01:35:15.102Z",
+    "lastSeenAt": "2026-04-30T01:35:15.102Z"
+  },
+  "simply.simply.lovely._": {
+    "id": "simply.simply.lovely._",
+    "username": "𝓕 🫶🏻",
+    "uniqueId": "simply.simply.lovely._",
+    "totalTaps": 30,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:37:55.975Z",
+    "updatedAt": "2026-04-30T01:39:09.699Z",
+    "lastSeenAt": "2026-04-30T01:39:09.699Z"
+  },
+  "chiiisay": {
+    "id": "chiiisay",
+    "username": "La Mirada del Tarot",
+    "uniqueId": "chiiisay",
+    "totalTaps": 0,
+    "totalComentarios": 4,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:38:07.618Z",
+    "updatedAt": "2026-04-30T03:52:42.591Z",
+    "lastSeenAt": "2026-04-30T03:52:42.591Z"
+  },
+  "samy_xxm": {
+    "id": "samy_xxm",
+    "username": "ˢᵃᵐʸシ︎",
+    "uniqueId": "samy_xxm",
+    "totalTaps": 80,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:39:00.490Z",
+    "updatedAt": "2026-04-30T01:39:12.223Z",
+    "lastSeenAt": "2026-04-30T01:39:12.223Z"
+  },
+  "user6272782992": {
+    "id": "user6272782992",
+    "username": "Nayu",
+    "uniqueId": "user6272782992",
+    "totalTaps": 552,
+    "totalComentarios": 12,
+    "totalRegalos": 3,
+    "monedasAcumuladas": 11,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Finger Heart": {
+        "cantidad": 2,
+        "monedas": 10
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:40:19.142Z",
+    "updatedAt": "2026-04-30T02:21:42.148Z",
+    "lastSeenAt": "2026-04-30T02:21:42.148Z"
+  },
+  "abel_zuig": {
+    "id": "abel_zuig",
+    "username": "Abel",
+    "uniqueId": "abel_zuig",
+    "totalTaps": 30,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:41:06.780Z",
+    "updatedAt": "2026-04-30T01:41:25.845Z",
+    "lastSeenAt": "2026-04-30T01:41:25.845Z"
+  },
+  "yanethvillalobos241": {
+    "id": "yanethvillalobos241",
+    "username": "🌌 Yaneth Love",
+    "uniqueId": "yanethvillalobos241",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:42:14.428Z",
+    "updatedAt": "2026-04-30T01:42:34.056Z",
+    "lastSeenAt": "2026-04-30T01:42:34.056Z"
+  },
+  "_luvmna": {
+    "id": "_luvmna",
+    "username": "A",
+    "uniqueId": "_luvmna",
+    "totalTaps": 0,
+    "totalComentarios": 3,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:42:40.734Z",
+    "updatedAt": "2026-04-30T01:43:07.457Z",
+    "lastSeenAt": "2026-04-30T01:43:07.457Z"
+  },
+  "chinita261996": {
+    "id": "chinita261996",
+    "username": "Melissa Nuñez",
+    "uniqueId": "chinita261996",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 60,
+    "regalos": {
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:42:55.759Z",
+    "updatedAt": "2026-04-30T01:43:46.819Z",
+    "lastSeenAt": "2026-04-30T01:43:46.819Z"
+  },
+  "thomielol": {
+    "id": "thomielol",
+    "username": "thomie",
+    "uniqueId": "thomielol",
+    "totalTaps": 41,
+    "totalComentarios": 2,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 40,
+    "regalos": {
+      "Perfume": {
+        "cantidad": 2,
+        "monedas": 40
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:46:18.501Z",
+    "updatedAt": "2026-04-30T01:47:30.224Z",
+    "lastSeenAt": "2026-04-30T01:47:30.224Z"
+  },
+  "dayanari_00": {
+    "id": "dayanari_00",
+    "username": "Day",
+    "uniqueId": "dayanari_00",
+    "totalTaps": 3,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:48:49.135Z",
+    "updatedAt": "2026-04-30T01:49:21.408Z",
+    "lastSeenAt": "2026-04-30T01:49:21.408Z"
+  },
+  "mimihera0": {
+    "id": "mimihera0",
+    "username": "Mores",
+    "uniqueId": "mimihera0",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 40,
+    "regalos": {
+      "Perfume": {
+        "cantidad": 2,
+        "monedas": 40
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:51:39.870Z",
+    "updatedAt": "2026-04-30T01:52:22.998Z",
+    "lastSeenAt": "2026-04-30T01:52:22.998Z"
+  },
+  "josee.__07": {
+    "id": "josee.__07",
+    "username": "🎸🎸",
+    "uniqueId": "josee.__07",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:52:22.164Z",
+    "updatedAt": "2026-04-30T01:52:22.164Z",
+    "lastSeenAt": "2026-04-30T01:52:22.164Z"
+  },
+  "jeffersonvasquezvela": {
+    "id": "jeffersonvasquezvela",
+    "username": "Jefferson",
+    "uniqueId": "jeffersonvasquezvela",
+    "totalTaps": 1,
+    "totalComentarios": 3,
+    "totalRegalos": 8,
+    "monedasAcumuladas": 156,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Feather Tiara": {
+        "cantidad": 1,
+        "monedas": 149
+      },
+      "Rose": {
+        "cantidad": 6,
+        "monedas": 6
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:54:32.682Z",
+    "updatedAt": "2026-04-30T02:03:19.716Z",
+    "lastSeenAt": "2026-04-30T02:03:19.716Z"
+  },
+  "00024esperanza": {
+    "id": "00024esperanza",
+    "username": "hanaq pacha",
+    "uniqueId": "00024esperanza",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:57:54.201Z",
+    "updatedAt": "2026-04-30T01:58:20.652Z",
+    "lastSeenAt": "2026-04-30T01:58:20.652Z"
+  },
+  "mya.fero": {
+    "id": "mya.fero",
+    "username": "miya",
+    "uniqueId": "mya.fero",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T01:58:56.185Z",
+    "updatedAt": "2026-04-30T01:59:52.136Z",
+    "lastSeenAt": "2026-04-30T01:59:52.136Z"
+  },
+  "tommynewyor": {
+    "id": "tommynewyor",
+    "username": "tommy🧃",
+    "uniqueId": "tommynewyor",
+    "totalTaps": 0,
+    "totalComentarios": 5,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:03:23.008Z",
+    "updatedAt": "2026-04-30T02:05:07.360Z",
+    "lastSeenAt": "2026-04-30T02:05:07.360Z"
+  },
+  "xlzwv": {
+    "id": "xlzwv",
+    "username": "guianeeee",
+    "uniqueId": "xlzwv",
+    "totalTaps": 0,
+    "totalComentarios": 5,
+    "totalRegalos": 4,
+    "monedasAcumuladas": 12,
+    "regalos": {
+      "Rose": {
+        "cantidad": 2,
+        "monedas": 2
+      },
+      "Finger Heart": {
+        "cantidad": 2,
+        "monedas": 10
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:06:17.716Z",
+    "updatedAt": "2026-04-30T02:09:23.350Z",
+    "lastSeenAt": "2026-04-30T02:09:23.350Z"
+  },
+  "jefersonmosquerap": {
+    "id": "jefersonmosquerap",
+    "username": "جيفرسون",
+    "uniqueId": "jefersonmosquerap",
+    "totalTaps": 69,
+    "totalComentarios": 1,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:07:54.727Z",
+    "updatedAt": "2026-04-30T04:53:28.044Z",
+    "lastSeenAt": "2026-04-30T04:53:28.044Z"
+  },
+  "coco198686": {
+    "id": "coco198686",
+    "username": "Coco1986",
+    "uniqueId": "coco198686",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 2,
+    "regalos": {
+      "Rose": {
+        "cantidad": 2,
+        "monedas": 2
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:09:24.142Z",
+    "updatedAt": "2026-04-30T02:09:28.270Z",
+    "lastSeenAt": "2026-04-30T02:09:28.270Z"
+  },
+  "tefany262005": {
+    "id": "tefany262005",
+    "username": "Mary M Avila ❤️🙏😍",
+    "uniqueId": "tefany262005",
+    "totalTaps": 0,
+    "totalComentarios": 3,
+    "totalRegalos": 3,
+    "monedasAcumuladas": 61,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Capybara": {
+        "cantidad": 2,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:10:20.683Z",
+    "updatedAt": "2026-04-30T02:14:02.930Z",
+    "lastSeenAt": "2026-04-30T02:14:02.930Z"
+  },
+  "darkni508": {
+    "id": "darkni508",
+    "username": "🥀Darkni🥀🐱",
+    "uniqueId": "darkni508",
+    "totalTaps": 195,
+    "totalComentarios": 9,
+    "totalRegalos": 9,
+    "monedasAcumuladas": 272,
+    "regalos": {
+      "Rose": {
+        "cantidad": 2,
+        "monedas": 2
+      },
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      },
+      "Capybara": {
+        "cantidad": 7,
+        "monedas": 210
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:10:27.233Z",
+    "updatedAt": "2026-04-30T03:16:39.600Z",
+    "lastSeenAt": "2026-04-30T03:16:39.600Z"
+  },
+  "unpocodepolar17": {
+    "id": "unpocodepolar17",
+    "username": "Un poco loco",
+    "uniqueId": "unpocodepolar17",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:11:18.427Z",
+    "updatedAt": "2026-04-30T02:12:45.767Z",
+    "lastSeenAt": "2026-04-30T02:12:45.767Z"
+  },
+  ".lenna504": {
+    "id": ".lenna504",
+    "username": "🎀✿˖⋆ ★{gisselle}★ 𐙚⋆𖦹✧🎀",
+    "uniqueId": ".lenna504",
+    "totalTaps": 7,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:12:49.989Z",
+    "updatedAt": "2026-04-30T02:12:49.989Z",
+    "lastSeenAt": "2026-04-30T02:12:49.989Z"
+  },
+  "alvarogonzales6552": {
+    "id": "alvarogonzales6552",
+    "username": "🐸ALVARIN🐸",
+    "uniqueId": "alvarogonzales6552",
+    "totalTaps": 7,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:13:09.888Z",
+    "updatedAt": "2026-04-30T02:13:09.888Z",
+    "lastSeenAt": "2026-04-30T02:13:09.888Z"
+  },
+  "elvist.samanez": {
+    "id": "elvist.samanez",
+    "username": "𝙺𝙻🏹 🦋⃟𝓔𝓵𝓿𝓲𝓼༊·˚🔥",
+    "uniqueId": "elvist.samanez",
+    "totalTaps": 34,
+    "totalComentarios": 3,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:14:26.299Z",
+    "updatedAt": "2026-04-30T02:15:52.137Z",
+    "lastSeenAt": "2026-04-30T02:15:52.137Z"
+  },
+  "suazolupita": {
+    "id": "suazolupita",
+    "username": "Lupis Lazuli🦁🐾",
+    "uniqueId": "suazolupita",
+    "totalTaps": 397,
+    "totalComentarios": 14,
+    "totalRegalos": 3,
+    "monedasAcumuladas": 61,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Capybara": {
+        "cantidad": 2,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:16:50.908Z",
+    "updatedAt": "2026-04-30T02:25:15.044Z",
+    "lastSeenAt": "2026-04-30T02:25:15.044Z"
+  },
+  "hoseok490": {
+    "id": "hoseok490",
+    "username": "MaY",
+    "uniqueId": "hoseok490",
+    "totalTaps": 4473,
+    "totalComentarios": 7,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 10,
+    "regalos": {
+      "Finger Heart": {
+        "cantidad": 2,
+        "monedas": 10
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:19:13.727Z",
+    "updatedAt": "2026-04-30T03:12:04.473Z",
+    "lastSeenAt": "2026-04-30T03:12:04.473Z"
+  },
+  "quetisaenzdelagui": {
+    "id": "quetisaenzdelagui",
+    "username": "quetisaenzdelagui",
+    "uniqueId": "quetisaenzdelagui",
+    "totalTaps": 0,
+    "totalComentarios": 10,
+    "totalRegalos": 43,
+    "monedasAcumuladas": 60,
+    "regalos": {
+      "Rose": {
+        "cantidad": 60,
+        "monedas": 60
+      },
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:20:39.145Z",
+    "updatedAt": "2026-04-30T04:40:10.463Z",
+    "lastSeenAt": "2026-04-30T04:40:10.463Z"
+  },
+  "barbyyy_02": {
+    "id": "barbyyy_02",
+    "username": "Bárbara",
+    "uniqueId": "barbyyy_02",
+    "totalTaps": 608,
+    "totalComentarios": 3,
+    "totalRegalos": 3,
+    "monedasAcumuladas": 11,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Finger Heart": {
+        "cantidad": 2,
+        "monedas": 10
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:20:44.945Z",
+    "updatedAt": "2026-04-30T02:59:49.791Z",
+    "lastSeenAt": "2026-04-30T02:59:49.791Z"
+  },
+  "josesosa347": {
+    "id": "josesosa347",
+    "username": "Jose Sosa",
+    "uniqueId": "josesosa347",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 4,
+    "monedasAcumuladas": 120,
+    "regalos": {
+      "Doughnut": {
+        "cantidad": 4,
+        "monedas": 120
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:22:53.209Z",
+    "updatedAt": "2026-04-30T02:30:54.480Z",
+    "lastSeenAt": "2026-04-30T02:30:54.480Z"
+  },
+  "jose_ch60": {
+    "id": "jose_ch60",
+    "username": "🖤José ch🐰🐣🦦",
+    "uniqueId": "jose_ch60",
+    "totalTaps": 0,
+    "totalComentarios": 11,
+    "totalRegalos": 7,
+    "monedasAcumuladas": 260,
+    "regalos": {
+      "Hand Heart": {
+        "cantidad": 1,
+        "monedas": 100
+      },
+      "Capybara": {
+        "cantidad": 2,
+        "monedas": 60
+      },
+      "Perfume": {
+        "cantidad": 2,
+        "monedas": 40
+      },
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:24:49.238Z",
+    "updatedAt": "2026-04-30T02:40:33.327Z",
+    "lastSeenAt": "2026-04-30T02:40:33.327Z"
+  },
+  "oposwow87": {
+    "id": "oposwow87",
+    "username": "Ruthmaria❤️‍🔥",
+    "uniqueId": "oposwow87",
+    "totalTaps": 306,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:28:26.735Z",
+    "updatedAt": "2026-04-30T02:29:46.837Z",
+    "lastSeenAt": "2026-04-30T02:29:46.837Z"
+  },
+  "lachata509": {
+    "id": "lachata509",
+    "username": "🇨🇦👑LA CHATA👑🇨🇦",
+    "uniqueId": "lachata509",
+    "totalTaps": 0,
+    "totalComentarios": 6,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:29:56.280Z",
+    "updatedAt": "2026-04-30T02:33:33.474Z",
+    "lastSeenAt": "2026-04-30T02:33:33.474Z"
+  },
+  "conociendomidiabetes": {
+    "id": "conociendomidiabetes",
+    "username": "Ale Vaira",
+    "uniqueId": "conociendomidiabetes",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:32:26.876Z",
+    "updatedAt": "2026-04-30T02:32:26.876Z",
+    "lastSeenAt": "2026-04-30T02:32:26.876Z"
+  },
+  "4ever312000": {
+    "id": "4ever312000",
+    "username": "❤️|Liz🦖🫘🦎🦥",
+    "uniqueId": "4ever312000",
+    "totalTaps": 16,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:34:15.114Z",
+    "updatedAt": "2026-04-30T02:34:17.546Z",
+    "lastSeenAt": "2026-04-30T02:34:17.546Z"
+  },
+  "mich_02_jrl": {
+    "id": "mich_02_jrl",
+    "username": "𝓛",
+    "uniqueId": "mich_02_jrl",
+    "totalTaps": 99,
+    "totalComentarios": 5,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 60,
+    "regalos": {
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:37:52.675Z",
+    "updatedAt": "2026-04-30T02:42:22.750Z",
+    "lastSeenAt": "2026-04-30T02:42:22.751Z"
+  },
+  "kiara.f.aranda": {
+    "id": "kiara.f.aranda",
+    "username": "KIARA ARANDA♡",
+    "uniqueId": "kiara.f.aranda",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:38:53.144Z",
+    "updatedAt": "2026-04-30T02:38:53.144Z",
+    "lastSeenAt": "2026-04-30T02:38:53.144Z"
+  },
+  "victorsv95": {
+    "id": "victorsv95",
+    "username": "VictorSv 🪶🪬🧿🇸🇻🇨🇴🇺🇸",
+    "uniqueId": "victorsv95",
+    "totalTaps": 0,
+    "totalComentarios": 7,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 100,
+    "regalos": {
+      "Hand Heart": {
+        "cantidad": 1,
+        "monedas": 100
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:40:11.005Z",
+    "updatedAt": "2026-04-30T02:46:12.039Z",
+    "lastSeenAt": "2026-04-30T02:46:12.039Z"
+  },
+  "maximito090": {
+    "id": "maximito090",
+    "username": "Maximito",
+    "uniqueId": "maximito090",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:42:38.575Z",
+    "updatedAt": "2026-04-30T02:42:38.575Z",
+    "lastSeenAt": "2026-04-30T02:42:38.575Z"
+  },
+  "chupalo2118": {
+    "id": "chupalo2118",
+    "username": "#Xavier A93.",
+    "uniqueId": "chupalo2118",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:43:25.006Z",
+    "updatedAt": "2026-04-30T02:46:55.823Z",
+    "lastSeenAt": "2026-04-30T02:46:55.823Z"
+  },
+  "davila_736": {
+    "id": "davila_736",
+    "username": "Dávila 😈🫡 💎🦠👾⚔️🐄🇳🇮",
+    "uniqueId": "davila_736",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:45:58.828Z",
+    "updatedAt": "2026-04-30T02:47:02.549Z",
+    "lastSeenAt": "2026-04-30T02:47:02.549Z"
+  },
+  "olberyair": {
+    "id": "olberyair",
+    "username": "olber Yair",
+    "uniqueId": "olberyair",
+    "totalTaps": 435,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:48:02.314Z",
+    "updatedAt": "2026-04-30T02:48:38.122Z",
+    "lastSeenAt": "2026-04-30T02:48:38.122Z"
+  },
+  "nico_220111": {
+    "id": "nico_220111",
+    "username": "Nico_22👾",
+    "uniqueId": "nico_220111",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:48:28.127Z",
+    "updatedAt": "2026-04-30T02:48:52.203Z",
+    "lastSeenAt": "2026-04-30T02:48:52.203Z"
+  },
+  "moraaless12": {
+    "id": "moraaless12",
+    "username": "Ana💗",
+    "uniqueId": "moraaless12",
+    "totalTaps": 1307,
+    "totalComentarios": 12,
+    "totalRegalos": 3,
+    "monedasAcumuladas": 11,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Finger Heart": {
+        "cantidad": 2,
+        "monedas": 10
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:49:55.457Z",
+    "updatedAt": "2026-04-30T03:09:47.751Z",
+    "lastSeenAt": "2026-04-30T03:09:47.751Z"
+  },
+  "sandrapatriciac44": {
+    "id": "sandrapatriciac44",
+    "username": "sandrapatriciac44",
+    "uniqueId": "sandrapatriciac44",
+    "totalTaps": 1,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:50:09.462Z",
+    "updatedAt": "2026-04-30T02:50:09.462Z",
+    "lastSeenAt": "2026-04-30T02:50:09.462Z"
+  },
+  "el_rincon_de_la_zona1": {
+    "id": "el_rincon_de_la_zona1",
+    "username": "la zona",
+    "uniqueId": "el_rincon_de_la_zona1",
+    "totalTaps": 0,
+    "totalComentarios": 6,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:50:11.853Z",
+    "updatedAt": "2026-04-30T03:01:34.557Z",
+    "lastSeenAt": "2026-04-30T03:01:34.557Z"
+  },
+  "cm.molina7": {
+    "id": "cm.molina7",
+    "username": "CM : Molina🍰💖",
+    "uniqueId": "cm.molina7",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 3,
+    "monedasAcumuladas": 41,
+    "regalos": {
+      "Perfume": {
+        "cantidad": 2,
+        "monedas": 40
+      },
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:52:06.732Z",
+    "updatedAt": "2026-04-30T02:52:12.452Z",
+    "lastSeenAt": "2026-04-30T02:52:12.452Z"
+  },
+  "luu_fresita": {
+    "id": "luu_fresita",
+    "username": "Fresitaa_🍰",
+    "uniqueId": "luu_fresita",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 4,
+    "monedasAcumuladas": 12,
+    "regalos": {
+      "Finger Heart": {
+        "cantidad": 2,
+        "monedas": 10
+      },
+      "Rose": {
+        "cantidad": 2,
+        "monedas": 2
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:54:58.182Z",
+    "updatedAt": "2026-04-30T04:14:38.123Z",
+    "lastSeenAt": "2026-04-30T04:14:38.123Z"
+  },
+  "ilovemiloj5": {
+    "id": "ilovemiloj5",
+    "username": "古代皇帝アルゴス",
+    "uniqueId": "ilovemiloj5",
+    "totalTaps": 30,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:55:19.008Z",
+    "updatedAt": "2026-04-30T02:55:21.335Z",
+    "lastSeenAt": "2026-04-30T02:55:21.335Z"
+  },
+  "big_jr6": {
+    "id": "big_jr6",
+    "username": "Mauricio",
+    "uniqueId": "big_jr6",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 10,
+    "regalos": {
+      "Finger Heart": {
+        "cantidad": 2,
+        "monedas": 10
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:55:47.791Z",
+    "updatedAt": "2026-04-30T02:56:38.514Z",
+    "lastSeenAt": "2026-04-30T02:56:38.514Z"
+  },
+  "cenitcrux": {
+    "id": "cenitcrux",
+    "username": "Cenit Crux",
+    "uniqueId": "cenitcrux",
+    "totalTaps": 0,
+    "totalComentarios": 5,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 149,
+    "regalos": {
+      "Feather Tiara": {
+        "cantidad": 1,
+        "monedas": 149
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T02:59:23.198Z",
+    "updatedAt": "2026-04-30T03:05:32.575Z",
+    "lastSeenAt": "2026-04-30T03:05:32.575Z"
+  },
+  "britmcb": {
+    "id": "britmcb",
+    "username": "Britney",
+    "uniqueId": "britmcb",
+    "totalTaps": 0,
+    "totalComentarios": 3,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:01:27.912Z",
+    "updatedAt": "2026-04-30T03:10:55.521Z",
+    "lastSeenAt": "2026-04-30T03:10:55.521Z"
+  },
+  "catracho.m8": {
+    "id": "catracho.m8",
+    "username": "catracho Guapo",
+    "uniqueId": "catracho.m8",
+    "totalTaps": 1,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:01:32.841Z",
+    "updatedAt": "2026-04-30T03:01:32.841Z",
+    "lastSeenAt": "2026-04-30T03:01:32.841Z"
+  },
+  "alejandramaterano123": {
+    "id": "alejandramaterano123",
+    "username": "Aleja.",
+    "uniqueId": "alejandramaterano123",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:02:15.033Z",
+    "updatedAt": "2026-04-30T03:10:58.033Z",
+    "lastSeenAt": "2026-04-30T03:10:58.033Z"
+  },
+  "usermmmmm9503": {
+    "id": "usermmmmm9503",
+    "username": "solis",
+    "uniqueId": "usermmmmm9503",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:03:49.609Z",
+    "updatedAt": "2026-04-30T03:03:49.609Z",
+    "lastSeenAt": "2026-04-30T03:03:49.609Z"
+  },
+  "zayrasanchez979": {
+    "id": "zayrasanchez979",
+    "username": "𝐳𝐚𝐲𝐫𝐚 𝐬𝐚𝐧𝐜𝐡𝐞𝐳  ❦",
+    "uniqueId": "zayrasanchez979",
+    "totalTaps": 1,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:04:54.365Z",
+    "updatedAt": "2026-04-30T03:04:54.365Z",
+    "lastSeenAt": "2026-04-30T03:04:54.365Z"
+  },
+  "sarkiita": {
+    "id": "sarkiita",
+    "username": "sarkiita🥰🥺",
+    "uniqueId": "sarkiita",
+    "totalTaps": 6,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:05:59.930Z",
+    "updatedAt": "2026-04-30T03:05:59.930Z",
+    "lastSeenAt": "2026-04-30T03:05:59.930Z"
+  },
+  "fresitaa_loh": {
+    "id": "fresitaa_loh",
+    "username": "marifer :p",
+    "uniqueId": "fresitaa_loh",
+    "totalTaps": 4,
+    "totalComentarios": 1,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:07:22.593Z",
+    "updatedAt": "2026-04-30T03:07:31.666Z",
+    "lastSeenAt": "2026-04-30T03:07:31.666Z"
+  },
+  "sandramendoza727": {
+    "id": "sandramendoza727",
+    "username": "🌻Sandra🌻",
+    "uniqueId": "sandramendoza727",
+    "totalTaps": 59,
+    "totalComentarios": 3,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:11:22.932Z",
+    "updatedAt": "2026-04-30T03:12:02.875Z",
+    "lastSeenAt": "2026-04-30T03:12:02.875Z"
+  },
+  "kim._vldzz": {
+    "id": "kim._vldzz",
+    "username": "Kim",
+    "uniqueId": "kim._vldzz",
+    "totalTaps": 11,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:12:48.584Z",
+    "updatedAt": "2026-04-30T03:13:38.323Z",
+    "lastSeenAt": "2026-04-30T03:13:38.323Z"
+  },
+  "wilox92": {
+    "id": "wilox92",
+    "username": "whiteblack",
+    "uniqueId": "wilox92",
+    "totalTaps": 403,
+    "totalComentarios": 4,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:14:43.253Z",
+    "updatedAt": "2026-04-30T03:23:54.010Z",
+    "lastSeenAt": "2026-04-30T03:23:54.010Z"
+  },
+  "aldo.609": {
+    "id": "aldo.609",
+    "username": "Aldo",
+    "uniqueId": "aldo.609",
+    "totalTaps": 0,
+    "totalComentarios": 4,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:17:39.086Z",
+    "updatedAt": "2026-04-30T03:23:54.003Z",
+    "lastSeenAt": "2026-04-30T03:23:54.003Z"
+  },
+  "teylornaula": {
+    "id": "teylornaula",
+    "username": "Teylor",
+    "uniqueId": "teylornaula",
+    "totalTaps": 0,
+    "totalComentarios": 6,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:18:15.430Z",
+    "updatedAt": "2026-04-30T03:23:54.052Z",
+    "lastSeenAt": "2026-04-30T03:23:54.052Z"
+  },
+  "darkiel_lwk9093": {
+    "id": "darkiel_lwk9093",
+    "username": "darkiel_lwk",
+    "uniqueId": "darkiel_lwk9093",
+    "totalTaps": 11,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:18:27.786Z",
+    "updatedAt": "2026-04-30T03:18:27.786Z",
+    "lastSeenAt": "2026-04-30T03:18:27.786Z"
+  },
+  "corillo14": {
+    "id": "corillo14",
+    "username": "Luis Eduardo Chumpitazi Cori",
+    "uniqueId": "corillo14",
+    "totalTaps": 1,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:24:21.042Z",
+    "updatedAt": "2026-04-30T03:25:16.639Z",
+    "lastSeenAt": "2026-04-30T03:25:16.639Z"
+  },
+  "lincol.garcia09": {
+    "id": "lincol.garcia09",
+    "username": "Lincol Garcia",
+    "uniqueId": "lincol.garcia09",
+    "totalTaps": 8,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:26:43.466Z",
+    "updatedAt": "2026-04-30T03:26:43.466Z",
+    "lastSeenAt": "2026-04-30T03:26:43.466Z"
+  },
+  "erikamirel111": {
+    "id": "erikamirel111",
+    "username": "erikapadilla377",
+    "uniqueId": "erikamirel111",
+    "totalTaps": 0,
+    "totalComentarios": 3,
+    "totalRegalos": 26,
+    "monedasAcumuladas": 60,
+    "regalos": {
+      "Capybara": {
+        "cantidad": 2,
+        "monedas": 60
+      },
+      "Rose": {
+        "cantidad": 60,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:28:47.411Z",
+    "updatedAt": "2026-04-30T03:35:10.960Z",
+    "lastSeenAt": "2026-04-30T03:35:10.960Z"
+  },
+  "userkevingab": {
+    "id": "userkevingab",
+    "username": "gabito hola💀",
+    "uniqueId": "userkevingab",
+    "totalTaps": 27,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:29:04.883Z",
+    "updatedAt": "2026-04-30T03:29:12.314Z",
+    "lastSeenAt": "2026-04-30T03:29:12.314Z"
+  },
+  "victoriapalacio__2": {
+    "id": "victoriapalacio__2",
+    "username": " Vicky",
+    "uniqueId": "victoriapalacio__2",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 23,
+    "monedasAcumuladas": 70,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Rose": {
+        "cantidad": 70,
+        "monedas": 70        
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:31:29.368Z",
+    "updatedAt": "2026-04-30T03:33:49.624Z",
+    "lastSeenAt": "2026-04-30T03:33:49.624Z"
+  },
+  "sharkys_boys": {
+    "id": "sharkys_boys",
+    "username": "brayan_1098",
+    "uniqueId": "sharkys_boys",
+    "totalTaps": 698,
+    "totalComentarios": 4,
+    "totalRegalos": 80,
+    "monedasAcumuladas": 100,
+    "regalos": {
+      "Rose": {
+        "cantidad": 100,
+        "monedas": 100
+      },
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 1,
+    "extensasGratisUsadas": 0,
+    "esVip": true,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:32:46.409Z",
+    "updatedAt": "2026-04-30T03:42:02.587Z",
+    "lastSeenAt": "2026-04-30T03:42:02.587Z"
+  },
+  "_monserrath._.17": {
+    "id": "_monserrath._.17",
+    "username": "🍒𝒎𝒊𝒎𝒊🐲🚬",
+    "uniqueId": "_monserrath._.17",
+    "totalTaps": 76,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:35:08.534Z",
+    "updatedAt": "2026-04-30T03:37:03.553Z",
+    "lastSeenAt": "2026-04-30T03:37:03.553Z"
+  },
+  "luismuver18": {
+    "id": "luismuver18",
+    "username": "Luismuver18",
+    "uniqueId": "luismuver18",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:41:44.360Z",
+    "updatedAt": "2026-04-30T03:41:44.360Z",
+    "lastSeenAt": "2026-04-30T03:41:44.360Z"
+  },
+  "erick.cho02": {
+    "id": "erick.cho02",
+    "username": "L- CHINO- HªPPY🍀🔥",
+    "uniqueId": "erick.cho02",
+    "totalTaps": 1,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:42:25.132Z",
+    "updatedAt": "2026-04-30T03:42:25.132Z",
+    "lastSeenAt": "2026-04-30T03:42:25.132Z"
+  },
+  "mariafiel23": {
+    "id": "mariafiel23",
+    "username": "🎀mariafiel🎀",
+    "uniqueId": "mariafiel23",
+    "totalTaps": 3436,
+    "totalComentarios": 28,
+    "totalRegalos": 101,
+    "monedasAcumuladas": 70,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Finger Heart": {
+        "cantidad": 2,
+        "monedas": 10
+      },
+      "Capybara": {
+        "cantidad": 2,
+        "monedas": 60
+      },
+      "Rose": {
+        "cantidad": 50,
+        "monedas": 50
+      },
+      "Perfume": {
+        "cantidad": 2,
+        "monedas": 40
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:42:36.691Z",
+    "updatedAt": "2026-04-30T04:59:11.275Z",
+    "lastSeenAt": "2026-04-30T04:59:11.275Z"
+  },
+  "09paula123": {
+    "id": "09paula123",
+    "username": "paulamtz@",
+    "uniqueId": "09paula123",
+    "totalTaps": 84,
+    "totalComentarios": 1,
+    "totalRegalos": 9,
+    "monedasAcumuladas": 14,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Rose": {
+        "cantidad": 13,
+        "monedas": 13
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:44:27.544Z",
+    "updatedAt": "2026-04-30T04:46:38.841Z",
+    "lastSeenAt": "2026-04-30T04:46:38.841Z"
+  },
+  "marcelit342": {
+    "id": "marcelit342",
+    "username": "MARCELITA SARAVIA😘 💞😘🫶🫡",
+    "uniqueId": "marcelit342",
+    "totalTaps": 87,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:44:41.559Z",
+    "updatedAt": "2026-04-30T03:47:53.695Z",
+    "lastSeenAt": "2026-04-30T03:47:53.695Z"
+  },
+  "mompi_504": {
+    "id": "mompi_504",
+    "username": "Mompi.lakbra07 🐐",
+    "uniqueId": "mompi_504",
+    "totalTaps": 54,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:44:55.721Z",
+    "updatedAt": "2026-04-30T03:46:03.562Z",
+    "lastSeenAt": "2026-04-30T03:46:03.562Z"
+  },
+  "catagua_15": {
+    "id": "catagua_15",
+    "username": "catagua_15",
+    "uniqueId": "catagua_15",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:45:21.274Z",
+    "updatedAt": "2026-04-30T03:46:18.577Z",
+    "lastSeenAt": "2026-04-30T03:46:18.578Z"
+  },
+  "deyanira.martinez68": {
+    "id": "deyanira.martinez68",
+    "username": "🫰🏻ᥫ᭡ Deyiz Martinez F'Dᥫ᭡💎",
+    "uniqueId": "deyanira.martinez68",
+    "totalTaps": 16,
+    "totalComentarios": 1,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 40,
+    "regalos": {
+      "Perfume": {
+        "cantidad": 2,
+        "monedas": 40
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:47:09.699Z",
+    "updatedAt": "2026-04-30T03:47:50.394Z",
+    "lastSeenAt": "2026-04-30T03:47:50.394Z"
+  },
+  "paus266": {
+    "id": "paus266",
+    "username": "Paulis 💗",
+    "uniqueId": "paus266",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:47:31.296Z",
+    "updatedAt": "2026-04-30T03:48:19.401Z",
+    "lastSeenAt": "2026-04-30T03:48:19.401Z"
+  },
+  "tauro.05_13": {
+    "id": "tauro.05_13",
+    "username": "꧁༺ 𝓟𝓐𝓒𝓞𝓜𝓟𝓘𝓐 - 𝓘𝓥  ༻꧂",
+    "uniqueId": "tauro.05_13",
+    "totalTaps": 1512,
+    "totalComentarios": 1,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 10,
+    "regalos": {
+      "Finger Heart": {
+        "cantidad": 2,
+        "monedas": 10
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:52:30.228Z",
+    "updatedAt": "2026-04-30T04:04:10.113Z",
+    "lastSeenAt": "2026-04-30T04:04:10.113Z"
+  },
+  "eli503.sv": {
+    "id": "eli503.sv",
+    "username": "️🫦❤️‍🔥Elizabeth 😍✨🇸🇻",
+    "uniqueId": "eli503.sv",
+    "totalTaps": 3,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T03:56:48.847Z",
+    "updatedAt": "2026-04-30T03:59:52.849Z",
+    "lastSeenAt": "2026-04-30T03:59:52.849Z"
+  },
+  "ct3005nm": {
+    "id": "ct3005nm",
+    "username": "Cielo_Calagua",
+    "uniqueId": "ct3005nm",
+    "totalTaps": 35,
+    "totalComentarios": 2,
+    "totalRegalos": 4,
+    "monedasAcumuladas": 62,
+    "regalos": {
+      "Rose": {
+        "cantidad": 2,
+        "monedas": 2
+      },
+      "Capybara": {
+        "cantidad": 2,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:03:30.547Z",
+    "updatedAt": "2026-04-30T04:07:37.687Z",
+    "lastSeenAt": "2026-04-30T04:07:37.687Z"
+  },
+  "irvin.gxz": {
+    "id": "irvin.gxz",
+    "username": "Irvin.gxz",
+    "uniqueId": "irvin.gxz",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:08:03.443Z",
+    "updatedAt": "2026-04-30T04:08:03.443Z",
+    "lastSeenAt": "2026-04-30T04:08:03.443Z"
+  },
+  "heyouana_": {
+    "id": "heyouana_",
+    "username": "HeyAna",
+    "uniqueId": "heyouana_",
+    "totalTaps": 784,
+    "totalComentarios": 7,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:08:33.895Z",
+    "updatedAt": "2026-04-30T04:14:22.158Z",
+    "lastSeenAt": "2026-04-30T04:14:22.158Z"
+  },
+  "ericeya": {
+    "id": "ericeya",
+    "username": "ericeya",
+    "uniqueId": "ericeya",
+    "totalTaps": 1142,
+    "totalComentarios": 5,
+    "totalRegalos": 59,
+    "monedasAcumuladas": 70,
+    "regalos": {
+      "Rose": {
+        "cantidad": 70,
+        "monedas": 70
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:09:36.503Z",
+    "updatedAt": "2026-04-30T04:21:16.987Z",
+    "lastSeenAt": "2026-04-30T04:21:16.987Z"
+  },
+  "jimmy.gonza68": {
+    "id": "jimmy.gonza68",
+    "username": "Jimmy Davilaa",
+    "uniqueId": "jimmy.gonza68",
+    "totalTaps": 48,
+    "totalComentarios": 3,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:11:37.117Z",
+    "updatedAt": "2026-04-30T04:44:56.416Z",
+    "lastSeenAt": "2026-04-30T04:44:56.416Z"
+  },
+  "david_ff731": {
+    "id": "david_ff731",
+    "username": "꧁☬\"D\" ff☬꧂",
+    "uniqueId": "david_ff731",
+    "totalTaps": 113,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:12:01.933Z",
+    "updatedAt": "2026-04-30T04:12:34.003Z",
+    "lastSeenAt": "2026-04-30T04:12:34.003Z"
+  },
+  "yorleni.gmez68": {
+    "id": "yorleni.gmez68",
+    "username": "La china❤️🏳️‍🌈",
+    "uniqueId": "yorleni.gmez68",
+    "totalTaps": 0,
+    "totalComentarios": 5,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:12:43.990Z",
+    "updatedAt": "2026-04-30T04:17:30.839Z",
+    "lastSeenAt": "2026-04-30T04:17:30.839Z"
+  },
+  "yudithchaparro0": {
+    "id": "yudithchaparro0",
+    "username": "Valu Vargas🤍",
+    "uniqueId": "yudithchaparro0",
+    "totalTaps": 0,
+    "totalComentarios": 5,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:15:53.969Z",
+    "updatedAt": "2026-04-30T04:21:28.568Z",
+    "lastSeenAt": "2026-04-30T04:21:28.568Z"
+  },
+  "alejandraas78": {
+    "id": "alejandraas78",
+    "username": "Alejandra",
+    "uniqueId": "alejandraas78",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:16:38.815Z",
+    "updatedAt": "2026-04-30T04:21:55.925Z",
+    "lastSeenAt": "2026-04-30T04:21:55.925Z"
+  },
+  "makimiauuu": {
+    "id": "makimiauuu",
+    "username": "🪼 ⋆｡ ˚ ✩ Maki⋆｡ ˚ ✩: 🪼",
+    "uniqueId": "makimiauuu",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:16:56.802Z",
+    "updatedAt": "2026-04-30T04:16:56.803Z",
+    "lastSeenAt": "2026-04-30T04:16:56.803Z"
+  },
+  "esthefanyreal1": {
+    "id": "esthefanyreal1",
+    "username": "👑❤️ PRINCESA TNG FE❤️👑",
+    "uniqueId": "esthefanyreal1",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 3,
+    "monedasAcumuladas": 5,
+    "regalos": {
+      "Rose": {
+        "cantidad": 5,
+        "monedas": 5
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:17:34.191Z",
+    "updatedAt": "2026-04-30T04:17:39.879Z",
+    "lastSeenAt": "2026-04-30T04:17:39.879Z"
+  },
+  "miissh_17": {
+    "id": "miissh_17",
+    "username": "mich",
+    "uniqueId": "miissh_17",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:17:53.734Z",
+    "updatedAt": "2026-04-30T04:17:53.734Z",
+    "lastSeenAt": "2026-04-30T04:17:53.734Z"
+  },
+  "kikon1505": {
+    "id": "kikon1505",
+    "username": "Aldeusciel",
+    "uniqueId": "kikon1505",
+    "totalTaps": 416,
+    "totalComentarios": 14,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 10,
+    "regalos": {
+      "Wave Firework": {
+        "cantidad": 2,
+        "monedas": 10
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:23:43.802Z",
+    "updatedAt": "2026-04-30T04:34:58.019Z",
+    "lastSeenAt": "2026-04-30T04:34:58.019Z"
+  },
+  "jessicaibarra18": {
+    "id": "jessicaibarra18",
+    "username": "Jessica Ibarra",
+    "uniqueId": "jessicaibarra18",
+    "totalTaps": 22,
+    "totalComentarios": 2,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 60,
+    "regalos": {
+      "Capybara": {
+        "cantidad": 2,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:24:27.585Z",
+    "updatedAt": "2026-04-30T04:27:00.877Z",
+    "lastSeenAt": "2026-04-30T04:27:00.877Z"
+  },
+  "fiore.lzz": {
+    "id": "fiore.lzz",
+    "username": "fioo",
+    "uniqueId": "fiore.lzz",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:25:21.398Z",
+    "updatedAt": "2026-04-30T04:27:11.465Z",
+    "lastSeenAt": "2026-04-30T04:27:11.465Z"
+  },
+  "damaris.tuflaka": {
+    "id": "damaris.tuflaka",
+    "username": "tú bebecito",
+    "uniqueId": "damaris.tuflaka",
+    "totalTaps": 15,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:29:13.873Z",
+    "updatedAt": "2026-04-30T04:29:13.873Z",
+    "lastSeenAt": "2026-04-30T04:29:13.873Z"
+  },
+  "manuelyz6": {
+    "id": "manuelyz6",
+    "username": "Manuel_yañez",
+    "uniqueId": "manuelyz6",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 3,
+    "monedasAcumuladas": 61,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:29:20.568Z",
+    "updatedAt": "2026-04-30T04:30:36.878Z",
+    "lastSeenAt": "2026-04-30T04:30:36.878Z"
+  },
+  "adasjdajddsadasas": {
+    "id": "adasjdajddsadasas",
+    "username": "Esteban",
+    "uniqueId": "adasjdajddsadasas",
+    "totalTaps": 60,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:30:28.622Z",
+    "updatedAt": "2026-04-30T04:31:00.907Z",
+    "lastSeenAt": "2026-04-30T04:31:00.907Z"
+  },
+  "candileslafiduciadisempr": {
+    "id": "candileslafiduciadisempr",
+    "username": "Candileslafiducia",
+    "uniqueId": "candileslafiduciadisempr",
+    "totalTaps": 337,
+    "totalComentarios": 5,
+    "totalRegalos": 13,
+    "monedasAcumuladas": 40,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Rose": {
+        "cantidad": 40,
+        "monedas": 40
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:32:00.635Z",
+    "updatedAt": "2026-04-30T04:40:12.073Z",
+    "lastSeenAt": "2026-04-30T04:40:12.073Z"
+  },
+  "reymayy": {
+    "id": "reymayy",
+    "username": "Miller",
+    "uniqueId": "reymayy",
+    "totalTaps": 11,
+    "totalComentarios": 0,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:35:06.359Z",
+    "updatedAt": "2026-04-30T04:49:02.481Z",
+    "lastSeenAt": "2026-04-30T04:49:02.481Z"
+  },
+  "mrcl.crzo": {
+    "id": "mrcl.crzo",
+    "username": "mrcl.crzo",
+    "uniqueId": "mrcl.crzo",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:36:58.666Z",
+    "updatedAt": "2026-04-30T04:36:58.666Z",
+    "lastSeenAt": "2026-04-30T04:36:58.666Z"
+  },
+  "amercanbadas": {
+    "id": "amercanbadas",
+    "username": "el grande americano",
+    "uniqueId": "amercanbadas",
+    "totalTaps": 228,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:38:10.107Z",
+    "updatedAt": "2026-04-30T04:40:08.723Z",
+    "lastSeenAt": "2026-04-30T04:40:08.723Z"
+  },
+  "deniscartage26": {
+    "id": "deniscartage26",
+    "username": "Denis🌵",
+    "uniqueId": "deniscartage26",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:38:51.664Z",
+    "updatedAt": "2026-04-30T04:38:51.664Z",
+    "lastSeenAt": "2026-04-30T04:38:51.664Z"
+  },
+  "juniorvt": {
+    "id": "juniorvt",
+    "username": "JVT",
+    "uniqueId": "juniorvt",
+    "totalTaps": 0,
+    "totalComentarios": 4,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 2,
+    "regalos": {
+      "Rose": {
+        "cantidad": 2,
+        "monedas": 2
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:39:35.150Z",
+    "updatedAt": "2026-04-30T04:50:06.489Z",
+    "lastSeenAt": "2026-04-30T04:50:06.489Z"
+  },
+  "eduu14_05": {
+    "id": "eduu14_05",
+    "username": "𝙈𝙞𝙨𝙝𝙤 🌽🐉",
+    "uniqueId": "eduu14_05",
+    "totalTaps": 0,
+    "totalComentarios": 5,
+    "totalRegalos": 3,
+    "monedasAcumuladas": 61,
+    "regalos": {
+      "Capybara": {
+        "cantidad": 2,
+        "monedas": 60
+      },
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:40:51.219Z",
+    "updatedAt": "2026-04-30T04:51:07.864Z",
+    "lastSeenAt": "2026-04-30T04:51:07.864Z"
+  },
+  "esmeraldaochoa928": {
+    "id": "esmeraldaochoa928",
+    "username": "Esmeralda Ochoa 🖤",
+    "uniqueId": "esmeraldaochoa928",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:41:06.141Z",
+    "updatedAt": "2026-04-30T04:44:40.750Z",
+    "lastSeenAt": "2026-04-30T04:44:40.750Z"
+  },
+  "xiom.01": {
+    "id": "xiom.01",
+    "username": "Xiomara Carbajal",
+    "uniqueId": "xiom.01",
+    "totalTaps": 45,
+    "totalComentarios": 1,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:41:59.816Z",
+    "updatedAt": "2026-04-30T04:42:43.371Z",
+    "lastSeenAt": "2026-04-30T04:42:43.371Z"
+  },
+  "bruja.noche0": {
+    "id": "bruja.noche0",
+    "username": "nayla bruja neta y vidente",
+    "uniqueId": "bruja.noche0",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 7,
+    "monedasAcumuladas": 7,
+    "regalos": {
+      "Rose": {
+        "cantidad": 4,
+        "monedas": 4
+      },
+      "Match Star": {
+        "cantidad": 2,
+        "monedas": 2
+      },
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:43:15.393Z",
+    "updatedAt": "2026-04-30T04:44:01.172Z",
+    "lastSeenAt": "2026-04-30T04:44:01.172Z"
+  },
+  "karenschmucker54": {
+    "id": "karenschmucker54",
+    "username": "karen schmucker",
+    "uniqueId": "karenschmucker54",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 0,
+    "monedasAcumuladas": 0,
+    "regalos": {},
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:45:44.295Z",
+    "updatedAt": "2026-04-30T04:45:44.295Z",
+    "lastSeenAt": "2026-04-30T04:45:44.295Z"
+  },
+  "esme.mora6": {
+    "id": "esme.mora6",
+    "username": "Esme Mora",
+    "uniqueId": "esme.mora6",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:47:15.828Z",
+    "updatedAt": "2026-04-30T04:51:47.553Z",
+    "lastSeenAt": "2026-04-30T04:51:47.553Z"
+  },
+  "xime05530": {
+    "id": "xime05530",
+    "username": "AÍDA BENITEZ💗",
+    "uniqueId": "xime05530",
+    "totalTaps": 105,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:47:51.298Z",
+    "updatedAt": "2026-04-30T04:51:12.718Z",
+    "lastSeenAt": "2026-04-30T04:51:12.718Z"
+  },
+  "vann_568": {
+    "id": "vann_568",
+    "username": "vann_c",
+    "uniqueId": "vann_568",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:50:18.787Z",
+    "updatedAt": "2026-04-30T04:51:09.398Z",
+    "lastSeenAt": "2026-04-30T04:51:09.398Z"
+  },
+  "ramirogauna": {
+    "id": "ramirogauna",
+    "username": "Ramiro Gauna",
+    "uniqueId": "ramirogauna",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:52:38.243Z",
+    "updatedAt": "2026-04-30T04:53:31.399Z",
+    "lastSeenAt": "2026-04-30T04:53:31.399Z"
+  },
+  "_bri739": {
+    "id": "_bri739",
+    "username": "Brii.💗🫦",
+    "uniqueId": "_bri739",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:52:39.911Z",
+    "updatedAt": "2026-04-30T04:52:54.032Z",
+    "lastSeenAt": "2026-04-30T04:52:54.032Z"
+  },
+  "yio_tensei": {
+    "id": "yio_tensei",
+    "username": "BabaYaga 🫦",
+    "uniqueId": "yio_tensei",
+    "totalTaps": 0,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:54:05.983Z",
+    "updatedAt": "2026-04-30T04:54:41.496Z",
+    "lastSeenAt": "2026-04-30T04:54:41.496Z"
+  },
+  "alexagaldamez503": {
+    "id": "alexagaldamez503",
+    "username": "😍Alexandra 503",
+    "uniqueId": "alexagaldamez503",
+    "totalTaps": 127,
+    "totalComentarios": 0,
+    "totalRegalos": 5,
+    "monedasAcumuladas": 5,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      },
+      "Rose": {
+        "cantidad": 2,
+        "monedas": 2
+      },
+      "Popular Vote": {
+        "cantidad": 2,
+        "monedas": 2
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:55:26.575Z",
+    "updatedAt": "2026-04-30T04:57:28.691Z",
+    "lastSeenAt": "2026-04-30T04:57:28.691Z"
+  },
+  "everha": {
+    "id": "everha",
+    "username": "Ever HA",
+    "uniqueId": "everha",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 2,
+    "regalos": {
+      "Rose": {
+        "cantidad": 2,
+        "monedas": 2
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:58:07.517Z",
+    "updatedAt": "2026-04-30T04:58:10.825Z",
+    "lastSeenAt": "2026-04-30T04:58:10.825Z"
+  },
+  "yarinelis24": {
+    "id": "yarinelis24",
+    "username": "yarinelis24",
+    "uniqueId": "yarinelis24",
+    "totalTaps": 0,
+    "totalComentarios": 1,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:58:46.448Z",
+    "updatedAt": "2026-04-30T04:59:02.926Z",
+    "lastSeenAt": "2026-04-30T04:59:02.926Z"
+  },
+  "natalia_23.03": {
+    "id": "natalia_23.03",
+    "username": "𝕹𝖆𝖙𝖆𝖑𝖎𝖆 💗",
+    "uniqueId": "natalia_23.03",
+    "totalTaps": 0,
+    "totalComentarios": 3,
+    "totalRegalos": 3,
+    "monedasAcumuladas": 3,
+    "regalos": {
+      "Rose": {
+        "cantidad": 2,
+        "monedas": 2
+      },
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:58:53.041Z",
+    "updatedAt": "2026-04-30T05:01:05.678Z",
+    "lastSeenAt": "2026-04-30T05:01:05.678Z"
+  },
+  "daniielaleocadiio": {
+    "id": "daniielaleocadiio",
+    "username": "Daniela",
+    "uniqueId": "daniielaleocadiio",
+    "totalTaps": 166,
+    "totalComentarios": 2,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:58:57.115Z",
+    "updatedAt": "2026-04-30T05:00:01.130Z",
+    "lastSeenAt": "2026-04-30T05:00:01.130Z"
+  },
+  "fedraavp": {
+    "id": "fedraavp",
+    "username": "fv",
+    "uniqueId": "fedraavp",
+    "totalTaps": 8,
+    "totalComentarios": 1,
+    "totalRegalos": 2,
+    "monedasAcumuladas": 60,
+    "regalos": {
+      "Doughnut": {
+        "cantidad": 2,
+        "monedas": 60
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T04:59:36.182Z",
+    "updatedAt": "2026-04-30T05:01:01.462Z",
+    "lastSeenAt": "2026-04-30T05:01:01.462Z"
+  },
+  "Test_Galleta": {
+    "id": "Test_Galleta",
+    "username": "Test_Galleta",
+    "uniqueId": "",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 1,
+    "regalos": {
+      "Heart Me": {
+        "cantidad": 1,
+        "monedas": 1
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T12:56:40.973Z",
+    "updatedAt": "2026-04-30T12:56:40.973Z",
+    "lastSeenAt": "2026-04-30T12:56:40.973Z"
+  },
+  "Test_Perfume": {
+    "id": "Test_Perfume",
+    "username": "Test_Perfume",
+    "uniqueId": "",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 20,
+    "regalos": {
+      "Perfume": {
+        "cantidad": 1,
+        "monedas": 20
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T12:56:41.532Z",
+    "updatedAt": "2026-04-30T12:56:41.532Z",
+    "lastSeenAt": "2026-04-30T12:56:41.532Z"
+  },
+  "Test_Rosquilla": {
+    "id": "Test_Rosquilla",
+    "username": "Test_Rosquilla",
+    "uniqueId": "",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 30,
+    "regalos": {
+      "Rosquilla": {
+        "cantidad": 1,
+        "monedas": 30
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T12:56:41.996Z",
+    "updatedAt": "2026-04-30T12:56:41.996Z",
+    "lastSeenAt": "2026-04-30T12:56:41.996Z"
+  },
+  "Test_Karmico": {
+    "id": "Test_Karmico",
+    "username": "Test_Karmico",
+    "uniqueId": "",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 100,
+    "regalos": {
+      "Heart in Hands": {
+        "cantidad": 1,
+        "monedas": 100
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T12:56:42.924Z",
+    "updatedAt": "2026-04-30T12:56:42.924Z",
+    "lastSeenAt": "2026-04-30T12:56:42.924Z"
+  },
+  "Test_RosaEterna": {
+    "id": "Test_RosaEterna",
+    "username": "Test_RosaEterna",
+    "uniqueId": "",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 399,
+    "regalos": {
+      "Rosa de la eternidad": {
+        "cantidad": 1,
+        "monedas": 399
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T12:56:45.156Z",
+    "updatedAt": "2026-04-30T12:56:45.156Z",
+    "lastSeenAt": "2026-04-30T12:56:45.156Z"
+  },
+  "Test_Privada": {
+    "id": "Test_Privada",
+    "username": "Test_Privada",
+    "uniqueId": "",
+    "totalTaps": 0,
+    "totalComentarios": 0,
+    "totalRegalos": 1,
+    "monedasAcumuladas": 999,
+    "regalos": {
+      "Heart Umbrella": {
+        "cantidad": 1,
+        "monedas": 999
+      }
+    },
+    "extensasGratisGanadas": 0,
+    "extensasGratisUsadas": 0,
+    "esVip": false,
+    "esCaserito": false,
+    "notas": "",
+    "createdAt": "2026-04-30T12:56:49.380Z",
+    "updatedAt": "2026-04-30T12:56:49.380Z",
+    "lastSeenAt": "2026-04-30T12:56:49.380Z"
+  }
+}

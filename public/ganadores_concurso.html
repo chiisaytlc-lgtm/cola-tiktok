@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ganadores</title>
+
+<style>
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  width: 720px;
+  min-height: 360px;
+  padding: 34px 38px;
+  border-radius: 36px;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, rgba(255, 236, 170, 0.45), transparent 45%),
+    linear-gradient(145deg, rgba(60, 34, 7, 0.72), rgba(118, 78, 19, 0.58));
+  border: 2px solid rgba(255, 224, 140, 0.85);
+  box-shadow:
+    0 0 34px rgba(255, 211, 92, 0.55),
+    inset 0 0 32px rgba(255, 255, 255, 0.12);
+  animation: breathe 3.8s ease-in-out infinite;
+}
+
+.overlay::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: conic-gradient(
+    transparent,
+    rgba(255, 230, 150, 0.20),
+    transparent,
+    rgba(255, 255, 255, 0.10),
+    transparent
+  );
+  animation: shine 12s linear infinite;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 20px;
+  border-radius: 999px;
+  color: #ffeaa8;
+  background: rgba(255, 230, 160, 0.15);
+  border: 1px solid rgba(255, 232, 170, 0.65);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  margin: 0 0 20px;
+  font-size: 48px;
+  color: #fff0b8;
+  text-shadow:
+    0 0 12px rgba(255, 220, 120, 0.95),
+    0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+.list {
+  display: grid;
+  gap: 14px;
+}
+
+.item {
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: rgba(255, 248, 220, 0.13);
+  border: 1px solid rgba(255, 232, 160, 0.38);
+  font-size: 34px;
+  font-weight: 900;
+  color: #fff8dd;
+  text-align: center;
+  text-shadow: 0 0 12px rgba(255, 220, 120, 0.8);
+}
+
+.sparkle {
+  position: absolute;
+  color: #ffe497;
+  z-index: 1;
+  animation: sparkle 3s ease-in-out infinite;
+}
+
+.s1 { top: 28px; left: 48px; font-size: 24px; }
+.s2 { top: 64px; right: 66px; font-size: 18px; animation-delay: .8s; }
+.s3 { bottom: 38px; right: 90px; font-size: 26px; animation-delay: 1.4s; }
+
+.controls {
+  display: none;
+  position: fixed;
+  left: 16px;
+  bottom: 16px;
+  width: 310px;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(24, 16, 8, 0.92);
+  border: 1px solid rgba(255, 224, 140, 0.55);
+  color: white;
+  z-index: 99;
+}
+
+body.control-mode .controls {
+  display: block;
+}
+
+.controls strong {
+  display: block;
+  margin-bottom: 10px;
+  color: #ffe8a6;
+}
+
+.controls textarea {
+  width: 100%;
+  height: 110px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 232, 170, 0.38);
+  background: rgba(255,255,255,0.12);
+  color: white;
+  outline: none;
+  resize: none;
+}
+
+.controls button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #fff0a8, #d99b24);
+  color: #2d1800;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-6px) scale(1.01); }
+}
+
+@keyframes shine {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: .45; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.35); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+  <div class="sparkle s1">✦</div>
+  <div class="sparkle s2">✧</div>
+  <div class="sparkle s3">✦</div>
+
+  <div class="content">
+    <div class="badge">GANADORES</div>
+    <h1>La energía eligió</h1>
+    <div class="list" id="winnerList"></div>
+  </div>
+</div>
+
+<div class="controls">
+  <strong>Editar ganadores</strong>
+  <textarea id="namesInput" placeholder="Escribe los nombres, uno por línea"></textarea>
+  <button onclick="updateWinners()">Actualizar pantalla</button>
+  <button onclick="clearWinners()">Limpiar nombres</button>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const isControl = params.get("control") === "1";
+
+if (isControl) {
+  document.body.classList.add("control-mode");
+}
+
+const defaultNames = ["Hazel", "Nirvanita"];
+
+function getSavedNames() {
+  const saved = localStorage.getItem("ganadores_concurso_nombres");
+  if (!saved) return defaultNames;
+  try {
+    return JSON.parse(saved);
+  } catch {
+    return defaultNames;
+  }
+}
+
+function renderWinners(names) {
+  const list = document.getElementById("winnerList");
+  list.innerHTML = "";
+
+  names
+    .map(name => name.trim())
+    .filter(Boolean)
+    .forEach(name => {
+      const div = document.createElement("div");
+      div.className = "item";
+      div.textContent = name;
+      list.appendChild(div);
+    });
+}
+
+function updateWinners() {
+  const text = document.getElementById("namesInput").value;
+  const names = text
+    .split("\n")
+    .map(name => name.trim())
+    .filter(Boolean);
+
+  localStorage.setItem("ganadores_concurso_nombres", JSON.stringify(names));
+  renderWinners(names);
+}
+
+function clearWinners() {
+  localStorage.removeItem("ganadores_concurso_nombres");
+  document.getElementById("namesInput").value = "";
+  renderWinners([]);
+}
+
+const initialNames = getSavedNames();
+renderWinners(initialNames);
+
+if (isControl) {
+  document.getElementById("namesInput").value = initialNames.join("\n");
+}
+</script>
+
+</body>
+</html>
