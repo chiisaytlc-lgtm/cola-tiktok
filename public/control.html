@@ -648,6 +648,111 @@
       border-color: #efbfd3;
     }
 
+
+    /* ---------- TABLA VIP COMPACTA ---------- */
+    .vip-filter-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 12px;
+    }
+
+    .vip-filter {
+      border: none;
+      border-radius: 999px;
+      padding: 7px 11px;
+      cursor: pointer;
+      background: #fce4ec;
+      color: #7a4e61;
+      font-size: 12px;
+      font-weight: 900;
+      box-shadow: 0 3px 8px rgba(194, 120, 150, 0.10);
+    }
+
+    .vip-filter.active {
+      background: linear-gradient(180deg, #df7da4, #cc5f8e);
+      color: #fff;
+    }
+
+    .vip-table-container {
+      max-height: 330px;
+      overflow-y: auto;
+      overflow-x: auto;
+      border-radius: 16px;
+      border: 1px solid #f3c4d7;
+      background: #fff9fc;
+    }
+
+    .vip-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      min-width: 900px;
+    }
+
+    .vip-table th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      text-align: left;
+      padding: 10px 8px;
+      color: #8b5067;
+      font-weight: 900;
+      border-bottom: 2px solid #f3c4d7;
+      background: #fff0f6;
+      white-space: nowrap;
+    }
+
+    .vip-table td {
+      padding: 9px 8px;
+      border-bottom: 1px solid #f3d7e2;
+      color: #5a3141;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    .vip-table tr:hover {
+      background: #fff4f8;
+    }
+
+    .vip-row-reward {
+      background: #fff0f6;
+      font-weight: 800;
+    }
+
+    .vip-row-close {
+      background: #fff8fb;
+    }
+
+    .vip-name-cell {
+      font-weight: 900;
+      color: #4d2e39;
+      max-width: 190px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .vip-status-pill {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #ffe6ee;
+      color: #8b5067;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .vip-actions-inline {
+      display: flex;
+      gap: 6px;
+      flex-wrap: nowrap;
+    }
+
+    .vip-actions-inline .mini-btn {
+      padding: 7px 9px;
+      font-size: 11px;
+    }
+
     @media (max-width: 1500px) {
       .grid-main {
         grid-template-columns: 1fr 1fr;
@@ -679,6 +784,7 @@
       <button class="btn" onclick="callNext()">Llamar siguiente</button>
       <button class="btn secondary" onclick="loadAll()">Actualizar</button>
       <button class="btn danger" onclick="clearAttended()">Limpiar atendidos</button>
+      <button class="btn danger" onclick="cleanTests()">Limpiar pruebas</button>
       <button class="btn danger" onclick="resetAll()">Reset total</button>
     </div>
 
@@ -809,8 +915,34 @@
     <div class="grid-vip">
       <section class="panel premium-panel">
         <h2>👑 Caseritos & VIP</h2>
-        <p class="panel-sub">Control interno: monedas acumuladas, regalos frecuentes, recompensas y caseritos de la casa.</p>
-        <div id="vipList" class="list"></div>
+        <p class="panel-sub">Control interno compacto: monedas, recompensas, tap taps y estado.</p>
+
+        <div class="vip-filter-row">
+          <button class="vip-filter active" onclick="setVipFilter('todos', this)">Todos</button>
+          <button class="vip-filter" onclick="setVipFilter('premio', this)">🎁 Con gratis</button>
+          <button class="vip-filter" onclick="setVipFilter('cerca', this)">⚠️ Cerca</button>
+          <button class="vip-filter" onclick="setVipFilter('caseritos', this)">💖 Caseritos</button>
+          <button class="vip-filter" onclick="setVipFilter('taps', this)">👆 Tap tappers</button>
+          <button class="vip-filter" onclick="setVipFilter('vip', this)">👑 VIP</button>
+        </div>
+
+        <div class="vip-table-container">
+          <table class="vip-table">
+            <thead>
+              <tr>
+                <th>Usuario</th>
+                <th>Monedas</th>
+                <th>Gratis</th>
+                <th>Faltan</th>
+                <th>Taps</th>
+                <th>Título</th>
+                <th>Estado</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="vipList"></tbody>
+          </table>
+        </div>
       </section>
 
       <section class="panel">
@@ -909,6 +1041,7 @@
     let selectedWinnerUsernames = [];
     let clientesVip = [];
     let tapMemory = {};
+    let vipFilter = "todos";
 
     const socket = io(API_BASE);
 
@@ -927,6 +1060,22 @@ Object.values(premiumSounds).forEach((audio) => {
   audio.volume = 1;
   audio.load();
 });
+
+async function cleanTests() {
+  const ok = confirm("¿Deseas borrar todos los usuarios de prueba?");
+  if (!ok) return;
+
+  await fetch(`${API_BASE}/clean-tests`, {
+    method: "POST"
+  });
+
+  tapMemory = {};
+  renderTapList();
+
+  await loadAll();
+
+  showBanner("🧹 Pruebas eliminadas de todos lados.");
+}
 
 async function unlockAudio() {
   try {
@@ -1225,6 +1374,33 @@ async function unlockAudio() {
       renderSection(attendedListEl, attended, "attended");
     }
 
+    async function awardArcanoUser(username) {
+      const ok = confirm(`¿Enviar a ${username} a la cola como ganadora del sorteo?`);
+      if (!ok) return;
+
+      const res = await fetch(`${API_BASE}/arcano/award-user`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username,
+          prizeLabel: "1 pregunta extensa"
+        })
+      });
+
+      if (!res.ok) {
+        showBanner("No se pudo premiar a esta persona.");
+        return;
+      }
+
+      const data = await res.json();
+
+      showBanner(`🃏 ${data.winner.username} ganó el sorteo y entró a la cola`);
+
+      loadAll();
+    }
+
     function renderRoseAuction() {
       if (!roseAuction) {
         roseAuctionStatusEl.textContent = "Cargando";
@@ -1293,17 +1469,20 @@ async function unlockAudio() {
         return;
       }
 
-      arcanoPicksListEl.innerHTML = arcanoGame.picksList.map((pick) => `
-        <div class="arcano-row">
-          <div class="arcano-number">${pick.number}</div>
-          <div>
-            <div class="arcano-name">${pick.arcano}</div>
-            <div class="muted">Número reservado</div>
-          </div>
-          <div class="arcano-user">${pick.username}</div>
+     arcanoPicksListEl.innerHTML = arcanoGame.picksList.map((pick) => `
+      <div class="arcano-row">
+        <div class="arcano-number">${pick.number}</div>
+        <div>
+          <div class="arcano-name">${pick.arcano}</div>
+          <div class="muted">Número reservado</div>
         </div>
-      `).join("");
-    }
+        <div class="arcano-user">${pick.username}</div>
+        <button class="mini-btn success" onclick="awardArcanoUser('${pick.username.replace(/'/g, "\\'")}')">
+          Ganó
+        </button>
+      </div>
+    `).join("");
+        }
 
 
 
@@ -1321,72 +1500,125 @@ async function unlockAudio() {
       return "🌱 Nuevo";
     }
 
+    function setVipFilter(filter, button) {
+      vipFilter = filter;
+
+      document.querySelectorAll(".vip-filter").forEach((btn) => {
+        btn.classList.remove("active");
+      });
+
+      if (button) button.classList.add("active");
+
+      renderVipClientes();
+    }
+
+    function clienteDisponibleGratis(cliente) {
+      return Number(cliente.extensasGratisGanadas || 0) - Number(cliente.extensasGratisUsadas || 0);
+    }
+
+    function clienteFaltan(cliente) {
+      const monedas = Number(cliente.monedasAcumuladas || 0);
+      const progreso = monedas % 1500;
+      return progreso === 0 && monedas > 0 ? 1500 : 1500 - progreso;
+    }
+
+    function clientePasaFiltro(cliente) {
+      const disponibles = clienteDisponibleGratis(cliente);
+      const faltan = clienteFaltan(cliente);
+
+      if (vipFilter === "premio") return disponibles > 0;
+      if (vipFilter === "cerca") return faltan <= 300;
+      if (vipFilter === "caseritos") return cliente.esCaserito === true;
+      if (vipFilter === "taps") return Number(cliente.totalTaps || 0) >= 100;
+      if (vipFilter === "vip") return cliente.esVip === true;
+
+      return true;
+    }
+
     function renderVipClientes() {
       if (!vipListEl) return;
 
       if (!clientesVip.length) {
-        vipListEl.innerHTML = `<div class="empty">Aún no hay clientes registrados.</div>`;
+        vipListEl.innerHTML = `
+          <tr>
+            <td colspan="8" style="text-align:center; padding:16px;">
+              Aún no hay clientes registrados.
+            </td>
+          </tr>
+        `;
         return;
       }
 
       const top = [...clientesVip]
+        .filter(clientePasaFiltro)
         .sort((a, b) => {
-          const disponiblesA = (a.extensasGratisGanadas || 0) - (a.extensasGratisUsadas || 0);
-          const disponiblesB = (b.extensasGratisGanadas || 0) - (b.extensasGratisUsadas || 0);
-          const scoreA = disponiblesA * 10000 + (a.monedasAcumuladas || 0) + ((a.totalTaps || 0) / 100) + ((a.totalComentarios || 0) * 2);
-          const scoreB = disponiblesB * 10000 + (b.monedasAcumuladas || 0) + ((b.totalTaps || 0) / 100) + ((b.totalComentarios || 0) * 2);
+          const disponiblesA = clienteDisponibleGratis(a);
+          const disponiblesB = clienteDisponibleGratis(b);
+
+          const faltanA = clienteFaltan(a);
+          const faltanB = clienteFaltan(b);
+
+          const cercaA = faltanA <= 300 ? 1 : 0;
+          const cercaB = faltanB <= 300 ? 1 : 0;
+
+          const scoreA =
+            disponiblesA * 100000 +
+            cercaA * 50000 +
+            Number(a.monedasAcumuladas || 0) +
+            Number(a.totalTaps || 0) / 100 +
+            Number(a.totalComentarios || 0) * 2;
+
+          const scoreB =
+            disponiblesB * 100000 +
+            cercaB * 50000 +
+            Number(b.monedasAcumuladas || 0) +
+            Number(b.totalTaps || 0) / 100 +
+            Number(b.totalComentarios || 0) * 2;
+
           return scoreB - scoreA;
         })
-        .slice(0, 20);
+        .slice(0, 50);
+
+      if (!top.length) {
+        vipListEl.innerHTML = `
+          <tr>
+            <td colspan="8" style="text-align:center; padding:16px;">
+              No hay personas en este filtro.
+            </td>
+          </tr>
+        `;
+        return;
+      }
 
       vipListEl.innerHTML = top.map((c) => {
         const monedas = Number(c.monedasAcumuladas || 0);
-        const progreso = monedas % 1500;
-        const faltan = progreso === 0 && monedas > 0 ? 0 : 1500 - progreso;
-        const porcentaje = Math.min(100, Math.floor((progreso / 1500) * 100));
-        const disponibles = (c.extensasGratisGanadas || 0) - (c.extensasGratisUsadas || 0);
-        const topGifts = Object.entries(c.regalos || {})
-          .sort((a, b) => (b[1]?.monedas || 0) - (a[1]?.monedas || 0))
-          .slice(0, 3)
-          .map(([name, data]) => `${name}: ${data.cantidad || 0}`)
-          .join(" · ");
+        const faltan = clienteFaltan(c);
+        const disponibles = clienteDisponibleGratis(c);
+
+        let rowClass = "";
+        if (disponibles > 0) rowClass = "vip-row-reward";
+        else if (faltan <= 300) rowClass = "vip-row-close";
 
         return `
-          <div class="vip-card">
-            <div class="vip-head">
-              <div class="vip-name">${c.username || "Usuario"}</div>
-              <div class="vip-badge">${getClienteBadge(c)}</div>
-            </div>
-
-            <div class="meta">
-              💎 Monedas: <strong>${monedas}</strong><br>
-              🎁 Regalos: <strong>${c.totalRegalos || 0}</strong><br>
-              👆 Tap taps: <strong>${c.totalTaps || 0}</strong><br>
-              💬 Comentarios: <strong>${c.totalComentarios || 0}</strong><br>
-              🎀 Extensas gratis disponibles: <strong>${disponibles}</strong>
-            </div>
-
-            <div class="vip-progress">
-              <div class="vip-progress-top">
-                <span>${progreso}/1500 monedas</span>
-                <span>${faltan === 0 ? "Premio desbloqueado" : `Faltan ${faltan}`}</span>
+          <tr class="${rowClass}">
+            <td class="vip-name-cell" title="${c.username || "Usuario"}">${c.username || "Usuario"}</td>
+            <td>💎 ${monedas}</td>
+            <td>🎁 ${disponibles}</td>
+            <td>${faltan <= 300 ? `⚠️ ${faltan}` : faltan}</td>
+            <td>👆 ${c.totalTaps || 0}</td>
+            <td>${c.tituloTap || "-"}</td>
+            <td><span class="vip-status-pill">${getClienteBadge(c)}</span></td>
+            <td>
+              <div class="vip-actions-inline">
+                <button class="mini-btn secondary" onclick="toggleCaserito('${getClienteId(c)}', ${!c.esCaserito})">
+                  ${c.esCaserito ? "Quitar" : "Caserito"}
+                </button>
+                <button class="mini-btn success" onclick="usarExtensaGratis('${getClienteId(c)}')">
+                  Usar
+                </button>
               </div>
-              <div class="vip-progress-track">
-                <div class="vip-progress-fill" style="width:${porcentaje}%"></div>
-              </div>
-            </div>
-
-            ${topGifts ? `<div class="vip-gifts">Regalos frecuentes: ${topGifts}</div>` : ""}
-
-            <div class="vip-actions">
-              <button class="mini-btn secondary" onclick="toggleCaserito('${getClienteId(c)}', ${!c.esCaserito})">
-                ${c.esCaserito ? "Quitar caserito" : "Marcar caserito"}
-              </button>
-              <button class="mini-btn success" onclick="usarExtensaGratis('${getClienteId(c)}')">
-                Usar gratis
-              </button>
-            </div>
-          </div>
+            </td>
+          </tr>
         `;
       }).join("");
     }
@@ -1545,18 +1777,25 @@ async function unlockAudio() {
       loadQueue();
     }
 
-    async function resetAll() {
-      const ok = confirm("¿Deseas resetear cola, subasta y arcanos?");
-      if (!ok) return;
+   app.post("/reset-all", (req, res) => {
+      queue = [];
+      clearRoseAuction();
+      resetArcanoGame();
 
-      await fetch(`${API_BASE}/reset-all`, {
-        method: "POST"
+      // 🧹 borrar pruebas del archivo clientes-vip.json
+      limpiarClientesTest();
+
+      emitQueue();
+
+      res.json({
+        ok: true,
+        queue,
+        visibleQueue: buildVisibleQueue(),
+        roseAuction: buildRoseAuctionState(),
+        arcanoGame: buildArcanoGameState(),
+        clientes: buildClientesVipState()
       });
-
-      selectedWinnerUsernames = [];
-      loadAll();
-      showBanner("Se reinició todo el laboratorio.");
-    }
+    });
 
     async function testGift(giftName, coins = 0, username = null, repeatCount = 1) {
       const randomUser = username || ("TEST_" + Math.floor(Math.random() * 1000));

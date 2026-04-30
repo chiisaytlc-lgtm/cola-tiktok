@@ -223,6 +223,30 @@ function getGiftRule(giftName) {
   };
 }
 
+function isTestUser(username = "") {
+  const u = String(username || "").toLowerCase();
+
+  return (
+    u.startsWith("test") ||
+    u.includes("test_") ||
+    u.includes("test-")
+  );
+}
+
+function limpiarClientesTest() {
+  for (const key of Object.keys(clientesVip)) {
+    const cliente = clientesVip[key];
+    const username = cliente?.username || key;
+
+    if (isTestUser(username) || isTestUser(key)) {
+      delete clientesVip[key];
+    }
+  }
+
+  saveClientesVip();
+  emitClientesVip();
+}
+
 function normalizeGiftType(giftName) {
   const g = normalizeText(giftName);
 
@@ -816,6 +840,53 @@ app.get("/arcano-game", (req, res) => {
   res.json(buildArcanoGameState());
 });
 
+app.post("/arcano/award-user", (req, res) => {
+  const { username, prizeLabel = "Premio sorteo de arcanos" } = req.body || {};
+
+  if (!username) {
+    return res.status(400).json({ error: "Falta username" });
+  }
+
+  const pick = arcanoGame.picks[username];
+
+  if (!pick) {
+    return res.status(404).json({ error: "Usuario no encontrado en sorteo" });
+  }
+
+  const item = {
+    id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    username: pick.username,
+    giftName: "Ganó sorteo de arcanos",
+    coins: 0,
+    repeatCount: 1,
+    createdAt: nowIso(),
+    updatedAt: nowIso(),
+    status: "pendiente",
+    serviceKey: "sorteo_arcanos",
+    serviceLabel: prizeLabel,
+    queueType: "premium",
+    icon: "🃏"
+  };
+
+  queue.push(item);
+
+  arcanoGame.winner = pick;
+
+  emitQueue();
+  emitArcanoGame();
+
+  io.emit("arcanoGame:winner", pick);
+
+  res.json({
+    ok: true,
+    winner: pick,
+    item,
+    queue,
+    visibleQueue: buildVisibleQueue(),
+    arcanoGame: buildArcanoGameState()
+  });
+});
+
 app.get("/status", (req, res) => {
   res.json({
     isConnected,
@@ -856,6 +927,28 @@ app.get("/status", (req, res) => {
 
 app.get("/clientes-vip", (req, res) => {
   res.json(buildClientesVipState());
+});
+
+app.post("/clean-tests", (req, res) => {
+  queue = queue.filter((item) => {
+    const username =
+      item.username ||
+      item.nickname ||
+      item.user?.nickname ||
+      "";
+
+    return !isTestUser(username);
+  });
+
+  limpiarClientesTest();
+  emitQueue();
+
+  res.json({
+    ok: true,
+    queue,
+    visibleQueue: buildVisibleQueue(),
+    clientes: buildClientesVipState()
+  });
 });
 
 app.post("/clientes-vip/:id/caserito", (req, res) => {
@@ -1168,7 +1261,20 @@ app.post("/attended", (req, res) => {
 });
 
 app.post("/clear-attended", (req, res) => {
+  // 🧹 quitar atendidos
   queue = queue.filter((item) => item.status !== "atendido");
+
+  // 🔥 quitar usuarios de prueba (aunque no estén atendidos)
+  queue = queue.filter((item) => {
+    const username =
+      item.username ||
+      item.nickname ||
+      item.user?.nickname ||
+      "";
+
+    return !isTestUser(username);
+  });
+
   emitQueue();
 
   res.json({ ok: true, queue, visibleQueue: buildVisibleQueue() });
@@ -1185,6 +1291,12 @@ app.post("/reset-all", (req, res) => {
   queue = [];
   clearRoseAuction();
   resetArcanoGame();
+
+  // 🔥 LIMPIAR CLIENTES DE PRUEBA
+  clientesVip = clientesVip.filter(c => !isTestUser(c.username));
+  saveClientesVip();
+  emitClientesVip();
+
   emitQueue();
 
   res.json({

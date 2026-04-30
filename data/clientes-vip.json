@@ -1,32 +1,9 @@
 {
-  "Test_Tiara": {
-    "id": "Test_Tiara",
-    "username": "Test_Tiara",
-    "uniqueId": "",
-    "totalTaps": 0,
-    "totalComentarios": 0,
-    "totalRegalos": 71,
-    "monedasAcumuladas": 10650,
-    "regalos": {
-      "Feather Tiara": {
-        "cantidad": 71,
-        "monedas": 10650
-      }
-    },
-    "extensasGratisGanadas": 7,
-    "extensasGratisUsadas": 0,
-    "esVip": true,
-    "esCaserito": false,
-    "notas": "",
-    "createdAt": "2026-04-29T17:12:09.125Z",
-    "updatedAt": "2026-04-30T12:56:43.467Z",
-    "lastSeenAt": "2026-04-30T12:56:43.467Z"
-  },
   "Ana": {
     "id": "Ana",
     "username": "Ana",
     "uniqueId": "Ana",
-    "totalTaps": 1150,
+    "totalTaps": 1900,
     "totalComentarios": 0,
     "totalRegalos": 0,
     "monedasAcumuladas": 0,
@@ -37,8 +14,8 @@
     "esCaserito": false,
     "notas": "",
     "createdAt": "2026-04-29T18:05:57.257Z",
-    "updatedAt": "2026-04-30T12:56:57.154Z",
-    "lastSeenAt": "2026-04-30T12:56:57.154Z",
+    "updatedAt": "2026-04-30T14:34:48.678Z",
+    "lastSeenAt": "2026-04-30T14:34:48.678Z",
     "tituloTap": "💖 Ya Es Parte"
   },
   "Luis": {
@@ -59,29 +36,6 @@
     "updatedAt": "2026-04-30T12:56:58.507Z",
     "lastSeenAt": "2026-04-30T12:56:58.508Z",
     "tituloTap": "💎 Incondicional"
-  },
-  "Test_Capibara": {
-    "id": "Test_Capibara",
-    "username": "Test_Capibara",
-    "uniqueId": "",
-    "totalTaps": 0,
-    "totalComentarios": 0,
-    "totalRegalos": 51,
-    "monedasAcumuladas": 1530,
-    "regalos": {
-      "Capibara": {
-        "cantidad": 51,
-        "monedas": 1530
-      }
-    },
-    "extensasGratisGanadas": 1,
-    "extensasGratisUsadas": 0,
-    "esVip": true,
-    "esCaserito": false,
-    "notas": "",
-    "createdAt": "2026-04-29T19:18:08.482Z",
-    "updatedAt": "2026-04-30T12:56:42.476Z",
-    "lastSeenAt": "2026-04-30T12:56:42.476Z"
   },
   "3.00.300": {
     "id": "3.00.300",
@@ -3319,7 +3273,7 @@
       },
       "Rose": {
         "cantidad": 70,
-        "monedas": 70        
+        "monedas": 70
       }
     },
     "extensasGratisGanadas": 0,
@@ -4577,143 +4531,5 @@
     "createdAt": "2026-04-30T04:59:36.182Z",
     "updatedAt": "2026-04-30T05:01:01.462Z",
     "lastSeenAt": "2026-04-30T05:01:01.462Z"
-  },
-  "Test_Galleta": {
-    "id": "Test_Galleta",
-    "username": "Test_Galleta",
-    "uniqueId": "",
-    "totalTaps": 0,
-    "totalComentarios": 0,
-    "totalRegalos": 1,
-    "monedasAcumuladas": 1,
-    "regalos": {
-      "Heart Me": {
-        "cantidad": 1,
-        "monedas": 1
-      }
-    },
-    "extensasGratisGanadas": 0,
-    "extensasGratisUsadas": 0,
-    "esVip": false,
-    "esCaserito": false,
-    "notas": "",
-    "createdAt": "2026-04-30T12:56:40.973Z",
-    "updatedAt": "2026-04-30T12:56:40.973Z",
-    "lastSeenAt": "2026-04-30T12:56:40.973Z"
-  },
-  "Test_Perfume": {
-    "id": "Test_Perfume",
-    "username": "Test_Perfume",
-    "uniqueId": "",
-    "totalTaps": 0,
-    "totalComentarios": 0,
-    "totalRegalos": 1,
-    "monedasAcumuladas": 20,
-    "regalos": {
-      "Perfume": {
-        "cantidad": 1,
-        "monedas": 20
-      }
-    },
-    "extensasGratisGanadas": 0,
-    "extensasGratisUsadas": 0,
-    "esVip": false,
-    "esCaserito": false,
-    "notas": "",
-    "createdAt": "2026-04-30T12:56:41.532Z",
-    "updatedAt": "2026-04-30T12:56:41.532Z",
-    "lastSeenAt": "2026-04-30T12:56:41.532Z"
-  },
-  "Test_Rosquilla": {
-    "id": "Test_Rosquilla",
-    "username": "Test_Rosquilla",
-    "uniqueId": "",
-    "totalTaps": 0,
-    "totalComentarios": 0,
-    "totalRegalos": 1,
-    "monedasAcumuladas": 30,
-    "regalos": {
-      "Rosquilla": {
-        "cantidad": 1,
-        "monedas": 30
-      }
-    },
-    "extensasGratisGanadas": 0,
-    "extensasGratisUsadas": 0,
-    "esVip": false,
-    "esCaserito": false,
-    "notas": "",
-    "createdAt": "2026-04-30T12:56:41.996Z",
-    "updatedAt": "2026-04-30T12:56:41.996Z",
-    "lastSeenAt": "2026-04-30T12:56:41.996Z"
-  },
-  "Test_Karmico": {
-    "id": "Test_Karmico",
-    "username": "Test_Karmico",
-    "uniqueId": "",
-    "totalTaps": 0,
-    "totalComentarios": 0,
-    "totalRegalos": 1,
-    "monedasAcumuladas": 100,
-    "regalos": {
-      "Heart in Hands": {
-        "cantidad": 1,
-        "monedas": 100
-      }
-    },
-    "extensasGratisGanadas": 0,
-    "extensasGratisUsadas": 0,
-    "esVip": false,
-    "esCaserito": false,
-    "notas": "",
-    "createdAt": "2026-04-30T12:56:42.924Z",
-    "updatedAt": "2026-04-30T12:56:42.924Z",
-    "lastSeenAt": "2026-04-30T12:56:42.924Z"
-  },
-  "Test_RosaEterna": {
-    "id": "Test_RosaEterna",
-    "username": "Test_RosaEterna",
-    "uniqueId": "",
-    "totalTaps": 0,
-    "totalComentarios": 0,
-    "totalRegalos": 1,
-    "monedasAcumuladas": 399,
-    "regalos": {
-      "Rosa de la eternidad": {
-        "cantidad": 1,
-        "monedas": 399
-      }
-    },
-    "extensasGratisGanadas": 0,
-    "extensasGratisUsadas": 0,
-    "esVip": false,
-    "esCaserito": false,
-    "notas": "",
-    "createdAt": "2026-04-30T12:56:45.156Z",
-    "updatedAt": "2026-04-30T12:56:45.156Z",
-    "lastSeenAt": "2026-04-30T12:56:45.156Z"
-  },
-  "Test_Privada": {
-    "id": "Test_Privada",
-    "username": "Test_Privada",
-    "uniqueId": "",
-    "totalTaps": 0,
-    "totalComentarios": 0,
-    "totalRegalos": 1,
-    "monedasAcumuladas": 999,
-    "regalos": {
-      "Heart Umbrella": {
-        "cantidad": 1,
-        "monedas": 999
-      }
-    },
-    "extensasGratisGanadas": 0,
-    "extensasGratisUsadas": 0,
-    "esVip": false,
-    "esCaserito": false,
-    "notas": "",
-    "createdAt": "2026-04-30T12:56:49.380Z",
-    "updatedAt": "2026-04-30T12:56:49.380Z",
-    "lastSeenAt": "2026-04-30T12:56:49.380Z"
   }
 }
