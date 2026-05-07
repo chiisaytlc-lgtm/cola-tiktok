@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Activación de la Riqueza</title>
+
+<style>
+.wealth-popup {
+  position: absolute;
+  bottom: 20%;
+  right: 8%;
+  width: 380px;
+
+  padding: 28px;
+  border-radius: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  opacity: 0;
+  transform: scale(0.7);
+
+  background: linear-gradient(
+    145deg,
+    #4a2d00 0%,
+    #b07a00 50%,
+    #2a1800 100%
+  );
+
+  border: 1.5px solid rgba(255, 215, 90, 0.8);
+
+  box-shadow:
+    0 0 25px rgba(255, 200, 80, 0.6),
+    0 10px 30px rgba(0,0,0,0.4);
+
+  transition: all 0.4s ease;
+}
+
+/* BRILLO SUPERIOR */
+.wealth-popup::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 26px;
+  background: radial-gradient(
+    circle at top,
+    rgba(255,215,0,0.25),
+    transparent 50%
+  );
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 900;
+  color: #ffe38a;
+  margin-bottom: 6px;
+}
+
+.user {
+  font-size: 14px;
+  color: #fff0b8;
+  margin-bottom: 12px;
+}
+
+.message {
+  font-size: 16px;
+  color: #fff8df;
+  line-height: 1.4;
+}
+
+/* APARICIÓN */
+.wealth-popup.show {
+  opacity: 1;
+  transform: scale(1);
+}
+</style>
+</head>
+
+<body>
+
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+<script>
+// conexión
+const params = new URLSearchParams(window.location.search);
+const socketUrl = params.get("socketUrl") || "http://localhost:3002";
+
+const socket = io(socketUrl);
+
+// escuchar activación
+socket.on("wealth:activation", (data) => {
+  mostrarActivacion(data);
+});
+
+// función animación
+function mostrarActivacion(data) {
+
+  const el = document.createElement("div");
+  el.className = "wealth-popup";
+
+  el.innerHTML = `
+    <div class="title">✨ Activación de la Riqueza ✨</div>
+    <div class="user">@${data.username}</div>
+    <div class="message">${data.decree}</div>
+  `;
+
+  document.body.appendChild(el);
+
+  // aparecer
+  setTimeout(() => el.classList.add("show"), 50);
+
+  // desaparecer
+  setTimeout(() => {
+    el.classList.remove("show");
+    setTimeout(() => el.remove(), 500);
+  }, 4500);
+}
+
+// 👇 BOTÓN DE PRUEBA (solo para testear sin server)
+setTimeout(() => {
+  mostrarActivacion({
+    username: "Chiisay",
+    decree: "El dinero fluye hacia mí con facilidad y sin resistencia."
+  });
+}, 1500);
+
+</script>
+
+</body>
+</html>

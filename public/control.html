@@ -960,20 +960,25 @@
         <p class="panel-sub">Botones rápidos para ensayar antes del live real.</p>
         <div class="lab-grid">
           <button class="btn secondary" onclick="testGift('Heart Me', 1, 'Test_Galleta')">Test 🥠</button>
-          <button class="btn secondary" onclick="testGift('Perfume', 20, 'Test_Perfume')">Test 🌫️</button>
+          <button class="btn secondary" onclick="testGift('Confetti', 100, 'Test_Oraculo_Premium_Amor')">Test Amor🌫️</button>
+          <button class="btn secondary" onclick="testGift('Oso Mishka', 100, 'Test_Oraculo_Premium_Dinero')">Test Dinero 🌫️</button>
           <button class="btn secondary" onclick="testGift('Rosquilla', 30, 'Test_Rosquilla')">Test 🌈</button>
           <button class="btn secondary" onclick="testGift('Capibara', 30, 'Test_Capibara')">Test 🐹</button>
-          <button class="btn secondary" onclick="testGift('Heart in Hands', 100, 'Test_Karmico')">Test ❤️</button>
+          <button class="btn secondary" onclick="testGift('Balloon Heart Wreath', 149, 'Test_Karmico')">Test ❤️</button>
           <button class="btn secondary" onclick="testGift('Feather Tiara', 150, 'Test_Tiara')">Test 👑</button>
-          <button class="btn secondary" onclick="testGift('Rosa de la eternidad', 399, 'Test_RosaEterna')">Test 🌹</button>
-          <button class="btn secondary" onclick="testGift('Heart Umbrella', 999, 'Test_Privada')">Test ☂️</button>
+          <button class="btn secondary" onclick="testGift('Eternity Rose', 399, 'Test_RosaEterna')">Test 🌹</button>
+          <button class="btn secondary" onclick="testGift('Love Shelter', 999, 'Test_Privada')">Test ☂️</button>
           <button class="btn secondary" onclick="testRoseGift('Susana', 100)">🌹 Susana +100</button>
           <button class="btn secondary" onclick="testRoseGift('Carla', 90)">🌹 Carla +90</button>
           <button class="btn secondary" onclick="testRoseGift('Andrea', 25)">🌹 Andrea +25</button>
 
-          <button class="btn secondary" onclick="testTap('Ana', 50)">Test 👆 Tap</button>
-          <button class="btn secondary" onclick="testTap('Luis', 120)">Test 👆 Tap fuerte</button>
+          <button class="btn secondary" onclick="testTap('Chiisay', 150)">Test 👆 Tap</button>
+          <button class="btn secondary" onclick="testTap('Aldeusciel', 220)">Test 👆 Tap fuerte</button>
 
+          <button class="btn secondary" onclick="testGift('Perfume', 100, 'Chiisay')">Chiisay +100</button>
+          <button class="btn secondary" onclick="testGift('Perfume', 200, 'Chiisay')">Chiisay +200</button>
+          <button class="btn secondary" onclick="testGift('Perfume', 300, 'Chiisay')">Chiisay +300</button>
+          <button class="btn secondary" onclick="testGift('Perfume', 500, 'Chiisay')">Chiisay +500</button>
         </div>
       </section>
 
@@ -1004,6 +1009,29 @@
 
   <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
   <script>
+
+    function getVipData(username) {
+      return clientesVip.find(c => c.username === username);
+    }
+
+    function getCicloData(cliente) {
+      if (!cliente) return null;
+
+      const total = Number(cliente.monedasAcumuladas || 0);
+
+      const progreso = total > 0
+        ? ((total - 1) % 1500) + 1
+        : 0;
+
+      const faltan = progreso === 0 ? 1500 : 1500 - progreso;
+
+      const ciclo = total > 0
+        ? Math.floor((total - 1) / 1500) + 1
+        : 1;
+
+      return { total, progreso, faltan, ciclo };
+    }
+
     const API_BASE = "http://127.0.0.1:3002";
 
     const premiumListEl = document.getElementById("premiumList");
@@ -1208,6 +1236,10 @@ async function unlockAudio() {
         const globalIndex = getGlobalIndex(item);
         const localIndex = getVisualIndex(items, item);
         const name = getName(item);
+
+        const vip = getVipData(name);
+        const cicloData = getCicloData(vip);
+
         const gift = item?.giftName || "Sin regalo";
         const serviceLabel = item?.serviceLabel || gift;
         const icon = item?.icon || "✨";
@@ -1226,12 +1258,37 @@ async function unlockAudio() {
                 <div class="name">${name}</div>
                 <div class="service">${icon} ${serviceLabel}</div>
                 <div class="meta">
-                  Regalo: <strong>${gift}</strong><br>
-                  Monedas: <strong>${coins}</strong><br>
-                  Cantidad: <strong>${repeatCount}</strong><br>
-                  Entró: <strong>${createdAt}</strong><br>
-                  Actualizado: <strong>${updatedAt}</strong>
-                </div>
+                    Regalo: <strong>${gift}</strong><br>
+                    Monedas: <strong>${coins}</strong><br>
+                    Cantidad: <strong>${repeatCount}</strong><br>
+
+                    ${
+                      cicloData
+                        ? `
+                          <div style="margin-top:6px; font-weight:800; color:#a23a64;">
+                            💎 ${cicloData.progreso} / 1500
+                          </div>
+
+                          <div style="font-size:12px; color:#8a6273;">
+                            🔁 Ciclo ${cicloData.ciclo}
+                          </div>
+
+                          <div style="font-size:12px;">
+                            ${
+                              cicloData.faltan <= 100
+                                ? `🔥 Faltan ${cicloData.faltan}`
+                                : cicloData.faltan <= 300
+                                  ? `⚠️ Faltan ${cicloData.faltan}`
+                                  : `Faltan ${cicloData.faltan}`
+                            }
+                          </div>
+                        `
+                        : ""
+                    }
+
+                    Entró: <strong>${createdAt}</strong><br>
+                    Actualizado: <strong>${updatedAt}</strong>
+                  </div>
                 <div class="pill-row">
                   <div class="pill">${getStatusLabel(status)}</div>
                   <div class="pill type-${queueType}">${getQueueTypeLabel(queueType)}</div>
@@ -1245,6 +1302,17 @@ async function unlockAudio() {
                   ? `
                     <button class="mini-btn warn" onclick="markNoResponse(${globalIndex})">Sin responder</button>
                     <button class="mini-btn success" onclick="markAttended(${globalIndex})">Atendido</button>
+                    ${
+                      item.serviceKey === "oraculo_premium_amor"
+                        ? `<button class="mini-btn" onclick="activarAmor('${name}')"> 💖 Amor </button>`
+                        : ""
+                    }
+
+                     ${
+                      item.serviceKey === "oraculo_premium_dinero"
+                        ? `<button class="mini-btn" onclick="activarDinero('${name}')"> 💰 Dinero </button>`
+                        : ""
+                    }                  
                   `
                   : ""
               }
@@ -1597,6 +1665,7 @@ async function unlockAudio() {
 
         let rowClass = "";
         if (disponibles > 0) rowClass = "vip-row-reward";
+        else if (faltan <= 100) rowClass = "vip-row-reward";
         else if (faltan <= 300) rowClass = "vip-row-close";
 
         return `
@@ -1604,7 +1673,17 @@ async function unlockAudio() {
             <td class="vip-name-cell" title="${c.username || "Usuario"}">${c.username || "Usuario"}</td>
             <td>💎 ${monedas}</td>
             <td>🎁 ${disponibles}</td>
-            <td>${faltan <= 300 ? `⚠️ ${faltan}` : faltan}</td>
+            <td>
+              ${
+                disponibles > 0
+                  ? "💎 GRATIS"
+                  : faltan <= 100
+                    ? `🔥 ${faltan}`
+                    : faltan <= 300
+                      ? `⚠️ ${faltan}`
+                      : faltan
+              }
+            </td>
             <td>👆 ${c.totalTaps || 0}</td>
             <td>${c.tituloTap || "-"}</td>
             <td><span class="vip-status-pill">${getClienteBadge(c)}</span></td>
@@ -1627,8 +1706,12 @@ async function unlockAudio() {
       if (!tapListEl) return;
 
       const list = Object.values(tapMemory)
-        .sort((a, b) => (b.totalTaps || 0) - (a.totalTaps || 0))
-        .slice(0, 10);
+        .sort((a, b) => {
+          const aLast = Number(a.lastTapAt || a.cliente?.lastTapAt || 0);
+          const bLast = Number(b.lastTapAt || b.cliente?.lastTapAt || 0);
+          return bLast - aLast;
+        })
+        .slice(0, 50);
 
       if (!list.length) {
         tapListEl.innerHTML = `<div class="empty">Sin tap taps detectados todavía.</div>`;
@@ -1641,7 +1724,7 @@ async function unlockAudio() {
             <div class="name">👆 ${u.username}</div>
 
             <div class="meta">
-              Tap taps: <strong>${u.totalTaps}</strong>
+              Tap taps: <strong>${u.totalTaps || 0}</strong>
             </div>
 
             ${
@@ -1651,7 +1734,6 @@ async function unlockAudio() {
                   </div>`
                 : ""
             }
-
           </div>
         </div>
       `).join("");
@@ -1661,7 +1743,21 @@ async function unlockAudio() {
       try {
         const res = await fetch(`${API_BASE}/clientes-vip`);
         clientesVip = await res.json();
+
+        tapMemory = {};
+
+        clientesVip.forEach(c => {
+          if ((c.totalTaps || 0) > 0) {
+            tapMemory[c.id || c.uniqueId || c.username] = {
+              username: c.username,
+              totalTaps: c.totalTaps,
+              cliente: c
+            };
+          }
+        });
+
         renderVipClientes();
+        renderTapList();
       } catch (error) {
         console.error("Error cargando clientes VIP:", error);
       }
@@ -1767,6 +1863,26 @@ async function unlockAudio() {
       loadQueue();
     }
 
+    function activarAmor(username) {
+      fetch(`http://127.0.0.1:3002/activar-amor`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username })
+      });
+    }
+
+    function activarDinero(username) {
+      fetch(`http://127.0.0.1:3002/activar-dinero`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username })
+      });
+    }
+
     async function clearAttended() {
       const ok = confirm("¿Deseas limpiar los atendidos?");
       if (!ok) return;
@@ -1777,25 +1893,21 @@ async function unlockAudio() {
       loadQueue();
     }
 
-   app.post("/reset-all", (req, res) => {
-      queue = [];
-      clearRoseAuction();
-      resetArcanoGame();
+   async function resetAll() {
+      const ok = confirm("¿Deseas hacer reset total?");
+      if (!ok) return;
 
-      // 🧹 borrar pruebas del archivo clientes-vip.json
-      limpiarClientesTest();
-
-      emitQueue();
-
-      res.json({
-        ok: true,
-        queue,
-        visibleQueue: buildVisibleQueue(),
-        roseAuction: buildRoseAuctionState(),
-        arcanoGame: buildArcanoGameState(),
-        clientes: buildClientesVipState()
+      await fetch(`${API_BASE}/reset-all`, {
+        method: "POST"
       });
-    });
+
+      tapMemory = {};
+      renderTapList();
+
+      await loadAll();
+
+      showBanner("🧹 Reset total realizado.");
+    }
 
     async function testGift(giftName, coins = 0, username = null, repeatCount = 1) {
       const randomUser = username || ("TEST_" + Math.floor(Math.random() * 1000));
@@ -1854,19 +1966,37 @@ async function unlockAudio() {
     }
 
    async function testTap(username, taps = 10) {
-  await fetch(`${API_BASE}/test-tap`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      username,
-      taps
-    })
-  });
+      const res = await fetch(`${API_BASE}/test-tap`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username,
+          taps
+        })
+      });
 
-  showBanner(`👆 ${username} hizo ${taps} tap taps`);
-}
+      if (!res.ok) {
+        showBanner("❌ No se pudo registrar el tap tap");
+        return;
+      }
+
+      const data = await res.json();
+
+      const key = data.cliente?.id || data.cliente?.uniqueId || username;
+
+      tapMemory[key] = {
+        username: data.cliente?.username || username,
+        totalTaps: data.cliente?.totalTaps || taps,
+        cliente: data.cliente
+      };
+
+      await loadClientesVip();
+      renderTapList();
+
+      showBanner(`👆 ${username} hizo ${taps} tap taps`);
+    }
 
     async function startRoseAuction() {
       await fetch(`${API_BASE}/rose-auction/start`, {
@@ -2065,12 +2195,34 @@ async function unlockAudio() {
 
     socket.on("clientesVip:update", (clientes) => {
       clientesVip = clientes || [];
+
+      // 🔥 reconstruir taps
+      tapMemory = {};
+
+      clientesVip.forEach(c => {
+        if ((c.totalTaps || 0) > 0) {
+          tapMemory[c.id || c.username] = {
+            username: c.username,
+            totalTaps: c.totalTaps,
+            cliente: c
+          };
+        }
+      });
+
       renderVipClientes();
+      renderTapList();
     });
 
     socket.on("tap:update", (data) => {
       const key = data.uniqueId || data.username;
-      tapMemory[key] = data;
+
+      tapMemory[key] = {
+        username: data.username,
+        totalTaps: data.totalTaps,
+        lastTapAt: data.cliente?.lastTapAt || Date.now(),
+        cliente: data.cliente
+      };
+
       renderTapList();
     });
 

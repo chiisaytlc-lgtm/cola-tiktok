@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Oráculo Premium del Amor</title>
+
+<style>
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.love-scene {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.love-scene.show {
+  display: flex;
+}
+
+.aura,
+.ring {
+  display: none;
+}
+
+.floating-main-heart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 76px;
+  z-index: 8;
+  filter: drop-shadow(0 0 16px rgba(255,255,255,0.85));
+  animation: heartBeat 1.25s ease-in-out infinite, fadeLong 25s ease forwards;
+}
+
+/* TEXTO MÁGICO */
+.card {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  text-align: center;
+  animation: textMagicIn 12s ease forwards;
+  z-index: 20;
+}
+
+/* humo rosado detrás */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -46px -78px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(255, 90, 170, 0.58), rgba(255, 150, 210, 0.32), transparent 68%);
+  filter: blur(18px);
+  opacity: 0.9;
+  z-index: -1;
+  animation: smokePulse 2.8s ease-in-out infinite;
+}
+
+/* brillo pequeño detrás del nombre */
+.card::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: 420px;
+  height: 70px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255,255,255,0.42), rgba(255,70,160,0.22), transparent 72%);
+  filter: blur(12px);
+  z-index: -1;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  font-weight: 950;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.05;
+
+  -webkit-text-stroke: 1.4px rgba(120, 0, 60, 0.95);
+
+  text-shadow:
+    0 4px 10px rgba(0,0,0,1),
+    0 0 18px rgba(255, 60, 150, 1),
+    0 0 42px rgba(255, 180, 230, 1);
+}
+
+.title span {
+  font-size: 52px;
+}
+
+.title small {
+  font-size: 48px;
+  font-weight: 950;
+  color: #ffe4f4;
+}
+
+.user {
+  margin-top: 8px;
+  font-size: 40px;
+  font-weight: 900;
+  color: #ffe4f4;
+
+  -webkit-text-stroke: 1.2px rgba(120, 0, 60, 0.9);
+
+  text-shadow:
+    0 4px 10px rgba(0,0,0,1),
+    0 0 16px rgba(255, 80, 170, 1);
+}
+
+.subtitle,
+.spark-line {
+  display: none;
+}
+
+/* destellos alrededor del texto */
+.spark-text {
+  position: absolute;
+  color: #fff7fb;
+  opacity: 0;
+  font-size: 28px;
+  z-index: 22;
+  text-shadow:
+    0 0 10px rgba(255,255,255,1),
+    0 0 22px rgba(255,80,170,1);
+  animation: sparkleText 2.6s ease-in-out infinite;
+}
+
+.st1 { top: 37%; left: 33%; animation-delay: 0s; }
+.st2 { top: 39%; left: 66%; animation-delay: .55s; }
+.st3 { top: 47%; left: 38%; animation-delay: 1.1s; }
+.st4 { top: 48%; left: 62%; animation-delay: 1.65s; }
+.st5 { top: 34%; left: 50%; animation-delay: 2.1s; }
+
+.heart {
+  position: absolute;
+  bottom: -80px;
+  opacity: 0;
+  animation-name: floatHeart;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 120, 190, 0.8));
+}
+
+.h1 { left: 6%;  font-size: 42px; animation-duration: 7s;  animation-delay: 0s; }
+.h2 { left: 14%; font-size: 58px; animation-duration: 8s;  animation-delay: .9s; }
+.h3 { left: 24%; font-size: 38px; animation-duration: 6s;  animation-delay: .2s; }
+.h4 { left: 34%; font-size: 50px; animation-duration: 7.4s; animation-delay: 1.3s; }
+.h5 { left: 45%; font-size: 44px; animation-duration: 8.2s; animation-delay: .5s; }
+.h6 { left: 56%; font-size: 62px; animation-duration: 6.6s; animation-delay: 1.7s; }
+.h7 { left: 66%; font-size: 40px; animation-duration: 7.8s; animation-delay: .4s; }
+.h8 { left: 76%; font-size: 54px; animation-duration: 8.6s; animation-delay: 1s; }
+.h9 { left: 86%; font-size: 42px; animation-duration: 6.8s; animation-delay: .7s; }
+.h10 { left: 94%; font-size: 58px; animation-duration: 8.4s; animation-delay: 1.5s; }
+
+.spark {
+  position: absolute;
+  color: #fff7fb;
+  opacity: 0;
+  font-size: 24px;
+  animation: sparkle 3.2s ease-in-out infinite;
+  text-shadow: 0 0 12px #ff69b4;
+}
+
+.s1 { top: 18%; left: 18%; animation-delay: .1s; }
+.s2 { top: 26%; left: 78%; animation-delay: .8s; }
+.s3 { top: 72%; left: 22%; animation-delay: 1.3s; }
+.s4 { top: 68%; left: 76%; animation-delay: .4s; }
+.s5 { top: 14%; left: 50%; animation-delay: 1.8s; }
+
+@keyframes textMagicIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(18px) scale(0.88);
+  }
+  14% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  76% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-18px) scale(0.96);
+  }
+}
+
+@keyframes smokePulse {
+  0%, 100% { transform: scale(0.88); opacity: 0.62; }
+  50% { transform: scale(1.12); opacity: 1; }
+}
+
+@keyframes titlePulse {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.25); }
+}
+
+@keyframes sparkleText {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.4) rotate(0deg);
+  }
+  42% {
+    opacity: 1;
+    transform: scale(1.25) rotate(18deg);
+  }
+}
+
+@keyframes glowPop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeLong {
+  0% { opacity: 0; }
+  8% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes heartBeat {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  35% { transform: translateX(-50%) scale(1.18); }
+  58% { transform: translateX(-50%) scale(0.96); }
+}
+
+@keyframes floatHeart {
+  0% { opacity: 0; transform: translateY(0) scale(0.6) rotate(0deg); }
+  12% { opacity: 1; }
+  80% { opacity: 0.85; }
+  100% { opacity: 0; transform: translateY(-125vh) scale(1.45) rotate(22deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+  45% { opacity: 1; transform: scale(1.25) rotate(18deg); }
+}
+</style>
+</head>
+
+<body>
+
+<div id="loveScene" class="love-scene">
+  <div class="aura"></div>
+  <div class="ring"></div>
+
+  <div class="spark s1">✦</div>
+  <div class="spark s2">✧</div>
+  <div class="spark s3">✦</div>
+  <div class="spark s4">✧</div>
+  <div class="spark s5">✦</div>
+
+  <div class="spark-text st1">✦</div>
+  <div class="spark-text st2">✧</div>
+  <div class="spark-text st3">✦</div>
+  <div class="spark-text st4">✧</div>
+  <div class="spark-text st5">✦</div>
+
+  <div class="floating-main-heart">💖</div>
+
+  <div class="card">
+    <div class="title">
+      <span>Este mensaje es para ti</span>
+      <small>💖 no es casualidad</small>
+    </div>
+    <div id="loveUser" class="user">@Usuario</div>
+    <div class="subtitle">El mensaje del corazón se abre ahora</div>
+    <div class="spark-line">✨ Respira… el amor tiene algo que decir ✨</div>
+  </div>
+
+  <div class="heart h1">💗</div>
+  <div class="heart h2">💖</div>
+  <div class="heart h3">💕</div>
+  <div class="heart h4">💞</div>
+  <div class="heart h5">💓</div>
+  <div class="heart h6">💘</div>
+  <div class="heart h7">💝</div>
+  <div class="heart h8">❤️</div>
+  <div class="heart h9">💗</div>
+  <div class="heart h10">💖</div>
+</div>
+
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const socketUrl = params.get("socketUrl") || "http://localhost:3002";
+const socket = io(socketUrl);
+
+let loveTimer = null;
+
+socket.on("love:activation", (data) => {
+  activar(data);
+});
+
+function activar(data = {}) {
+  const scene = document.getElementById("loveScene");
+  const user = document.getElementById("loveUser");
+
+  const name = data.username || "Invitada";
+  user.textContent = name.startsWith("@") ? name : "@" + name;
+
+  if (loveTimer) {
+    clearTimeout(loveTimer);
+    loveTimer = null;
+  }
+
+  scene.classList.remove("show");
+  void scene.offsetWidth;
+  scene.classList.add("show");
+
+  loveTimer = setTimeout(() => {
+    scene.classList.remove("show");
+    loveTimer = null;
+  }, 25000);
+}
+</script>
+
+</body>
+</html>

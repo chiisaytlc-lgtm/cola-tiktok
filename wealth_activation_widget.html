@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Activación de la Riqueza</title>
+
+<style>
+
+
+.wealth-popup {
+  background: black !important;
+}
+
+  
+
+/* BRILLO SUPERIOR */
+.wealth-popup::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 26px;
+  background: radial-gradient(
+    circle at top,
+    rgba(255,215,0,0.25),
+    transparent 50%
+  );
+}
+
+/* TITULO DORADO */
+.title {
+  font-size: 22px;
+  font-weight: 900;
+
+  background: linear-gradient(90deg, #fff6b0, #ffd700, #ffb300);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  text-shadow: 0 0 12px rgba(255,215,0,0.6);
+}
+
+/* USER */
+.user {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #ffd86b;
+  font-weight: 700;
+}
+
+/* MENSAJE */
+.message {
+  margin-top: 16px;
+  font-size: 17px;
+  color: #fff4c2;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* APARICIÓN */
+.wealth-popup.show {
+  opacity: 1;
+  transform: scale(1);
+}
+</style>
+</head>
+
+<body>
+
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const socketUrl = params.get("socketUrl") || "http://localhost:3002";
+const socket = io(socketUrl);
+
+socket.on("wealth:activation", (data) => {
+  mostrarActivacion(data);
+});
+
+function mostrarActivacion(data) {
+  const el = document.createElement("div");
+  el.className = "wealth-popup";
+
+  el.innerHTML = `
+    <div class="kicker">ACTIVACIÓN ENERGÉTICA</div>
+    <div class="title">✨ Activación de la Riqueza ✨</div>
+    <div class="user">@${data.username || "Invitada"}</div>
+    <div class="message">${data.decree || "Activo mi riqueza desde el merecimiento, la calma y la abundancia."}</div>
+  `;
+
+  document.body.appendChild(el);
+
+  setTimeout(() => el.classList.add("show"), 50);
+
+  setTimeout(() => {
+    el.classList.remove("show");
+    setTimeout(() => el.remove(), 500);
+  }, 5200);
+}
+
+setTimeout(() => {
+  mostrarActivacion({
+    username: "Chiisay",
+    decree: "El dinero fluye hacia mí con facilidad, claridad y merecimiento."
+  });
+}, 1500);
+</script>
+
+</body>
+</html>

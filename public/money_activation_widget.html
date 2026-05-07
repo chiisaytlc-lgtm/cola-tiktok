@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Oráculo Premium del Dinero</title>
+
+<style>
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.money-scene {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.money-scene.show {
+  display: flex;
+}
+
+.floating-main-coin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 82px;
+  z-index: 8;
+  filter:
+    drop-shadow(0 0 18px rgba(255,255,255,0.9))
+    drop-shadow(0 0 34px rgba(255,190,40,0.9));
+  animation: coinPulse 1.25s ease-in-out infinite, fadeLong 25s ease forwards;
+}
+
+.card {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  text-align: center;
+  animation: textMagicIn 12s ease forwards;
+  z-index: 20;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -50px -90px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle, rgba(255, 205, 70, 0.72), rgba(255, 160, 20, 0.38), transparent 70%);
+  filter: blur(20px);
+  opacity: 0.95;
+  z-index: -1;
+  animation: smokePulse 2.8s ease-in-out infinite;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  width: 450px;
+  height: 76px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255,255,255,0.58), rgba(255,190,40,0.3), transparent 72%);
+  filter: blur(13px);
+  z-index: -1;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-weight: 950;
+  color: #ffffff;
+  text-align: center;
+  line-height: 1.05;
+  -webkit-text-stroke: 1.4px rgba(115, 65, 0, 0.95);
+  text-shadow:
+    0 4px 10px rgba(0,0,0,1),
+    0 0 18px rgba(255, 190, 40, 1),
+    0 0 46px rgba(255, 235, 150, 1);
+}
+
+.title span {
+  font-size: 52px;
+}
+
+.title small {
+  font-size: 48px;
+  font-weight: 950;
+  color: #fff0b8;
+}
+
+.user {
+  margin-top: 8px;
+  font-size: 40px;
+  font-weight: 900;
+  color: #fff4c6;
+  -webkit-text-stroke: 1.2px rgba(110, 62, 0, 0.9);
+  text-shadow:
+    0 4px 10px rgba(0,0,0,1),
+    0 0 18px rgba(255, 195, 40, 1);
+}
+
+.spark-text {
+  position: absolute;
+  color: #fff6ca;
+  opacity: 0;
+  font-size: 30px;
+  z-index: 22;
+  text-shadow:
+    0 0 10px rgba(255,255,255,1),
+    0 0 25px rgba(255,190,40,1);
+  animation: sparkleText 2.6s ease-in-out infinite;
+}
+
+.st1 { top: 37%; left: 33%; animation-delay: 0s; }
+.st2 { top: 39%; left: 66%; animation-delay: .55s; }
+.st3 { top: 47%; left: 38%; animation-delay: 1.1s; }
+.st4 { top: 48%; left: 62%; animation-delay: 1.65s; }
+.st5 { top: 34%; left: 50%; animation-delay: 2.1s; }
+
+.coin {
+  position: absolute;
+  bottom: -90px;
+  opacity: 0;
+  animation-name: floatCoin;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  filter:
+    drop-shadow(0 0 10px rgba(255, 210, 80, 0.95))
+    drop-shadow(0 0 18px rgba(255, 255, 255, 0.55));
+}
+
+.c1 { left: 6%;  font-size: 42px; animation-duration: 7s;  animation-delay: 0s; }
+.c2 { left: 14%; font-size: 58px; animation-duration: 8s;  animation-delay: .9s; }
+.c3 { left: 24%; font-size: 38px; animation-duration: 6s;  animation-delay: .2s; }
+.c4 { left: 34%; font-size: 50px; animation-duration: 7.4s; animation-delay: 1.3s; }
+.c5 { left: 45%; font-size: 44px; animation-duration: 8.2s; animation-delay: .5s; }
+.c6 { left: 56%; font-size: 62px; animation-duration: 6.6s; animation-delay: 1.7s; }
+.c7 { left: 66%; font-size: 40px; animation-duration: 7.8s; animation-delay: .4s; }
+.c8 { left: 76%; font-size: 54px; animation-duration: 8.6s; animation-delay: 1s; }
+.c9 { left: 86%; font-size: 42px; animation-duration: 6.8s; animation-delay: .7s; }
+.c10 { left: 94%; font-size: 58px; animation-duration: 8.4s; animation-delay: 1.5s; }
+
+.spark {
+  position: absolute;
+  color: #fff4b8;
+  opacity: 0;
+  font-size: 26px;
+  animation: sparkle 3.2s ease-in-out infinite;
+  text-shadow:
+    0 0 12px #fff,
+    0 0 24px #ffc13a,
+    0 0 42px #ff9f00;
+}
+
+.s1 { top: 12%; left: 10%; animation-delay: .1s; }
+.s2 { top: 22%; left: 82%; animation-delay: .8s; }
+.s3 { top: 72%; left: 18%; animation-delay: 1.3s; }
+.s4 { top: 66%; left: 80%; animation-delay: .4s; }
+.s5 { top: 10%; left: 50%; animation-delay: 1.8s; }
+.s6 { top: 44%; left: 12%; animation-delay: 2.2s; }
+.s7 { top: 52%; left: 88%; animation-delay: 1.1s; }
+.s8 { top: 84%; left: 48%; animation-delay: .6s; }
+
+@keyframes textMagicIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(18px) scale(0.88);
+  }
+  14% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  76% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-18px) scale(0.96);
+  }
+}
+
+@keyframes smokePulse {
+  0%, 100% { transform: scale(0.88); opacity: 0.64; }
+  50% { transform: scale(1.14); opacity: 1; }
+}
+
+@keyframes fadeLong {
+  0% { opacity: 0; }
+  8% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes coinPulse {
+  0%, 100% { transform: translateX(-50%) scale(1) rotateY(0deg); }
+  35% { transform: translateX(-50%) scale(1.18) rotateY(18deg); }
+  58% { transform: translateX(-50%) scale(0.96) rotateY(-10deg); }
+}
+
+@keyframes floatCoin {
+  0% { opacity: 0; transform: translateY(0) scale(0.6) rotate(0deg); }
+  12% { opacity: 1; }
+  80% { opacity: 0.9; }
+  100% { opacity: 0; transform: translateY(-125vh) scale(1.45) rotate(260deg); }
+}
+
+@keyframes sparkleText {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.4) rotate(0deg);
+  }
+  42% {
+    opacity: 1;
+    transform: scale(1.25) rotate(18deg);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+  45% { opacity: 1; transform: scale(1.35) rotate(18deg); }
+}
+</style>
+</head>
+
+<body>
+
+<div id="moneyScene" class="money-scene">
+  <div class="spark s1">✦</div>
+  <div class="spark s2">✧</div>
+  <div class="spark s3">✦</div>
+  <div class="spark s4">✧</div>
+  <div class="spark s5">✦</div>
+  <div class="spark s6">✦</div>
+  <div class="spark s7">✧</div>
+  <div class="spark s8">✦</div>
+
+  <div class="spark-text st1">✦</div>
+  <div class="spark-text st2">✧</div>
+  <div class="spark-text st3">✦</div>
+  <div class="spark-text st4">✧</div>
+  <div class="spark-text st5">✦</div>
+
+  <div class="floating-main-coin">🪙</div>
+
+  <div class="card">
+    <div class="title">
+      <span>Este mensaje de abundancia</span>
+      <small>🪙 se abre para ti</small>
+    </div>
+    <div id="moneyUser" class="user">@Usuario</div>
+  </div>
+
+  <div class="coin c1">🪙</div>
+  <div class="coin c2">💰</div>
+  <div class="coin c3">🪙</div>
+  <div class="coin c4">✨</div>
+  <div class="coin c5">🪙</div>
+  <div class="coin c6">💸</div>
+  <div class="coin c7">🪙</div>
+  <div class="coin c8">💰</div>
+  <div class="coin c9">🪙</div>
+  <div class="coin c10">✨</div>
+</div>
+
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const socketUrl = params.get("socketUrl") || "http://localhost:3002";
+const socket = io(socketUrl);
+
+let moneyTimer = null;
+
+socket.on("money:activation", (data) => {
+  activarDinero(data);
+});
+
+function activarDinero(data = {}) {
+  const scene = document.getElementById("moneyScene");
+  const user = document.getElementById("moneyUser");
+
+  const name = data.username || "Invitada";
+  user.textContent = name.startsWith("@") ? name : "@" + name;
+
+  if (moneyTimer) {
+    clearTimeout(moneyTimer);
+    moneyTimer = null;
+  }
+
+  scene.classList.remove("show");
+  void scene.offsetWidth;
+  scene.classList.add("show");
+
+  moneyTimer = setTimeout(() => {
+    scene.classList.remove("show");
+    moneyTimer = null;
+  }, 25000);
+}
+</script>
+
+</body>
+</html>

@@ -39,6 +39,10 @@ const DATA_DIR = path.join(__dirname, "data");
 const CLIENTES_FILE = path.join(DATA_DIR, "clientes-vip.json");
 const META_MONEDAS_EXTENSA_GRATIS = 1500;
 
+const UMBRAL_RECOMPENSA_CERCA = 300;
+const UMBRAL_RECOMPENSA_ULTRA = 100;
+
+
 if (!fs.existsSync(DATA_DIR)) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
 }
@@ -71,6 +75,16 @@ function getClienteVip({ username, uniqueId }) {
       totalComentarios: 0,
       totalRegalos: 0,
       monedasAcumuladas: 0,
+      monedasLive: 0,
+      ultimaRecompensa: null,
+
+     recompensasPorCiclo: {},
+      avisosRecompensaPorCiclo: {},
+      ultimoAvisoRecompensaKey: null,
+      ultimoNivelRecompensaAvisado: null,
+
+     
+
       regalos: {},
       extensasGratisGanadas: 0,
       extensasGratisUsadas: 0,
@@ -92,15 +106,87 @@ function getClienteVip({ username, uniqueId }) {
 }
 
 function actualizarRecompensasCliente(cliente) {
-  const recompensas = Math.floor(
-    Number(cliente.monedasAcumuladas || 0) / META_MONEDAS_EXTENSA_GRATIS
-  );
+  const monedas = Number(cliente.monedasAcumuladas || 0);
+  const progreso = monedas > 0
+  ? ((monedas - 1) % META_MONEDAS_EXTENSA_GRATIS) + 1
+  : 0;
+
+const faltan = progreso === 0
+  ? META_MONEDAS_EXTENSA_GRATIS
+  : META_MONEDAS_EXTENSA_GRATIS - progreso;
+
+  cliente.progresoRecompensa = progreso;
+  cliente.faltanRecompensa = faltan;
+
+  const nivelActual =
+    faltan > 0 && faltan <= UMBRAL_RECOMPENSA_ULTRA
+      ? "ultra"
+      : faltan > 0 && faltan <= UMBRAL_RECOMPENSA_CERCA
+        ? "cerca"
+        : "normal";
+
+  const cicloAviso = monedas > 0
+  ? Math.floor((monedas - 1) / META_MONEDAS_EXTENSA_GRATIS)
+  : 0;
+
+// 🔔 Avisos cerca / ultra cerca máximo 2 veces por usuario + ciclo + nivel
+if (!cliente.avisosRecompensaPorCiclo || typeof cliente.avisosRecompensaPorCiclo !== "object") {
+  cliente.avisosRecompensaPorCiclo = {};
+}
+
+const avisoKey = `${cicloAviso}|${nivelActual}`;
+
+if (nivelActual !== "normal") {
+  cliente.avisosRecompensaPorCiclo[avisoKey] =
+    Number(cliente.avisosRecompensaPorCiclo[avisoKey] || 0);
+
+  if (cliente.avisosRecompensaPorCiclo[avisoKey] < 2) {
+    cliente.avisosRecompensaPorCiclo[avisoKey] += 1;
+    cliente.ultimoAvisoRecompensaKey = avisoKey;
+    cliente.ultimoNivelRecompensaAvisado = nivelActual;
+
+    const payload = {
+      username: cliente.username,
+      uniqueId: cliente.uniqueId,
+      monedas,
+      faltan,
+      progreso,
+      meta: META_MONEDAS_EXTENSA_GRATIS,
+      ciclo: cicloAviso + 1,
+      avisoNumero: cliente.avisosRecompensaPorCiclo[avisoKey],
+      maxAvisos: 2
+    };
+
+    if (nivelActual === "cerca") {
+      io.emit("reward:near", payload);
+    }
+
+    if (nivelActual === "ultra") {
+      io.emit("reward:ultra", payload);
+    }
+  }
+}
+
+  const recompensas = Math.floor(monedas / META_MONEDAS_EXTENSA_GRATIS);
 
   if (recompensas > Number(cliente.extensasGratisGanadas || 0)) {
     const nuevas = recompensas - Number(cliente.extensasGratisGanadas || 0);
+
     cliente.extensasGratisGanadas = recompensas;
     cliente.esVip = true;
+    cliente.ultimoNivelRecompensaAvisado = "reward";
 
+    io.emit("reward:unlocked", {
+      username: cliente.username,
+      uniqueId: cliente.uniqueId,
+      nuevas,
+      disponibles: cliente.extensasGratisGanadas - cliente.extensasGratisUsadas,
+      monedas,
+      meta: META_MONEDAS_EXTENSA_GRATIS,
+      mensaje: `${cliente.username} ganó ${nuevas} pregunta extensa gratis 💖`
+    });
+
+    // Mantengo tu evento anterior para no romper el control
     io.emit("vip:reward", {
       username: cliente.username,
       nuevas,
@@ -268,29 +354,33 @@ function normalizeGiftType(giftName) {
   }
 
   if (
-    g === "eternal rose" ||
-    g === "rose of eternity" ||
-    g === "forever rose" ||
-    g === "rose forever" ||
-    g === "rosa para siempre" ||
-    g === "eternity rose" ||
-    g === "rosa de la eternidad"
-  ) {
-    return "rosa_de_la_eternidad";
-  }
+      g === "eternal rose" ||
+      g === "rose of eternity" ||
+      g === "forever rose" ||
+      g === "rose forever" ||
+      g === "forever rosa" ||
+      g === "rosa forever" ||
+      g === "rosa para siempre" ||
+      g === "eternity rose" ||
+      g === "rosa de la eternidad" ||
+      g === "rosa eterna"
+    ) {
+      return "rosa_de_la_eternidad";
+    }
 
-  if (
-    g === "heart in hands" ||
-    g === "heart on hands" ||
-    g === "corazon en las manos" ||
-    g === "corazón en las manos"
-  ) {
-    return "corazon_en_las_manos";
-  }
+    if (
+      g === "corona de globos" ||
+      g === "balloon heart wreath" ||
+      g === "balloon heart wreath x1" ||
+      g === "balloonheartwreath"
+    ) {
+      return "corona_de_globos";
+    }  
 
-  if (
+    if (
     g === "heart umbrella" ||
     g === "umbrella of love" ||
+    g === "love shelter" ||
     g === "paraguas de corazon" ||
     g === "refugio de amor" ||
     g === "paraguas de corazón"
@@ -308,10 +398,19 @@ function normalizeGiftType(giftName) {
   }
 
   if (
-    g === "perfume" ||
-    g === "perfume gift"
+      g === "confetti" ||
+      g === "confeti" ||
+      g === "confetti gift"
+    ) {
+      return "confetti";
+    }
+  
+  if (
+    g === "mishka" ||
+    g === "mishka bear" ||
+    g === "oso mishka"
   ) {
-    return "perfume";
+    return "mishka";
   }
 
   if (g === "doughnut" || g === "donut" || g === "rosquilla") {
@@ -327,7 +426,7 @@ function getPremiumAlertType(giftName) {
   if (type === "capibara") return "capibara";
   if (type === "tiara_de_plumas") return "tiara_de_plumas";
   if (type === "rosa_de_la_eternidad") return "rosa_de_la_eternidad";
-  if (type === "corazon_en_las_manos") return "analisis_karmico_pareja";
+  if (type === "corona_de_globos") return "analisis_karmico_pareja";
   if (type === "sesion_privada") return "sesion_privada";
 
   return null;
@@ -336,14 +435,41 @@ function getPremiumAlertType(giftName) {
 function getSpecialOverrideRule(giftName) {
   const type = normalizeGiftType(giftName);
 
-  if (type === "corazon_en_las_manos") {
+    if (type === "confetti") {
     return {
-      serviceKey: "analisis_karmico_pareja",
-      serviceLabel: "Análisis kármico de pareja",
+      serviceKey: "oraculo_premium_amor",
+      serviceLabel: "Oráculo Premium del Amor",
       queueType: "premium",
-      icon: "❤️"
+      icon: "💖"
     };
   }
+
+   if (type === "mishka") {
+    return {
+      serviceKey: "oraculo_premium_dinero",
+      serviceLabel: "Oráculo Premium del Dinero",
+      queueType: "premium",
+      icon: "💰"
+    };
+  }
+
+    if (type === "rosa_de_la_eternidad") {
+      return {
+        serviceKey: "tres_preguntas_extensas",
+        serviceLabel: "3 preguntas extensas",
+        queueType: "premium",
+        icon: "🌹"
+      };
+    }
+
+  if (type === "corona_de_globos") {
+      return {
+        serviceKey: "analisis_karmico_pareja",
+        serviceLabel: "Análisis kármico de pareja",
+        queueType: "premium",
+        icon: "❤️"
+      };
+    }
 
   if (type === "sesion_privada") {
     return {
@@ -705,12 +831,43 @@ function drawArcanoWinner() {
 function getTituloTap(totalTaps = 0) {
   const taps = Number(totalTaps || 0);
 
-  if (taps >= 10000) return "🏆 Leyenda del Live";
-  if (taps >= 5000) return "👑 A Punto de Ser Leyenda";
-  if (taps >= 3000) return "💎 Incondicional";
-  if (taps >= 1000) return "💖 Ya Es Parte";
-  if (taps >= 500) return "🔥 Siempre Presente";
-  if (taps >= 100) return "💫 Recién Llegad@";
+  if (taps >= 100000) return "🌌 Titán del Live";
+if (taps >= 90000) return "⚡ Deidad del Live";
+if (taps >= 80000) return "👁️ Dueñ@ del Portal";
+if (taps >= 70000) return "🔥 Guardián Supremo";
+if (taps >= 60000) return "🛡️ Alma Inmortal";
+if (taps >= 50000) return "👑 Rey/Reina del Tap";
+if (taps >= 45000) return "💠 Leyenda Cósmica";
+if (taps >= 40000) return "🌟 Ser de Otro Plano";
+if (taps >= 35000) return "⚜️ Espíritu Supremo";
+if (taps >= 30000) return "💎 Leyenda Dorada";
+if (taps >= 28500) return "🕯️ Maestro/a del Portal";
+if (taps >= 27000) return "🌠 Energía Imparable";
+if (taps >= 25500) return "🏛️ Guardián Celestial";
+if (taps >= 24000) return "✨ Presencia Legendaria";
+if (taps >= 22500) return "🔥 Alma Ascendida";
+if (taps >= 21000) return "👑 Favorit@ del Universo";
+if (taps >= 19500) return "⚡ Espíritu del Live";
+if (taps >= 18000) return "💫 Aura Legendaria";
+if (taps >= 16500) return "🌟 Presencia Suprema";
+if (taps >= 15000) return "🪽 Energía Dorada";
+if (taps >= 13500) return "🔥 Imparable";
+if (taps >= 12000) return "💎 Leyenda Naciente";
+if (taps >= 10500) return "⚜️ Ascendiendo al Olimpo";
+if (taps >= 10000) return "🏆 Leyenda del Live";
+if (taps >= 8500) return "🌟 Casi Imparable";
+if (taps >= 7000) return "✨ Favorit@ del Live";
+if (taps >= 6000) return "🔥 Energía VIP";
+if (taps >= 5000) return "👑 A Punto de Ser Leyenda";
+if (taps >= 4000) return "🪽 Protector/a del Live";
+if (taps >= 3000) return "💎 Incondicional";
+if (taps >= 2000) return "🌹 Corazón Fiel";
+if (taps >= 1000) return "💖 Ya Es Parte";
+if (taps >= 500) return "🔥 Siempre Presente";
+if (taps >= 250) return "✨ Energía Activa";
+if (taps >= 100) return "💫 Recién Llegad@";
+
+return "🌱 Nueva Energía";
 
   return "";
 }
@@ -768,6 +925,65 @@ function handleGiftEvent({
 
   cliente.totalRegalos += safeRepeat;
   cliente.monedasAcumuladas += totalCoins;
+  cliente.monedasLive = (cliente.monedasLive || 0) + totalCoins;
+
+
+  const totalHistorico = Number(cliente.monedasAcumuladas || 0);
+
+const cicloActual =
+  totalHistorico > 0
+    ? Math.floor((totalHistorico - 1) / META_MONEDAS_EXTENSA_GRATIS)
+    : 0;
+
+const progresoCiclo =
+  totalHistorico > 0
+    ? ((totalHistorico - 1) % META_MONEDAS_EXTENSA_GRATIS) + 1
+    : 0;
+
+if (!cliente.recompensasPorCiclo || typeof cliente.recompensasPorCiclo !== "object") {
+  cliente.recompensasPorCiclo = {};
+}
+
+if (!cliente.recompensasPorCiclo[cicloActual]) {
+  cliente.recompensasPorCiclo[cicloActual] = {};
+}
+
+const recompensasCiclo = [
+  {
+    limite: 500,
+    tipo: "oraculo",
+    mensaje: "🔮 Desbloqueaste un mensaje del oráculo"
+  },
+  {
+    limite: 700,
+    tipo: "si_no",
+    mensaje: "❓ Desbloqueaste un Sí o No GRATIS"
+  },
+  {
+    limite: 1500,
+    tipo: "extensa",
+    mensaje: "💎 Desbloqueaste una pregunta extensa GRATIS"
+  }
+];
+
+for (const r of recompensasCiclo) {
+  if (
+    progresoCiclo >= r.limite &&
+    !cliente.recompensasPorCiclo[cicloActual][r.tipo]
+  ) {
+    cliente.recompensasPorCiclo[cicloActual][r.tipo] = true;
+
+    io.emit("reward:live", {
+      username: cliente.username,
+      tipo: r.tipo,
+      mensaje: r.mensaje,
+      monedas: totalHistorico,
+      progresoCiclo,
+      ciclo: cicloActual + 1,
+      limite: r.limite
+    });
+  }
+}
 
   if (!cliente.regalos[giftName]) {
     cliente.regalos[giftName] = {
@@ -932,10 +1148,13 @@ app.get("/clientes-vip", (req, res) => {
 app.post("/clean-tests", (req, res) => {
   queue = queue.filter((item) => {
     const username =
-      item.username ||
-      item.nickname ||
-      item.user?.nickname ||
-      "";
+      data.nickname ||
+      data.user?.nickname ||
+      data.user?.profileName ||
+      data.uniqueId ||
+      data.user?.uniqueId ||
+      data.userId ||
+      "Usuario";
 
     return !isTestUser(username);
   });
@@ -1058,6 +1277,7 @@ app.post("/test-tap", (req, res) => {
 
   // 👉 acumula taps
   cliente.totalTaps += safeTaps;
+  cliente.lastTapAt = Date.now(); // 🔥 IMPORTANTE
 
   // 🔥 NUEVO: lógica de títulos
   const tituloAnterior = cliente.tituloTap || "";
@@ -1293,7 +1513,13 @@ app.post("/reset-all", (req, res) => {
   resetArcanoGame();
 
   // 🔥 LIMPIAR CLIENTES DE PRUEBA
-  clientesVip = clientesVip.filter(c => !isTestUser(c.username));
+  for (const key of Object.keys(clientesVip)) {
+  const cliente = clientesVip[key];
+
+  if (isTestUser(cliente?.username) || isTestUser(key)) {
+    delete clientesVip[key];
+  }
+}
   saveClientesVip();
   emitClientesVip();
 
@@ -1329,6 +1555,23 @@ app.post("/connect", async (req, res) => {
     tiktok = new WebcastPushConnection(username);
     currentUsername = username;
 
+    // 🔄 Conexión / reconexión TikTok
+// NO resetear tap taps aquí, porque el Guardian puede reconectar en pleno live.
+
+      for (const key in clientesVip) {
+        clientesVip[key].monedasLive = clientesVip[key].monedasLive || 0;
+        clientesVip[key].ultimaRecompensa = clientesVip[key].ultimaRecompensa || null;
+        clientesVip[key].ultimoAvisoRecompensaKey = clientesVip[key].ultimoAvisoRecompensaKey || null;
+        clientesVip[key].ultimoNivelRecompensaAvisado = clientesVip[key].ultimoNivelRecompensaAvisado || null;
+      }
+
+      saveClientesVip();
+      emitClientesVip();
+
+      console.log("🔄 TikTok conectado/reconectado sin resetear tap taps");
+
+    
+
     tiktok.on("gift", (data) => {
       lastEventAt = nowIso();
       lastGiftAt = nowIso();
@@ -1336,17 +1579,39 @@ app.post("/connect", async (req, res) => {
 
       cleanupRecentGiftKeys();
 
-      const username =
+     const username =
         data.nickname ||
         data.user?.nickname ||
+        data.user?.profileName ||
         data.uniqueId ||
         data.user?.uniqueId ||
+        data.userId ||
         "Usuario";
 
       const giftName = data.giftName || "Regalo";
       const coins = data.diamondCount || 0;
       const repeatCount = data.repeatCount || 1;
       const normalizedGiftName = normalizeText(giftName);
+
+      const normalizedType = normalizeGiftType(giftName);
+
+      const GIFTS_CON_RACHA = new Set([
+        "perfume",
+        "rosquilla",
+        "capibara"
+      ]);
+
+      if (
+        GIFTS_CON_RACHA.has(normalizedType) &&
+        data.repeatEnd === false
+      ) {
+        console.log("⏳ Regalo en racha esperando cierre:", {
+          username,
+          giftName,
+          repeatCount
+        });
+        return;
+      }
 
       console.log("🎁 Gift recibido:", {
         username,
@@ -1460,62 +1725,72 @@ app.post("/connect", async (req, res) => {
     });
 
     tiktok.on("like", (data) => {
-  lastEventAt = nowIso();
-  liveActive = true;
+      lastEventAt = nowIso();
+      liveActive = true;
 
-  const username =
-    data.nickname ||
-    data.user?.nickname ||
-    data.uniqueId ||
-    data.user?.uniqueId ||
-    "Usuario";
+      const username =
+        data.nickname ||
+        data.user?.nickname ||
+        data.uniqueId ||
+        data.user?.uniqueId ||
+        "Usuario";
 
-  const uniqueId =
-    data.uniqueId ||
-    data.user?.uniqueId ||
-    username;
+      const uniqueId =
+        data.uniqueId ||
+        data.user?.uniqueId ||
+        data.userId ||
+        username;
 
-  const taps = Number(
-    data.likeCount ||
-    data.count ||
-    data.repeatCount ||
-    1
-  );
+     const taps = Number(
+        data.likeCount ||
+        data.like_count ||
+        data.count ||
+        data.repeatCount ||
+        data.totalLikeCount ||
+        data.likes ||
+        data.like ||
+        1
+      );
 
-  const cliente = getClienteVip({ username, uniqueId });
+      const cliente = getClienteVip({ username, uniqueId });
 
-  // 👇 ESTA LÍNEA YA LA TIENES
-  cliente.totalTaps += taps;
+      // 👉 acumula taps
+      cliente.totalTaps += taps;
 
-  // 🔥 AQUÍ VA LO NUEVO (JUSTO DESPUÉS)
-  const tituloAnterior = cliente.tituloTap || "";
-  const tituloNuevo = getTituloTap(cliente.totalTaps);
+      // 🔥 CLAVE: registrar último tap (para ranking en vivo)
+      cliente.lastTapAt = Date.now();
 
-  cliente.tituloTap = tituloNuevo;
+      // 👉 lógica de títulos
+      const tituloAnterior = cliente.tituloTap || "";
+      const tituloNuevo = getTituloTap(cliente.totalTaps);
 
-  if (tituloNuevo && tituloNuevo !== tituloAnterior) {
-    io.emit("tap:title-unlocked", {
-      username: cliente.username,
-      totalTaps: cliente.totalTaps,
-      tituloTap: tituloNuevo,
-      mensaje: `${cliente.username} ahora es ${tituloNuevo}`
+      cliente.tituloTap = tituloNuevo;
+
+      if (tituloNuevo && tituloNuevo !== tituloAnterior) {
+        io.emit("tap:title-unlocked", {
+          username: cliente.username,
+          totalTaps: cliente.totalTaps,
+          tituloTap: tituloNuevo,
+          mensaje: `${cliente.username} ahora es ${tituloNuevo}`
+        });
+      }
+
+      // 👉 guardar y actualizar clientes
+      saveClientesVip();
+      emitClientesVip();
+
+      // 👉 emitir actualización de taps en tiempo real
+      io.emit("tap:update", {
+        username,
+        uniqueId,
+        taps,
+        totalTaps: cliente.totalTaps,
+        cliente
+      });
+
+      console.log("👆 Tap tap:", username, taps, "Total:", cliente.totalTaps);
+      console.log("👀 DATA LIKE COMPLETA:", JSON.stringify(data, null, 2));
     });
-  }
-
-  // 👇 ESTO YA EXISTÍA
-  saveClientesVip();
-  emitClientesVip();
-
-  io.emit("tap:update", {
-    username,
-    uniqueId,
-    taps,
-    totalTaps: cliente.totalTaps,
-    cliente
-  });
-
-  console.log("👆 Tap tap:", username, taps, "Total:", cliente.totalTaps);
-});
 
     tiktok.on("streamEnd", () => {
       console.log("📴 Live finalizado");
@@ -1574,6 +1849,34 @@ app.post("/disconnect", async (req, res) => {
   }
 });
 
+app.post("/activar-amor", (req, res) => {
+  const { username } = req.body;
+
+  if (!username) {
+    return res.status(400).json({ ok: false });
+  }
+
+  io.emit("love:activation", {
+    username
+  });
+
+  res.json({ ok: true });
+});
+
+app.post("/activar-dinero", (req, res) => {
+  const { username } = req.body;
+
+  if (!username) {
+    return res.status(400).json({ ok: false });
+  }
+
+  io.emit("money:activation", {
+    username
+  });
+
+  res.json({ ok: true });
+});
+
 // ---------- SOCKET ----------
 
 io.on("connection", (socket) => {
@@ -1586,6 +1889,17 @@ io.on("connection", (socket) => {
   socket.emit("arcanoGame:update", buildArcanoGameState());
   socket.emit("clientesVip:update", buildClientesVipState());
 });
+
+// 💾 AUTO-GUARDADO DE CLIENTES VIP (incluye tap taps)
+setInterval(() => {
+  try {
+    saveClientesVip();
+    // opcional: log suave cada cierto tiempo
+    // console.log("💾 Autosave clientesVip");
+  } catch (e) {
+    console.log("⚠️ Error autosave:", e.message);
+  }
+}, 10000); // cada 10 segundos
 
 server.listen(PORT, () => {
   console.log(`🌸 Backend corriendo en http://127.0.0.1:${PORT}`);

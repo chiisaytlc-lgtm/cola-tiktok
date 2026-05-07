@@ -6,16 +6,7 @@
     "queueType": "rapida",
     "icon": "🥠"
   },
-  {
-      "matches": [
-        "perfume",
-        "perfume gift"
-      ],
-      "serviceKey": "mensaje_oraculo",
-      "serviceLabel": "Mensaje del Oráculo",
-      "queueType": "rapida",
-      "icon": "✨"
-    },
+
       {
     "matches": ["rosquilla", "doughnut", "donut"],
     "serviceKey": "oraculo_sda",
@@ -37,18 +28,7 @@
     "queueType": "premium",
     "icon": "👑"
   },
-  {
-    "matches": [
-      "heart in hands",
-      "heart on hands",
-      "corazón en las manos",
-      "corazon en las manos"
-    ],
-    "serviceKey": "analisis_karmico_pareja",
-    "serviceLabel": "Análisis kármico de pareja",
-    "queueType": "premium",
-    "icon": "❤️"
-  },
+
   {
     "matches": [
       "rosa de la eternidad",
@@ -65,7 +45,7 @@
   {
     "matches": [
       "heart umbrella",
-      "umbrella of love",
+      "love shelter",
       "paraguas de corazón",
       "paraguas de corazon"
     ],
@@ -80,5 +60,42 @@
     "serviceLabel": "Subasta de rosas",
     "queueType": "informativo",
     "icon": "🌹"
+  },
+
+  {
+    "matches": [
+      "confetti",
+      "confeti",
+      "confetti gift"
+    ],
+    "serviceKey": "oraculo_premium_amor",
+    "serviceLabel": "Oráculo Premium del Amor",
+    "queueType": "premium",
+    "icon": "💖"
+  },
+
+  {
+  "matches": [
+    "corona de globos",
+    "balloon heart wreath",
+    "balloon heart wreath x1",
+    "balloonheartwreath"
+  ],
+  "serviceKey": "analisis_karmico_pareja",
+  "serviceLabel": "Análisis kármico de pareja",
+  "queueType": "premium",
+  "icon": "🔮"
+  },
+
+  {
+    "matches": [
+      "mishka",
+      "mishka bear",
+      "oso mishka"
+    ],
+    "serviceKey": "oraculo_premium_dinero",
+    "serviceLabel": "Oráculo Premium del Dinero",
+    "queueType": "premium",
+    "icon": "💰"
   }
 ]
