@@ -906,6 +906,40 @@
         <div id="arcanoWinnerBox" class="empty">Aún no hay ganadora sorteada.</div>
         <div id="arcanoPicksList" class="list" style="margin-top: 12px;"></div>
       </section>
+
+      <section class="panel arcano-panel">
+          <h2>🃏 Arcanos con Regalo</h2>
+
+          <p class="panel-sub">
+            Envía una Rosquilla 🍩 y luego comenta un número en el chat.
+          </p>
+
+          <div class="tool-row">
+            <button class="btn gold" onclick="startGiftArcana()">
+              Abrir dinámica
+            </button>
+
+            <button class="btn secondary" onclick="finishGiftArcana()">
+              Cerrar dinámica
+            </button>
+
+            <button class="btn danger" onclick="clearGiftArcana()">
+              Limpiar
+            </button>
+          </div>
+
+          <div class="tool-row">
+            <span class="status-chip" id="giftArcanaStatus">
+              Inactivo
+            </span>
+
+            <span class="muted" id="giftArcanaInfo">
+              Esperando apertura
+            </span>
+          </div>
+
+          <div id="giftArcanaList" class="list"></div>
+        </section>
     </div>
     </div>
 
@@ -1001,6 +1035,15 @@
           <button class="btn secondary" onclick="testChat('Luis','10')">Luis → 10</button>
           <button class="btn secondary" onclick="testChat('Majo','21')">Majo → 21</button>
           <button class="btn secondary" onclick="testChat('Pilar','0')">Pilar → 0</button>
+          <button class="btn secondary"
+              onclick="testChat('Test_Rosquilla','7')">
+              Rosquilla → 7
+            </button>
+
+            <button class="btn secondary"
+              onclick="testChat('Test_Rosquilla','12')">
+              Rosquilla → 12
+            </button>
         </div>
       </section>
     </div>
@@ -1058,6 +1101,15 @@
     const arcanoPicksListEl = document.getElementById("arcanoPicksList");
     const arcanoWinnerBoxEl = document.getElementById("arcanoWinnerBox");
 
+    const giftArcanaStatusEl =
+      document.getElementById("giftArcanaStatus");
+
+    const giftArcanaInfoEl =
+      document.getElementById("giftArcanaInfo");
+
+    const giftArcanaListEl =
+  document.getElementById("giftArcanaList");
+
     const premiumAlertBoxEl = document.getElementById("premiumAlertBox");
     const mainBannerEl = document.getElementById("mainBanner");
     const vipListEl = document.getElementById("vipList");
@@ -1066,6 +1118,7 @@
     let fullQueue = [];
     let roseAuction = null;
     let arcanoGame = null;
+    let giftArcanaGame = null;
     let selectedWinnerUsernames = [];
     let clientesVip = [];
     let tapMemory = {};
@@ -1550,8 +1603,58 @@ async function unlockAudio() {
         </button>
       </div>
     `).join("");
-        }
+    }
 
+    function renderGiftArcana() {
+
+  if (!giftArcanaGame) {
+    giftArcanaStatusEl.textContent = "Cargando";
+    giftArcanaInfoEl.textContent = "Buscando datos...";
+    giftArcanaListEl.innerHTML =
+      `<div class="empty">Cargando...</div>`;
+    return;
+  }
+
+  giftArcanaStatusEl.textContent =
+    giftArcanaGame.active
+      ? "Dinámica activa"
+      : "Inactiva";
+
+  giftArcanaInfoEl.textContent =
+    giftArcanaGame.active
+      ? `Participantes: ${giftArcanaGame.picksList?.length || 0}`
+      : "Esperando apertura";
+
+  if (!giftArcanaGame.picksList?.length) {
+    giftArcanaListEl.innerHTML =
+      `<div class="empty">Todavía no hay participantes.</div>`;
+    return;
+  }
+
+  giftArcanaListEl.innerHTML =
+    giftArcanaGame.picksList.map((pick) => `
+      <div class="arcano-row">
+        <div class="arcano-number">
+          ${pick.number}
+        </div>
+
+        <div>
+          <div class="arcano-name">
+            ${pick.prize?.icon || "🃏"}
+            ${pick.prize?.label || "Premio"}
+          </div>
+
+          <div class="muted">
+            Número reservado
+          </div>
+        </div>
+
+        <div class="arcano-user">
+          ${pick.username}
+        </div>
+      </div>
+    `).join("");
+}
 
 
     function getClienteId(cliente) {
@@ -1827,8 +1930,30 @@ async function unlockAudio() {
       }
     }
 
+    async function loadGiftArcana() {
+      try {
+        const res = await fetch(`${API_BASE}/gift-arcana`);
+
+        giftArcanaGame = await res.json();
+
+        renderGiftArcana();
+
+      } catch (error) {
+        console.error(
+          "Error cargando Arcanos con Regalo:",
+          error
+        );
+      }
+    }
+
     async function loadAll() {
-      await Promise.all([loadQueue(), loadRoseAuction(), loadArcanoGame(), loadClientesVip()]);
+      await Promise.all([
+        loadQueue(),
+        loadRoseAuction(),
+        loadArcanoGame(),
+        loadGiftArcana(),
+        loadClientesVip()
+      ]);
     }
 
     async function callNext() {
@@ -1950,7 +2075,7 @@ async function unlockAudio() {
       loadAll();
     }
 
-    async function testChat(username, comment) {
+   async function testChat(username, comment) {
       await fetch(`${API_BASE}/test-chat`, {
         method: "POST",
         headers: {
@@ -1962,7 +2087,8 @@ async function unlockAudio() {
         })
       });
 
-      loadArcanoGame();
+      await loadGiftArcana();
+      await loadArcanoGame();
     }
 
    async function testTap(username, taps = 10) {
@@ -2131,6 +2257,45 @@ async function unlockAudio() {
       showBanner("Sorteo de arcanos limpiado.");
     }
 
+    async function startGiftArcana() {
+
+      await fetch(`${API_BASE}/gift-arcana/start`, {
+        method: "POST"
+      });
+
+      loadGiftArcana();
+
+      showBanner("🃏 Arcanos con Regalo abierto.");
+    }
+
+    async function finishGiftArcana() {
+
+      await fetch(`${API_BASE}/gift-arcana/finish`, {
+        method: "POST"
+      });
+
+      loadGiftArcana();
+
+      showBanner("🃏 Arcanos con Regalo cerrado.");
+    }
+
+    async function clearGiftArcana() {
+
+      const ok = confirm(
+        "¿Deseas limpiar Arcanos con Regalo?"
+      );
+
+      if (!ok) return;
+
+      await fetch(`${API_BASE}/gift-arcana/clear`, {
+        method: "POST"
+      });
+
+      loadGiftArcana();
+
+      showBanner("🧹 Arcanos con Regalo limpiado.");
+    }
+
     function showTab(tab, button) {
       document.querySelectorAll(".tab-content").forEach((el) => {
         el.classList.remove("active");
@@ -2163,6 +2328,11 @@ async function unlockAudio() {
     socket.on("arcanoGame:update", (data) => {
       arcanoGame = data;
       renderArcanoGame();
+    });
+
+    socket.on("giftArcana:update", (data) => {
+      giftArcanaGame = data;
+      renderGiftArcana();
     });
 
     socket.on("arcanoGame:winner", (winner) => {

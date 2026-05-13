@@ -49,6 +49,35 @@ if (!fs.existsSync(DATA_DIR)) {
 
 let clientesVip = {};
 
+const TAP_RESET_FILE = path.join(DATA_DIR, "tap-reset-date.txt");
+
+function resetTapTapsIfNewDay() {
+  const today = new Date().toLocaleDateString("en-CA", {
+    timeZone: "America/Lima"
+  });
+
+  let lastResetDate = "";
+
+  if (fs.existsSync(TAP_RESET_FILE)) {
+    lastResetDate = fs.readFileSync(TAP_RESET_FILE, "utf8").trim();
+  }
+
+  if (lastResetDate === today) {
+    return;
+  }
+
+  for (const key of Object.keys(clientesVip)) {
+    clientesVip[key].totalTaps = 0;
+    clientesVip[key].lastTapAt = null;
+    clientesVip[key].tituloTap = "";
+  }
+
+  fs.writeFileSync(TAP_RESET_FILE, today);
+  saveClientesVip();
+
+  console.log("👆 Tap taps reiniciados por nuevo día:", today);
+}
+
 if (fs.existsSync(CLIENTES_FILE)) {
   try {
     clientesVip = JSON.parse(fs.readFileSync(CLIENTES_FILE, "utf8"));
@@ -57,6 +86,8 @@ if (fs.existsSync(CLIENTES_FILE)) {
     clientesVip = {};
   }
 }
+
+resetTapTapsIfNewDay();
 
 function saveClientesVip() {
   fs.writeFileSync(CLIENTES_FILE, JSON.stringify(clientesVip, null, 2));
@@ -233,10 +264,10 @@ const MAJOR_ARCANA = [
   "5 - El Hierofante",
   "6 - Los Enamorados",
   "7 - El Carro",
-  "8 - La Justicia",
+  "8 - La Fuerza",
   "9 - El Ermitaño",
   "10 - La Rueda de la Fortuna",
-  "11 - La Fuerza",
+  "11 - La Justicia",
   "12 - El Colgado",
   "13 - La Muerte",
   "14 - La Templanza",
@@ -265,6 +296,14 @@ let arcanoGame = {
   picks: {}, // { username: { username, number, arcano } }
   takenNumbers: {}, // { number: username }
   winner: null
+};
+
+// ARCANOS CON REGALO
+let giftArcanaGame = {
+  active: false,
+  paidUsers: {},     // usuarios que enviaron rosquilla
+  picks: {},         // username -> elección
+  takenNumbers: {}   // número -> username
 };
 
 function normalizeText(value) {
@@ -372,7 +411,7 @@ function normalizeGiftType(giftName) {
       g === "corona de globos" ||
       g === "balloon heart wreath" ||
       g === "balloon heart wreath x1" ||
-      g === "balloonheartwreath"
+      g === "heart balloons"
     ) {
       return "corona_de_globos";
     }  
@@ -592,6 +631,48 @@ function buildArcanoGameState() {
   };
 }
 
+function buildGiftArcanaState() {
+  const picksList = Object.values(giftArcanaGame.picks).sort(
+    (a, b) => a.number - b.number
+  );
+
+  return {
+    ...giftArcanaGame,
+    picksList
+  };
+}
+
+function emitGiftArcana() {
+  io.emit("giftArcana:update", buildGiftArcanaState());
+}
+
+function startGiftArcana() {
+  giftArcanaGame = {
+    active: true,
+    paidUsers: {},
+    picks: {},
+    takenNumbers: {}
+  };
+
+  emitGiftArcana();
+}
+
+function finishGiftArcana() {
+  giftArcanaGame.active = false;
+  emitGiftArcana();
+}
+
+function clearGiftArcana() {
+  giftArcanaGame = {
+    active: false,
+    paidUsers: {},
+    picks: {},
+    takenNumbers: {}
+  };
+
+  emitGiftArcana();
+}
+
 function emitQueue() {
   io.emit("queue:update", queue);
   io.emit("queue:visible", buildVisibleQueue());
@@ -651,6 +732,7 @@ function startRoseAuction(durationMs = 3 * 60 * 1000) {
   roseStreakState.clear();
   roseAuction.selectedWinners = [];
   roseAuction.finished = false;
+  roseRepeatTracker.clear();
 
   emitRoseAuction();
 }
@@ -669,27 +751,38 @@ function clearRoseAuction() {
     totals: {},
     selectedWinners: [],
     finished: false
+    roseRepeatTracker.clear();
   };
 
   emitRoseAuction();
 }
 
 const roseStreakState = new Map();
+const roseRepeatTracker = new Map();
 
 function registerRoseGift({ username, giftId, repeatCount = 1 }) {
   if (!roseAuction.active) return;
 
-  const safeRepeat = Number(repeatCount || 1);
-  const streakKey = `${username}|${giftId || "rose"}`;
+  const safeRepeat = Math.max(1, Number(repeatCount || 1));
 
-  const previous = roseStreakState.get(streakKey) || 0;
-  let rosesToAdd = safeRepeat - previous;
+  const trackerKey = `${username}-${giftId}`;
 
-  if (rosesToAdd <= 0) {
-    rosesToAdd = 0;
+  const previousRepeat =
+    roseRepeatTracker.get(trackerKey) || 0;
+
+  let rosesToAdd = safeRepeat;
+
+  // TikTok manda acumulado de racha
+  if (safeRepeat > previousRepeat) {
+    rosesToAdd = safeRepeat - previousRepeat;
   }
 
-  roseStreakState.set(streakKey, safeRepeat);
+  // evitar negativos o eventos repetidos
+  if (rosesToAdd <= 0) {
+    return;
+  }
+
+  roseRepeatTracker.set(trackerKey, safeRepeat);
 
   if (!roseAuction.totals[username]) {
     roseAuction.totals[username] = {
@@ -699,6 +792,15 @@ function registerRoseGift({ username, giftId, repeatCount = 1 }) {
   }
 
   roseAuction.totals[username].roses += rosesToAdd;
+
+  console.log("🌹 Rosa sumada:", {
+    username,
+    repeatCount: safeRepeat,
+    previousRepeat,
+    rosesToAdd,
+    total: roseAuction.totals[username].roses
+  });
+
   emitRoseAuction();
 }
 
@@ -884,6 +986,7 @@ function handleGiftEvent({
   const normalizedType = normalizeGiftType(giftName);
   const premiumType = getPremiumAlertType(giftName);
 
+
   if (premiumType) {
     io.emit("gift:premium", {
       type: premiumType,
@@ -912,6 +1015,42 @@ function handleGiftEvent({
       username,
       giftName,
       repeatCount
+    };
+  }
+
+  // 🃏 ARCANOS CON REGALO
+if (giftArcanaGame.active && normalizedType === "rosquilla") {
+  giftArcanaGame.paidUsers[username] = {
+    username,
+    uniqueId,
+    paidAt: nowIso()
+  };
+
+  emitGiftArcana();
+
+  io.emit("giftArcana:paid", {
+    username,
+    message: `${username} ya puede elegir un número 🃏`
+  });
+
+  return {
+    skippedQueue: true,
+    skippedVip: true,
+    mode: "gift_arcana_paid",
+    username,
+    giftName
+  };
+}
+    // 🚫 Ignorar regalos de 1 moneda excepto Quiéreme
+  if (
+    Number(coins || 0) === 1 &&
+    normalizedType !== "quiereme"
+  ) {
+    console.log("🚫 Regalo de 1 moneda ignorado:", giftName);
+    return {
+      skippedQueue: true,
+      skippedVip: true,
+      reason: "one_coin_filtered"
     };
   }
 
@@ -1014,11 +1153,137 @@ for (const r of recompensasCiclo) {
 function handleChatEvent({ username, comment }) {
   io.emit("chat", { username, comment, createdAt: nowIso() });
 
+  // 🃏 ARCANOS CON REGALO
+  if (giftArcanaGame.active) {
+    const paidUser = giftArcanaGame.paidUsers[username];
+
+    if (paidUser) {
+      const number = extractArcanoNumber(comment);
+
+      if (number !== null) {
+        if (giftArcanaGame.picks[username]) {
+          return {
+            ok: false,
+            reason: "gift_arcana_already_picked"
+          };
+        }
+
+        if (giftArcanaGame.takenNumbers[number]) {
+          io.emit("giftArcana:pickRejected", {
+            username,
+            number,
+            reason: "taken",
+            message: `El número ${number} ya fue elegido. Pide otro número.`
+          });
+
+          return {
+            ok: false,
+            reason: "gift_arcana_taken"
+          };
+        }
+
+        const DEFAULT_GIFT_ARCANA_PRIZES = [
+
+  {
+    icon: "🔥",
+    label: "Pregunta Extensa",
+    queueType: "premium",
+    serviceKey: "arcano_extensa"
+  },
+
+  {
+    icon: "🔮",
+    label: "Oráculo",
+    queueType: "normal",
+    serviceKey: "arcano_oraculo"
+  },
+
+  {
+    icon: "🔮",
+    label: "Oráculo",
+    queueType: "normal",
+    serviceKey: "arcano_oraculo"
+  },
+
+  {
+    icon: "⚖️",
+    label: "Sí o No",
+    queueType: "normal",
+    serviceKey: "arcano_si_no"
+  },
+
+  {
+    icon: "⚖️",
+    label: "Sí o No",
+    queueType: "normal",
+    serviceKey: "arcano_si_no"
+  },
+
+  {
+    icon: "💗",
+    label: "Energía en el Amor",
+    queueType: "normal",
+    serviceKey: "arcano_amor"
+  },
+
+  {
+    icon: "💰",
+    label: "Energía en el Dinero",
+    queueType: "normal",
+    serviceKey: "arcano_dinero"
+  },
+
+  {
+    icon: "👑",
+    label: "Premio Sorpresa",
+    queueType: "premium",
+    serviceKey: "arcano_sorpresa"
+  }
+];
+
+        const assignedCount =
+          Object.keys(giftArcanaGame.picks || {}).length;
+
+        const premio =
+          DEFAULT_GIFT_ARCANA_PRIZES[
+            assignedCount % DEFAULT_GIFT_ARCANA_PRIZES.length
+          ];
+
+        giftArcanaGame.picks[username] = {
+          username,
+          number,
+          arcano: MAJOR_ARCANA[number] || `Arcano ${number}`,
+          prize: premio,
+          revealed: false,
+          paidAt: paidUser.paidAt,
+          pickedAt: nowIso()
+        };
+
+        giftArcanaGame.takenNumbers[number] = username;
+
+        emitGiftArcana();
+
+        io.emit("giftArcana:pickAccepted", {
+          username,
+          number,
+          prize: premio
+        });
+
+        return {
+          ok: true,
+          mode: "gift_arcana",
+          pick: giftArcanaGame.picks[username]
+        };
+      }
+    }
+  }
+
+  // TU SORTEO DE ARCANOS ACTUAL SE QUEDA IGUAL
   if (arcanoGame.active) {
     return registerArcanoPick({ username, comment });
   }
 
-  return { ok: false, reason: "arcano_inactive" };
+  return { ok: false, reason: "no_active_dynamic" };
 }
 
 // ---------- RUTAS ----------
@@ -1369,6 +1634,39 @@ app.post("/rose-auction/clear", (req, res) => {
     ok: true,
     roseAuction: buildRoseAuctionState()
   });
+});
+
+// ---------- ARCANOS CON REGALO ----------
+
+app.post("/gift-arcana/start", (req, res) => {
+  startGiftArcana();
+
+  res.json({
+    ok: true,
+    giftArcana: buildGiftArcanaState()
+  });
+});
+
+app.post("/gift-arcana/finish", (req, res) => {
+  finishGiftArcana();
+
+  res.json({
+    ok: true,
+    giftArcana: buildGiftArcanaState()
+  });
+});
+
+app.post("/gift-arcana/clear", (req, res) => {
+  clearGiftArcana();
+
+  res.json({
+    ok: true,
+    giftArcana: buildGiftArcanaState()
+  });
+});
+
+app.get("/gift-arcana", (req, res) => {
+  res.json(buildGiftArcanaState());
 });
 
 // ---------- ARCANOS ----------
@@ -1887,6 +2185,7 @@ io.on("connection", (socket) => {
   socket.emit("live_status", { isConnected, currentUsername });
   socket.emit("roseAuction:update", buildRoseAuctionState());
   socket.emit("arcanoGame:update", buildArcanoGameState());
+  socket.emit("giftArcana:update", buildGiftArcanaState());
   socket.emit("clientesVip:update", buildClientesVipState());
 });
 

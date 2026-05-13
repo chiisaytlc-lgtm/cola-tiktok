@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Los 12 Arcanos con Regalo</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: radial-gradient(circle at top, rgba(255, 190, 90, 0.25), transparent 35%),
+                  radial-gradient(circle at bottom left, rgba(255, 80, 170, 0.22), transparent 35%),
+                  linear-gradient(135deg, #160817, #2a1230 50%, #100611);
+    }
+
+ 
+
+    .sparkles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.85) 0 1px, transparent 2px),
+        radial-gradient(circle, rgba(255,210,110,.9) 0 1px, transparent 2px);
+      background-size: 90px 90px, 130px 130px;
+      animation: floatSparkles 18s linear infinite;
+      opacity: .45;
+    }
+
+    @keyframes floatSparkles {
+      from { transform: translateY(0); }
+      to { transform: translateY(-120px); }
+    }
+
+    .screen {
+      width: 100vw;
+      min-height: 100vh;
+      padding: 26px;
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 22px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .main-panel, .winners-panel {
+      border: 1px solid rgba(255, 255, 255, .18);
+      background: rgba(12, 5, 18, .56);
+      backdrop-filter: blur(14px);
+      border-radius: 28px;
+      box-shadow: 0 0 40px rgba(255, 176, 73, .12), inset 0 0 40px rgba(255,255,255,.035);
+      overflow: hidden;
+    }
+
+    .main-panel {
+      padding: 24px;
+    }
+
+    .title-wrap {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .eyebrow {
+      letter-spacing: 4px;
+      font-size: 13px;
+      color: #ffd98b;
+      text-transform: uppercase;
+      opacity: .9;
+    }
+
+    h1 {
+      margin: 6px 0 4px;
+      font-size: clamp(34px, 4vw, 62px);
+      line-height: 1;
+      text-shadow: 0 0 24px rgba(255, 202, 96, .45);
+    }
+
+    .subtitle {
+      color: rgba(255,255,255,.78);
+      font-size: 17px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .arcano-card {
+      min-height: 260px;
+      aspect-ratio: 0.68;
+
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.16);
+
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center top;
+      background-color: rgba(0,0,0,.5);
+
+      position: relative;
+      padding: 14px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      overflow: hidden;
+
+      box-shadow: 0 12px 26px rgba(0,0,0,.22);
+
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .arcano-card::before {
+      content: "";
+      position: absolute;
+      inset: -60%;
+      background: conic-gradient(from 120deg, transparent, rgba(255, 218, 120, .22), transparent 35%);
+      animation: spinAura 6s linear infinite;
+      opacity: .4;
+    }
+
+    @keyframes spinAura {
+      to { transform: rotate(360deg); }
+    }
+
+    .arcano-card > *:not(.arcano-img) {
+      position: relative;
+      z-index: 2;
+    }
+
+    .arcano-card.taken {
+      border-color: rgba(255, 214, 118, .55);
+      background: linear-gradient(145deg, rgba(255, 199, 92, .24), rgba(255,255,255,.045));
+    }
+
+    .arcano-card.revealed {
+      border-color: rgba(255, 118, 199, .78);
+      box-shadow: 0 0 34px rgba(255, 91, 184, .34), 0 14px 30px rgba(0,0,0,.22);
+    }
+
+    .arcano-card.free {
+      opacity: .72;
+    }
+
+    .arcano-img {
+        position: absolute;
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+        object-position: center;
+
+        z-index: 0;
+      }
+    .arcano-name {
+      font-size: 14px;
+      font-weight: 800;
+      color: #ffe4a8;
+      text-shadow: 0 0 12px rgba(255, 213, 115, .55);
+      margin-top: 2px;
+    }
+
+    .arcano-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,.72) 0%,
+        rgba(0,0,0,.20) 36%,
+        rgba(0,0,0,.15) 58%,
+        rgba(0,0,0,.78) 100%
+      );
+    }
+
+        .number,
+    .arcano-name,
+    .status,
+    .user,
+    .prize {
+      text-shadow:
+        0 2px 8px rgba(0,0,0,.95),
+        0 0 14px rgba(0,0,0,.85);
+    }
+
+    .number {
+      font-size: 36px;
+      font-weight: 900;
+      color: #ffe2a0;
+      text-shadow: 0 0 18px rgba(255, 213, 115, .55);
+    }
+
+    .user {
+      font-weight: 800;
+      font-size: 18px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .status {
+      font-size: 13px;
+      color: rgba(255,255,255,.76);
+    }
+
+    .prize {
+      margin-top: 8px;
+      border-radius: 14px;
+      padding: 8px 10px;
+      background: rgba(0,0,0,.56);
+      font-size: 14px;
+      font-weight: 800;
+      border: 1px solid rgba(255,255,255,.20);
+    }
+
+    
+    .hidden-prize {
+      color: #ffd98b;
+    }
+
+    .winners-panel {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .winners-title {
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 6px;
+      text-shadow: 0 0 18px rgba(255, 214, 118, .42);
+    }
+
+    .winners-subtitle {
+      color: rgba(255,255,255,.7);
+      margin-bottom: 18px;
+      font-size: 14px;
+    }
+
+    .winner-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow: auto;
+      padding-right: 4px;
+    }
+
+    .winner-item {
+      padding: 13px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .winner-user {
+      font-size: 17px;
+      font-weight: 900;
+      color: #fff;
+    }
+
+    .winner-prize {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #ffd98b;
+      font-weight: 800;
+    }
+
+    .live-note {
+      margin-top: auto;
+      padding-top: 18px;
+      color: rgba(255,255,255,.72);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .robbery-alert {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: none;
+      place-items: center;
+      background: radial-gradient(circle, rgba(255, 47, 96, .38), rgba(0,0,0,.15) 45%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .robbery-card {
+      width: min(760px, 90vw);
+      border-radius: 34px;
+      padding: 34px;
+      text-align: center;
+      background: rgba(20, 5, 15, .82);
+      border: 2px solid rgba(255, 91, 91, .8);
+      box-shadow: 0 0 80px rgba(255, 41, 91, .55);
+      animation: boom .55s ease both;
+    }
+
+    @keyframes boom {
+      from { transform: scale(.75) rotate(-2deg); opacity: 0; }
+      to { transform: scale(1) rotate(0); opacity: 1; }
+    }
+
+    .robbery-card .big {
+      font-size: clamp(42px, 7vw, 88px);
+      font-weight: 1000;
+      line-height: .95;
+      color: #ffdf74;
+      text-shadow: 0 0 28px rgba(255, 63, 99, .9);
+    }
+
+    .robbery-card .small {
+      margin-top: 14px;
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .demo-controls {
+      position: fixed;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      display: flex;
+      gap: 8px;
+      background: rgba(0,0,0,.4);
+      padding: 8px;
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+    }
+
+    .demo-controls button {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 800;
+      cursor: pointer;
+      background: #ffd98b;
+      color: #281025;
+    }
+
+    @media (max-width: 900px) {
+      .screen {
+        grid-template-columns: 1fr;
+        overflow: auto;
+      }
+
+      body {
+        overflow: auto;
+      }
+
+      .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="sparkles"></div>
+
+  <main class="screen">
+    <section class="main-panel">
+      <div class="title-wrap">
+        <div class="eyebrow">Dinámica en vivo</div>
+        <h1>🎴 Los 12 Arcanos</h1>
+        <div class="subtitle">Envía una Rosquilla 🍩, elige tu número y espera la revelación</div>
+      </div>
+
+      <div class="cards-grid" id="cardsGrid"></div>
+    </section>
+
+    <aside class="winners-panel">
+      <div class="winners-title">🏆 Ganadores</div>
+      <div class="winners-subtitle">Premios revelados en esta ronda</div>
+      <div class="winner-list" id="winnerList"></div>
+      <div class="live-note">
+        ⚠️ Arcano Robado puede cambiar el destino antes de revelar. El chat decide, Chiisay abre el portal.
+      </div>
+    </aside>
+  </main>
+
+  <div class="robbery-alert" id="robberyAlert">
+    <div class="robbery-card">
+      <div class="big">⚠️ ARCANO ROBADO</div>
+      <div class="small" id="robberyText">Carla robó el Arcano 8</div>
+    </div>
+  </div>
+
+  <div class="demo-controls">
+    <button onclick="revealNext()">🎴 Revelar demo</button>
+    <button onclick="triggerRobbery()">⚠️ Robo demo</button>
+    <button onclick="resetDemo()">🔄 Reiniciar</button>
+  </div>
+
+  <script>
+    const arcanosData = [
+  { number: 1, name: "El Mago", image: "12_arcanos_web/mago.webp", prize: { icon: "🔮", label: "Oráculo" } },
+  { number: 2, name: "La Sacerdotisa", image: "12_arcanos_web/sacerdotisa.webp", prize: { icon: "⚖️", label: "Sí o No" } },
+  { number: 3, name: "La Emperatriz", image: "12_arcanos_web/emperatriz.webp", prize: { icon: "💗", label: "Energía en el Amor" } },
+  { number: 4, name: "El Emperador", image: "12_arcanos_web/emperador.webp", prize: { icon: "🔮", label: "Oráculo" } },
+  { number: 5, name: "El Sacerdote", image: "12_arcanos_web/sacerdote.webp", prize: { icon: "💰", label: "Energía en el Dinero" } },
+  { number: 6, name: "Los Enamorados", image: "12_arcanos_web/enamorados.webp", prize: { icon: "💗", label: "Energía en el Amor" } },
+  { number: 7, name: "El Carro", image: "12_arcanos_web/carro.webp", prize: { icon: "⚖️", label: "Sí o No" } },
+  { number: 8, name: "La Fuerza", image: "12_arcanos_web/fuerza.webp", prize: { icon: "🔥", label: "Pregunta Extensa" } },
+  { number: 9, name: "La Rueda", image: "12_arcanos_web/rueda.webp", prize: { icon: "🔮", label: "Oráculo" } },
+  { number: 10, name: "La Estrella", image: "12_arcanos_web/estrella.webp", prize: { icon: "💰", label: "Energía en el Dinero" } },
+  { number: 11, name: "El Juicio", image: "12_arcanos_web/juicio.webp", prize: { icon: "👑", label: "Premio Sorpresa" } },
+  { number: 12, name: "El Sol", image: "12_arcanos_web/sol.webp", prize: { icon: "🔮", label: "Oráculo Premium" } }
+];
+
+    const sampleUsers = [
+      "Luna", "Carla", "Milagros", "Andrea", "Rosa", "Valeria", "Sofi", "Mar", "Gaby", "Estrella", "Naty", "Libre"
+    ];
+
+    let arcanos = [];
+
+    function buildDemo() {
+      arcanos = Array.from({ length: 12 }, (_, i) => ({
+        number: i + 1,
+        username: i < 10 ? sampleUsers[i] : null,
+        taken: i < 10,
+        revealed: false,
+        ...arcanosData[i]
+      }));
+      render();
+    }
+
+    function render() {
+      const cardsGrid = document.getElementById("cardsGrid");
+      const winnerList = document.getElementById("winnerList");
+
+      cardsGrid.innerHTML = arcanos.map(a => `
+        <div class="arcano-card ${a.taken ? "taken" : "free"} ${a.revealed ? "revealed" : ""}">
+           <img class="arcano-img" src="${a.image}" alt="${a.name}">
+
+          <div>
+            <div class="number">${a.number}</div>
+            <div class="arcano-name">${a.name}</div>
+            <div class="status">${a.taken ? "Arcano tomado" : "Disponible"}</div>
+          </div>
+          <div>
+            <div class="user">${a.username || "Libre"}</div>
+            <div class="prize ${a.revealed ? "" : "hidden-prize"}">
+              ${a.revealed ? `${a.prize.icon} ${a.prize.label}` : "🎁 Premio oculto"}
+            </div>
+          </div>
+        </div>
+      `).join("");
+
+      const winners = arcanos.filter(a => a.revealed && a.username);
+      winnerList.innerHTML = winners.length ? winners.map(a => `
+        <div class="winner-item">
+          <div class="winner-user">${a.username} · Arcano ${a.number}</div>
+          <div class="winner-prize">${a.prize.icon} ${a.prize.label}</div>
+        </div>
+      `).join("") : `<div class="winner-item">Aún no hay premios revelados 👀</div>`;
+    }
+
+    function revealNext() {
+      const next = arcanos.find(a => a.taken && !a.revealed);
+      if (!next) return;
+      next.revealed = true;
+      render();
+    }
+
+    function triggerRobbery() {
+      const alert = document.getElementById("robberyAlert");
+      const text = document.getElementById("robberyText");
+      text.textContent = "Carla robó el Arcano 8";
+      alert.style.display = "grid";
+      setTimeout(() => {
+        alert.style.display = "none";
+      }, 2800);
+    }
+
+    function resetDemo() {
+      buildDemo();
+    }
+
+    buildDemo();
+  </script>
+</body>
+</html>
